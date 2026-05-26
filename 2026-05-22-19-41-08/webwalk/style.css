@@ -1,0 +1,1724 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  user-select: none;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+}
+
+#cover-image {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  /* Fallback if background image failed to load.*/
+  background-color: #333;
+  transition: opacity 1s linear;
+}
+
+#walk-canvas {
+  width: 0;
+  height: 0;
+  touch-action: none;
+}
+
+#walk-canvas:focus {
+  outline: none;
+}
+
+.message {
+  z-index: 300;
+  position: absolute;
+  width: 260px;
+  top: 0;
+  left: 0;
+  padding: 1em;
+  background-color: white;
+  color: black;
+  font-size: 16px;
+  text-align: center;
+  user-select: text;
+}
+
+.message > a {
+  color: black;
+}
+
+.info-message {
+  border: 2px solid yellow;
+}
+
+.error-message {
+  border: 2px solid red;
+}
+
+.message-scrollable-line {
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+
+.ui-panel {
+  background-color: rgba(0, 0, 0, 0.6);
+  font-size: 13px;
+}
+
+.ui-hoverable:hover {
+  background: rgb(0, 0, 0);
+}
+
+.ui-close-hoverable:hover {
+  background: rgb(80, 0, 0);
+}
+
+/* Reponsive UI dimensions and positions - large display */
+.ui-top {
+  top: 10px;
+}
+
+.ui-bottom {
+  bottom: 10px;
+}
+
+.ui-left {
+  left: 10px;
+}
+
+.ui-right {
+  right: 10px;
+}
+
+.ui-center {
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.ui-upper-half-center {
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%);
+}
+
+.ui-all-center {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Style is specified also for #view-list-folder to support custom index.html
+   files created before .ui-folder-vertical was introduced. */
+.ui-folder-vertical,
+#view-list-folder {
+  height: 16px;
+  padding-top: 6px;
+  padding-bottom: 4px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.ui-folder-vertical > img,
+#view-list-folder > img {
+  /* Using height: 100% does not work on Safari, so set height in pixels. */
+  height: 5px;
+  vertical-align: top;
+  transition: transform 1s ease;
+}
+
+.info-item {
+  min-width: 60px;
+  height: 60px;
+}
+
+.menu-item {
+  min-width: 52px;
+  height: 52px;
+  padding: 13px 6px 13px 6px;
+  line-height: 26px;
+}
+
+.menu-item > img {
+  padding: 2px 0 1px 0;
+}
+
+.menu-button {
+  font-size: 26px;
+}
+
+#secondary-progress-done {
+  height: 8px;
+}
+
+#engine-logo {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  line-height: 34px;
+}
+
+#view-list-items {
+  /* Make view-list not higher than half of the viewport:
+       50vh + view_margin - ui_margin - (folder_margin + folder_height) */
+  max-height: calc(50vh + 2px - 10px - (4px + 14px));
+}
+
+.ui-scrollbar::-webkit-scrollbar,
+.ui-scrollbar::-webkit-scrollbar-thumb {
+  width: 6px;
+}
+
+.ext-popup-content {
+  /* 100vw - ui_margin - (ui_margin + close_button) */
+  max-width: calc(100vw - 10px - (10px + 30px));
+  /* 100vh - 2 * ui_margin */
+  max-height: calc(100vh - 2 * 10px);
+  padding: 12px;
+  font-size: 14px;
+}
+
+#ext-html-label-content img,
+#ext-html-label-content video,
+#ext-html-label-content iframe {
+  /* By default prevent img, video and iframe (often embedding videos) from
+     overflowing the screen: 100vh - 2 * ui_margin - 2 * popup_padding -
+     4px (- 4px as an error margin for browser's layout computations). */
+  max-height: calc(100vh - 2 * 10px - 2 * 12px - 4px);
+}
+
+/* Minimap UI */
+
+.minimap-container-default {
+  z-index: 103;
+  pointer-events: none;
+  overflow: hidden;
+  position: absolute;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  left: 10px;
+  bottom: 10px;
+  transition-property: width, height, left, bottom;
+  transition-duration: 1s;
+}
+
+.minimap-button {
+  z-index: 2;
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  padding: 13px;
+  cursor: pointer;
+}
+
+.minimap-button > img {
+  width: 26px;
+  height: 26px;
+}
+
+.minimap-button-minimize {
+  display: block;
+  right: 0;
+  top: 0;
+}
+
+.minimap-button-maximize {
+  display: none;
+  left: 0;
+  bottom: 0;
+}
+
+.minimap-button-close {
+  display: none;
+  top: 0;
+  right: 0;
+}
+
+.minimap-wrapper-default {
+  overflow: hidden;
+  pointer-events: auto;
+  position: absolute;
+  width: 30%;
+  height: 50%;
+  padding: 64px 16px 16px;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  transform: translate(0, 0);
+  transition-property: width, height, padding, transform;
+  transition-duration: 1s;
+}
+
+.minimap-wrapper-tabs {
+  padding: 64px 16px;
+}
+
+.minimap-wrapper-minimized {
+  padding: 5px;
+  width: 300px;
+  height: 300px;
+}
+
+.minimap-wrapper-minimized > .minimap-button-maximize {
+  display: block;
+}
+
+.minimap-wrapper-minimized > .minimap-button-minimize {
+  display: none;
+}
+
+.minimap-content-wrapper {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 47px 100%, 47px 100%, 0 100%);
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 47px 100%, 47px 100%, 0 100%);
+  transition-property: width, height, margin, clip-path;
+  transition-duration: 1s;
+}
+
+.minimap-content {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  transform: translate(0, 0);
+  transition:
+    width 1s,
+    height 1s,
+    transform 1s ease;
+}
+
+.minimap-wrapper-minimized > .minimap-content-wrapper {
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    47px 100%,
+    47px calc(100% - 47px),
+    0 calc(100% - 47px)
+  );
+  -webkit-clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    47px 100%,
+    47px calc(100% - 47px),
+    0 calc(100% - 47px)
+  );
+}
+
+.minimap-wrapper-minimized > .minimap-content-wrapper .minimap-content {
+  width: 300%;
+  height: 300%;
+  transition:
+    width 1s,
+    height 1s,
+    transform 1s ease-out;
+}
+
+.minimap-content-controller {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s;
+}
+
+.minimap-wrapper-minimized > .minimap-content-wrapper .minimap-content .minimap-content-controller {
+  transition: transform 0s;
+}
+.minimap-content-controller > canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.minimap-tabs-default {
+  display: flex;
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 52px;
+  transition: height 1s ease;
+}
+
+.minimap-tab {
+  font-size: 13px;
+  text-align: center;
+  line-height: 50px;
+  word-break: break-all;
+  overflow: hidden;
+  width: inherit;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: background-color 0.5s ease;
+}
+
+.minimap-tab:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.minimap-tab-active {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.minimap-tab-current::before {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  border-radius: 5px;
+  background-color: #00dcff;
+}
+
+.minimap-wrapper-minimized > .minimap-tabs-default {
+  height: 0;
+}
+
+#interaction-prompt {
+  z-index: 10;
+  display: flex;
+  position: absolute;
+  width: 450px;
+  transition: opacity 0.75s;
+}
+
+.interaction-prompt-icon {
+  min-width: 80px;
+  width: 80px;
+  height: 80px;
+  background-color: #23b5e9;
+  overflow: hidden;
+}
+
+.interaction-prompt-icon > img {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  margin: 20px;
+}
+
+.interaction-prompt-icon-idle {
+  animation: interactionPromptIconIdle 2s ease-in-out infinite;
+}
+
+.interaction-prompt-icon-pressed {
+  animation: interactionPromptIconPressed 2s ease-in-out infinite;
+}
+
+.interaction-prompt-indicator-text {
+  padding: 0 5px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 20px;
+  text-align: center;
+}
+
+.interaction-prompt-mobile {
+  display: none;
+}
+
+@keyframes interactionPromptIconIdle {
+  0%,
+  30% {
+    transform: scale(1) translateX(-5px);
+    opacity: 1;
+  }
+  35% {
+    opacity: 1;
+  }
+  40% {
+    transform: scale(0.8) translateX(-5px);
+    opacity: 0;
+  }
+  65% {
+    transform: scale(0.8) translateX(10px);
+  }
+  90% {
+    transform: scale(0.8) translateX(-5px);
+    opacity: 0;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateX(-5px);
+  }
+}
+
+@keyframes interactionPromptIconPressed {
+  0%,
+  30% {
+    transform: scale(1) translateX(-5px);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(0.8) translateX(-5px);
+    opacity: 11;
+  }
+  65% {
+    transform: scale(0.8) translateX(10px);
+  }
+  90% {
+    transform: scale(0.8) translateX(-5px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateX(-5px);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 1280px) {
+  .minimap-wrapper-default {
+    width: 40%;
+  }
+
+  .minimap-wrapper-minimized {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 960px) {
+  .minimap-wrapper-default {
+    height: 100%;
+    width: 50%;
+  }
+
+  .minimap-wrapper-minimized {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 768px), (max-height: 639px) {
+  .minimap-container-default {
+    height: 100%;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+  }
+
+  .minimap-container-minimized {
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    left: 10px;
+    bottom: 10px;
+  }
+
+  .minimap-wrapper-default {
+    width: 100%;
+    height: 100%;
+  }
+
+  .minimap-wrapper-tabs {
+    padding: 64px 16px 84px;
+  }
+
+  .minimap-wrapper-minimized {
+    padding: 5px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .minimap-tabs-default {
+    height: 72px;
+  }
+
+  .minimap-tab {
+    line-height: 70px;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .minimap-tab:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .minimap-tab-active {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Reponsive UI dimensions and positions - small display */
+@media (max-width: 639px), (max-height: 639px) {
+  .minimap-container-minimized {
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    left: 5px;
+    bottom: 5px;
+  }
+
+  .minimap-wrapper-tabs {
+    padding: 64px 16px 64px;
+  }
+
+  .minimap-wrapper-minimized {
+    transform: translate(-101%, 0);
+  }
+
+  .minimap-button-minimize {
+    display: none;
+  }
+
+  .minimap-button-close {
+    display: block;
+  }
+
+  .minimap-wrapper-minimized > .minimap-button-close {
+    display: none;
+  }
+
+  .minimap-tabs-default {
+    height: 52px;
+  }
+
+  .minimap-tab {
+    line-height: 50px;
+  }
+
+  .ui-panel {
+    font-size: 12px;
+  }
+
+  .ui-top {
+    top: 5px;
+  }
+
+  .ui-bottom {
+    bottom: 5px;
+  }
+
+  .ui-left {
+    left: 5px;
+  }
+
+  .ui-right {
+    right: 5px;
+  }
+
+  .info-item {
+    min-width: 46px;
+    height: 46px;
+  }
+
+  .menu-item {
+    min-width: 42px;
+    height: 42px;
+    padding: 11px 6px 11px 6px;
+    line-height: 20px;
+  }
+
+  .menu-item > img {
+    padding: 2px 0 0 0;
+  }
+
+  .menu-button {
+    font-size: 22px;
+  }
+
+  #secondary-progress-done {
+    height: 4px;
+  }
+
+  #engine-logo {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    line-height: 30px;
+  }
+
+  #view-list-items {
+    max-height: calc(50vh + 2px - 5px - (4px + 14px));
+  }
+
+  #interaction-prompt {
+    width: calc(100% - 20px);
+    max-width: 350px;
+  }
+
+  .interaction-prompt-desktop {
+    display: none;
+  }
+
+  .interaction-prompt-mobile {
+    display: flex;
+  }
+
+  @media (min-width: 560px) and (max-height: 439px) {
+    #view-list-items {
+      /* If the small display is low but wide make the view-list taller:
+           80vh + view_margin - ui_margin - (folder_margin + folder_height) -
+             (ui_margin + menu_bar_height + ui_margin) - webkit_ui_height
+         We use 80vh instead of 100vh because on mobile WebKit 100vh includes
+         the browser UI.
+       */
+      max-height: calc(80vh + 2px - 5px - (4px + 14px) - (5px + 42px + 5px));
+    }
+  }
+  .ui-scrollbar::-webkit-scrollbar,
+  .ui-scrollbar::-webkit-scrollbar-thumb {
+    width: 4px;
+  }
+
+  .ext-popup-content {
+    max-width: calc(100vw - 5px - (5px + 30px));
+    max-height: calc(80vh - 5px - 5px);
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  #ext-html-label-content img,
+  #ext-html-label-content video,
+  #ext-html-label-content iframe {
+    max-height: calc(80vh - 2 * 5px - 2 * 8px - 4px);
+  }
+}
+
+.absolute-horizontal-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+}
+
+.absolute-vertical-center {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+}
+
+.absolute-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+}
+
+#info-bar {
+  z-index: 100;
+  position: absolute;
+  overflow: hidden;
+  user-select: text;
+}
+
+#info-bar-slide {
+  position: relative;
+  left: 0;
+  transition: left 1s ease;
+}
+
+#author-logo {
+  display: inline-block;
+  margin-right: 2px;
+  background: none;
+  text-align: center;
+}
+
+#author-logo > img {
+  height: 100%;
+}
+
+#info-text {
+  display: inline-block;
+  padding: 5px 10px 3px 10px;
+  vertical-align: top;
+}
+
+#info-text > div {
+  display: table;
+  height: 50%;
+}
+
+#info-title,
+#info-author {
+  display: table-cell;
+  height: 100%;
+  line-height: 1;
+  vertical-align: middle;
+  /* For <a> */
+  color: white;
+  text-decoration: none;
+}
+
+#info-title {
+  font-size: 1.4em;
+}
+
+#menu-bar {
+  z-index: 102;
+  position: absolute;
+  overflow: hidden;
+}
+
+#menu-bar-slide {
+  position: relative;
+  right: 0;
+  transition: right 1s ease;
+}
+
+.menu-item {
+  display: inline-block;
+  margin-left: 2px;
+  vertical-align: top;
+  text-align: center;
+  cursor: pointer;
+}
+
+.menu-item > img {
+  height: 100%;
+  vertical-align: top;
+}
+
+#menu-bar-content {
+  display: inline-block;
+  padding-left: 2px;
+}
+
+#menu-bar-folder {
+  min-width: 0px;
+  width: 16px;
+  padding-left: 6px;
+  padding-right: 5px;
+}
+
+#menu-bar-folder > img {
+  width: 100%;
+  transition: transform 1s ease;
+}
+
+#menu-buttons {
+  display: inline-block;
+}
+
+.menu-button {
+  font-weight: 700;
+}
+
+#engine-logo {
+  color: white;
+  text-decoration: none;
+}
+
+#engine-logo-text {
+  display: inline-block;
+  margin-right: 6px;
+  vertical-align: top;
+}
+
+#view-mode {
+  z-index: 101;
+  position: absolute;
+  overflow: hidden;
+}
+
+#view-mode-slide {
+  position: relative;
+  left: 0;
+  transition: left 1s ease;
+  display: flex;
+}
+
+.view-mode-container {
+  margin-right: 8px;
+  display: flex;
+  flex-direction: row;
+}
+
+.view-mode-item {
+  padding: 2px 2px;
+  min-width: 30px;
+  height: 30px;
+}
+
+.view-mode-item > img {
+  height: 100%;
+  padding: 1px;
+}
+
+#view-list {
+  z-index: 101;
+  position: absolute;
+  overflow: hidden;
+}
+
+#view-list-slide {
+  position: relative;
+  top: 0;
+  transition: top 1s ease;
+}
+
+/* Style is specified also for #view-list-items to support custom index.html
+   files created before .ui-scrollbar was introduced. */
+.ui-scrollbar,
+#view-list-items {
+  overflow-x: hidden;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  scrollbar-width: thin;
+  scrollbar-color: white rgba(0, 0, 0, 0.6);
+}
+
+.ui-scrollbar::-webkit-scrollbar,
+#view-list-items::-webkit-scrollbar {
+  width: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.ui-scrollbar::-webkit-scrollbar-thumb,
+#view-list-items::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 5px;
+}
+
+#view-list-items {
+  /* Negative margin to compensate for the first view having margin-top: 2px */
+  margin-top: -2px;
+  margin-bottom: 4px;
+}
+
+.view {
+  padding: 3px 18px 3px 9px;
+  margin-top: 2px;
+  line-height: 1.5;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+#play-button {
+  z-index: 200;
+  max-width: 30vw;
+  max-height: 35vh;
+  cursor: pointer;
+}
+
+#help-and-primary-progress {
+  z-index: 200;
+  text-align: center;
+}
+
+.help {
+  /* Such vertical margins here and in #primary-progress introduce
+     5vh margin between the help and the progress indicator when they
+     are shown together, while maintaining the vertical centering of these
+     elements when they are shown stand-alone. */
+  margin: 2.5vh auto;
+  padding: 16px;
+  font-size: 13px;
+}
+
+.close-help-button {
+  float: right;
+  width: 32px;
+  height: 32px;
+  padding: 6px;
+  /* Negative margin to compensate for the hoverable padding */
+  margin: -6px 0 -6px 0;
+  cursor: pointer;
+}
+
+.help-columns {
+  display: table;
+  width: 100%;
+  text-align: center;
+}
+
+.help-column3,
+.help-column3-sep,
+.help-column2,
+.help-column2-sep {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.help-column3 {
+  width: 26%;
+}
+
+.help-column3-sep {
+  width: 11%;
+}
+
+.help-column2 {
+  width: 45%;
+}
+
+.help-column2-sep {
+  width: 10%;
+}
+
+#desktop-help {
+  width: 500px;
+}
+
+#desktop-help-switch {
+  position: relative;
+  font-size: 14px;
+  text-align: center;
+}
+
+#desktop-help-switch > div {
+  position: absolute;
+  min-width: 35%;
+  padding: 0px 6px;
+  border: 2px solid #4676cc;
+  cursor: pointer;
+}
+
+#desktop-help-switch > div:nth-child(1) {
+  border-right-width: 1px;
+  right: 50%;
+}
+
+#desktop-help-switch > div:nth-child(2) {
+  border-left-width: 1px;
+  left: 50%;
+}
+
+#desktop-help-switch > div:hover {
+  background-color: #23b5e9;
+}
+
+#desktop-help-switch > div.selected,
+#desktop-help-switch > div.selected:hover {
+  background-color: #3c66b0;
+}
+
+#desktop-basic-help h1 {
+  margin-top: 24px;
+  margin-bottom: 18px;
+  font-size: 20px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+#desktop-basic-help img {
+  height: 60px;
+}
+
+#advanced-desktop-help {
+  max-height: calc(100vh - 200px);
+  margin-top: 8px;
+  overflow-y: auto;
+  font-size: 12px;
+}
+
+#advanced-desktop-help h1 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.help-how,
+.help-what {
+  display: inline-block;
+  width: 50%;
+  padding: 4px 0;
+  vertical-align: middle;
+}
+
+.help-how {
+  padding-right: 5%;
+  text-align: right;
+}
+
+.help-what {
+  padding-left: 5%;
+}
+
+.help-key,
+.help-key-placeholder {
+  display: inline-block;
+  min-width: 22px;
+  margin: 1px;
+}
+
+.help-key {
+  line-height: 20px;
+  padding: 0 4px;
+  border: 1px solid;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.help-key-sep {
+  width: 15px;
+  display: inline-block;
+}
+
+#mobile-help {
+  width: 300px;
+}
+
+#mobile-help h1 {
+  margin-top: 8px;
+  margin-bottom: 14px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+#mobile-help img {
+  height: 50px;
+}
+
+#primary-progress {
+  /* z-index set to 200 for compatibility with customized indexes based on
+     webwalk < 180, because previously #primary-progress was a top-level
+     element. */
+  z-index: 200;
+  margin-top: 2.5vh;
+  margin-bottom: 2.5vh;
+  width: 25vw;
+  max-height: 20vh;
+  transition: opacity 0.5s linear;
+}
+
+#primary-progress > circle {
+  fill: none;
+}
+
+#primary-progress > circle:nth-child(1) {
+  stroke: rgba(0, 0, 0, 0.6);
+}
+
+#primary-progress-done {
+  stroke: #3c66b0;
+}
+
+#secondary-progress {
+  z-index: 200;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  transition: opacity 0.5s linear;
+}
+
+#secondary-progress-done {
+  width: 0px;
+  background-color: #3c66b0;
+}
+
+.tour-on {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.active-view,
+.active-view:hover {
+  background-color: #3c66b0;
+}
+
+.next-active-view,
+.next-active-view:hover {
+  background-color: #284461;
+}
+
+.ext-popup {
+  z-index: 104;
+  position: absolute;
+  white-space: nowrap;
+}
+
+.ext-popup-content {
+  display: inline-block;
+  vertical-align: top;
+  overflow: auto;
+  /* A bit darker than .ui-panel because large pop-ups often overlap with some
+     UI elements */
+  background-color: rgba(0, 0, 0, 0.8);
+  white-space: normal;
+}
+
+.ext-popup-close-button-panel {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 6px;
+  background-color: rgba(0, 0, 0, 0.8);
+  line-height: 0;
+  cursor: pointer;
+}
+
+.ext-popup-close-button {
+  width: 18px;
+  height: 18px;
+  background-size: cover;
+}
+
+#ext-html-label {
+  width: max-content;
+}
+
+.ext-html-label-animated {
+  transition:
+    opacity 0.4s ease-out,
+    transform 0.4s ease-out,
+    left 0.4s ease-out;
+}
+
+#ext-html-label.ui-out {
+  opacity: 0;
+}
+
+.ext-html-label-topleft.ui-out {
+  left: 0;
+  transform: translateX(-100%);
+}
+
+.ext-html-label-horizontal-center {
+  /* (34 / 2) = 17px offset to center the popup content on the screen, shifting
+     the close button to the right.
+     vw unit has to be used, because Safari on iPhone X has a bug in calc()
+     implementation: calc(50% + 17px) doesn't work. */
+  left: calc(50vw + 17px);
+  transform: translateX(-50%);
+}
+
+.ext-html-label-horizontal-center.ui-out {
+  left: 0;
+  transform: translateX(-100%);
+}
+
+.ext-html-label-vertical-center {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.ext-html-label-vertical-center.ui-out {
+  transform: translateX(-100%) translateY(-50%);
+}
+
+.ext-html-label-center {
+  top: 50%;
+  left: calc(50vw + 17px);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.ext-html-label-center.ui-out {
+  left: 0;
+  transform: translateX(-100%) translateY(-50%);
+}
+
+#ext-html-label-content {
+  user-select: text;
+  max-width: calc(100vw - 80px);
+}
+
+#ext-html-label-content a {
+  color: #5cc2e6;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+#ext-html-label-content img,
+#ext-html-label-content video {
+  max-width: 75vw;
+}
+
+#ext-html-label-content iframe {
+  /* By default show iframes in 16:9 aspect ratio, suitable for video embeds. */
+  width: 75vw;
+  height: calc(75vw / 16 * 9);
+  border: 0;
+}
+
+#ext-html-label-content video,
+#ext-html-label-content iframe {
+  /* By default prevent videos and iframes (often embedding videos) from
+     overflowing the screen. */
+  max-height: 75vh;
+}
+
+#ext-meeting-status {
+  /* Below HTML label popup */
+  z-index: 103;
+}
+
+#ext-meeting-status-footer {
+  padding-top: 25px;
+}
+
+#ext-meeting-who-list-folder {
+  margin-top: 4px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.ext-meeting-button {
+  display: inline-block;
+  min-width: 40px;
+  border: 2px solid #3c66b0;
+  background-color: #4676cc;
+  cursor: pointer;
+  color: white;
+}
+
+.ext-meeting-button:hover {
+  background-color: #3c66b0;
+}
+
+.ext-meeting-button:focus {
+  outline-color: #627fb3;
+  outline-style: solid;
+  outline-width: 2px;
+}
+
+.ext-meeting-button-highlight {
+  border: 2px solid #a32929;
+  background-color: #cc3333;
+}
+
+.ext-meeting-button-highlight:hover {
+  background-color: #a32929;
+}
+
+.ext-meeting-button-highlight:focus {
+  outline-color: #d65c5c;
+}
+
+.ext-meeting-join-row + .ext-meeting-join-row {
+  margin-top: 8px;
+}
+
+.ext-meeting-dialog-buttons {
+  display: block;
+  float: right;
+  overflow: hidden;
+}
+
+.ext-meeting-dialog-buttons > button {
+  margin-top: 16px;
+}
+
+.ext-meeting-dialog-ok {
+  margin-right: 8px;
+}
+
+.ext-meeting-dialog-title {
+  text-align: center;
+  color: #ffffff;
+  font-size: 18px;
+  margin: 0 0 16px 0;
+  border-bottom: 1px #bbb solid;
+  padding-bottom: 5px;
+}
+
+.ext-meeting-dialog-message {
+  text-align: center;
+  width: 280px;
+}
+
+.ext-meeting-dialog-iframe-container {
+  width: 1020px;
+  max-width: 80vw;
+  height: 760px;
+  max-height: 75vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.ext-meeting-dialog-iframe {
+  border: 0px;
+  flex-grow: 1;
+}
+
+#ext-meeting-join-name-label {
+  display: inline-block;
+  width: 80px;
+  line-height: 22px;
+}
+
+#ext-meeting-join-name {
+  width: 180px;
+  font-family: inherit;
+}
+
+.ext-meeting-join-footer {
+  max-width: 260px;
+  padding-top: 8px;
+  font-size: smaller;
+}
+
+.ext-meeting-join-footer > a {
+  color: white;
+}
+
+#ext-meeting-status-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+#ext-meeting-quality-indicator-container {
+  height: 21px;
+  padding-top: 4px;
+}
+
+#ext-meeting-join-error-container {
+  text-align: center;
+  left: 8px;
+  right: 8px;
+  z-index: 10;
+  text-shadow:
+    0 0 1px black,
+    0 0 2px black;
+}
+
+.ext-meeting-join-error-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.ext-meeting-join-error-description {
+  font-size: 11px;
+  margin-bottom: 12px;
+}
+
+#ext-meeting-join-preview-toggle-container {
+  bottom: 8px;
+  z-index: 10;
+}
+
+#ext-meeting-join-mic-volume-container {
+  position: absolute;
+  bottom: 12px;
+  left: 5px;
+  z-index: 10;
+}
+
+.ext-meeting-join-device-button {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.ext-meeting-join-camera-preview-placeholder {
+  position: relative;
+  background-color: black;
+  color: #262626;
+  font-size: 40px;
+  border: 0px;
+  text-align: center;
+  width: 264px;
+  height: 198px;
+}
+
+.ext-meeting-join-main-container {
+  position: relative;
+  background-color: black;
+  border: 1px solid #444;
+  width: 266px;
+  height: 200px;
+  text-align: center;
+}
+
+#ext-meeting-join-select-camera-container,
+#ext-meeting-join-select-microphone-container {
+  height: 26px;
+  line-height: 26px;
+  font-size: 0.9em;
+  margin-top: 4px;
+}
+
+#ext-meeting-join-select-camera,
+#ext-meeting-join-select-microphone {
+  width: 180px;
+  float: right;
+}
+
+.ext-meeting-join-input {
+  color: inherit;
+  background-color: black;
+  border: 1px solid #444;
+  font: inherit;
+  padding: 2px 4px;
+}
+
+.ext-meeting-join-input:focus {
+  outline-color: #627fb3;
+  outline-style: solid;
+  outline-width: 2px;
+  background-color: black;
+  cursor: text;
+}
+
+#ext-meeting-join-network-error-container {
+  border-left-color: red;
+  border-left-width: 2px;
+  border-left-style: solid;
+  font-size: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 10px;
+}
+
+.ext-meeting-input-missing {
+  background-color: #ff4136;
+}
+
+.ext-meeting-text-highlighted {
+  color: #ff4136;
+}
+
+.ext-meeting-list {
+  padding-left: 16px;
+  margin-top: 4px;
+}
+
+.ext-meeting-list-entry {
+  min-width: 52px;
+}
+
+.ext-meeting-list-name {
+  margin-right: 3px;
+}
+
+#ext-meeting-who-list {
+  padding-left: 0;
+  margin-top: 4px;
+  margin-bottom: 10px;
+  padding-right: 8px;
+  scrollbar-color: white rgba(0, 0, 0, 0.8);
+  transition:
+    max-height 1s ease,
+    margin-top 1s ease,
+    margin-bottom 1s ease;
+  max-height: 16vh;
+}
+
+#ext-meeting-who-list::-webkit-scrollbar {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.ext-meeting-who-list-entry {
+  min-width: 52px;
+  list-style-type: none;
+  white-space: nowrap;
+}
+
+.ext-meeting-who-list-name {
+  margin-right: 3px;
+}
+
+.ext-meeting-who-list-mic-indicator {
+  display: inline-block;
+  min-width: 1.3em;
+  margin-left: 2px;
+  color: #bbb;
+  font-size: 0.85em;
+  text-align: center;
+}
+
+.ext-meeting-note-entry > span {
+  float: right;
+}
+
+#ext-meeting-join-button-container {
+  overflow: hidden;
+}
+
+#ext-meeting-join-button,
+#ext-meeting-test-button {
+  padding: 4px 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  min-width: 90px;
+}
+
+#ext-meeting-note-list {
+  max-height: 60vh;
+  overflow: hidden;
+  overflow-y: scroll;
+  scrollbar-width: auto;
+  scrollbar-color: white rgba(0, 0, 0, 0.6);
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+#ext-meeting-note-list::-webkit-scrollbar {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 10px;
+}
+
+#ext-meeting-note-list::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 5px;
+}
+
+#ext-meeting-note-list > li {
+  padding-right: 20px;
+}
+
+.ext-meeting-note-entry {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.ext-meeting-note-list-unread {
+  color: #ff8c00;
+}
+
+.ext-meeting-note-list-selected {
+  color: #01c47f;
+}
+
+.ext-meeting-note-unread {
+  border-left: 2px solid #ff8c00;
+  margin-left: -2px;
+}
+
+#ext-meeting-note-text {
+  height: 5em;
+  width: 40em;
+  margin-bottom: 1em;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+#ext-meeting-camera-preview {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 4px;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+}
+
+#ext-meeting-camera-preview > video {
+  display: block;
+  max-width: 40vw;
+  max-height: 25vh;
+  transform: scaleX(-1);
+}
+
+.ext-meeting-terms-link {
+  cursor: pointer;
+}
+
+.ext-material-combo-picker-menu-title {
+  padding: 4px 0 8px 0;
+  border-bottom: 1px solid;
+  text-align: center;
+}
+
+.ext-material-combo-picker-menu-title img {
+  height: 24px;
+}
+
+.ext-material-combo-picker-menu-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 8px 0 0 0;
+}
+
+.ext-material-combo-picker-menu-item {
+  min-width: 140px;
+  padding: 4px 8px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.ext-material-combo-picker-menu-item:hover {
+  background-color: #3c66b0;
+}
+
+.fa-microphone::before {
+  font-family: 'FontAwesomeSolid';
+  content: '\f130';
+}
+
+.fa-microphone-slash::before {
+  font-family: 'FontAwesomeSolid';
+  content: '\f131';
+}
+
+.fa-file-audio-o::before {
+  font-family: 'FontAwesomeSolid';
+  content: '\f1c7';
+}
+
+.fa-video::before {
+  font-family: 'FontAwesomeSolid';
+  content: '\f03d';
+}
+
+.fa-video-slash::before {
+  font-family: 'FontAwesomeSolid';
+  content: '\f4e2';
+}
+
+.fa-hand-pointer::before {
+  font-family: 'FontAwesomeRegular';
+  content: '\f25a';
+}
+
+.ui-blur {
+  pointer-events: none;
+  filter: blur(2px) opacity(0.4);
+  transition: 1s;
+}
+
+.ui-unblur {
+  filter: none;
+  transition: 1s;
+}
+
+.modal-backdrop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 500;
+}
+
+.ui-foremost {
+  z-index: 501;
+}
+
+#qr-code-canvas {
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 400;
+}
+
+#qr-code-inner-canvas {
+  z-index: 400;
+}

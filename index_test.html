@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="description" content="Interactive 3D walkthrough">
+
+  <link rel="icon" href="2026-05-22-19-41-08/favicon.ico">
+
+  <meta property="og:image" content="2026-05-22-19-41-08/thumbnail.jpg" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <link href="2026-05-22-19-41-08/webwalk/style.css" rel="stylesheet" type="text/css">
+
+  <style>
+    @font-face {
+      font-family: 'Open Sans';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Open Sans'), local('OpenSans'),
+        url('2026-05-22-19-41-08/webwalk/font/open-sans-v28-vietnamese_latin-ext_latin-regular.woff2') format('woff2'),
+        /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url('2026-05-22-19-41-08/webwalk/font/open-sans-v28-vietnamese_latin-ext_latin-regular.woff') format('woff');
+      /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+
+    /* Original font awesome font-family names have been replaced to not rely on
+       font-weight when determining actual symbol, as it didn't work well
+       when rendering using 2D canvas features, and also to avoid spaces in
+       the names. */
+
+    @font-face {
+      font-family: 'FontAwesomeBrands';
+      src: url("2026-05-22-19-41-08/webwalk/font/fa-brands-400.woff2") format("woff2"),
+        url("2026-05-22-19-41-08/webwalk/font/fa-brands-400.woff") format("woff");
+    }
+
+    @font-face {
+      font-family: 'FontAwesomeRegular';
+      src: url("2026-05-22-19-41-08/webwalk/font/fa-regular-400.woff2") format("woff2"),
+        url("2026-05-22-19-41-08/webwalk/font/fa-regular-400.woff") format("woff");
+    }
+
+    @font-face {
+      font-family: 'FontAwesomeSolid';
+      src: url("2026-05-22-19-41-08/webwalk/font/fa-solid-900.woff2") format("woff2"),
+        url("2026-05-22-19-41-08/webwalk/font/fa-solid-900.woff") format("woff");
+    }
+
+    #cover-image {
+      background-image: url("2026-05-22-19-41-08/cover.jpg");
+    }
+
+    .ext-popup-close-button {
+      background-image: url("2026-05-22-19-41-08/webwalk/img/close.svg");
+    }
+
+    #container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: all .3s ease;
+      overflow: hidden;
+      color: #d8d1f7;
+      cursor: grab;
+      user-select: none;
+      background-color: #473797;
+      z-index: 1600;
+      display: none;
+    }
+
+    #container:active {
+      cursor: grabbing;
+    }
+
+    #container-img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #container-but {
+      width: 20px;
+      height: 20px;
+      background-color: yellow;
+    }
+
+    /* Zoom Functionality Styles */
+    #zoom-content {
+      transform-origin: 0 0;
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    #zoom-content.dragging {
+      transition: none !important;
+    }
+
+    #container-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1500;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    #container-overlay.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    #zoom-controls {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 2000;
+      pointer-events: auto;
+    }
+
+    #zoom-controls button {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      color: #1a1a1b;
+      font-size: 22px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      -webkit-user-select: none;
+      user-select: none;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+    }
+
+    #zoom-controls button:not(:last-child) {
+      margin-bottom: 2px;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    }
+
+    #zoom-controls button:hover {
+      background: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    #zoom-controls button:active {
+      transform: scale(0.95);
+      background: #f0f0f0;
+    }
+
+    #zoom-reset {
+      font-size: 16px !important;
+    }
+
+    #scroll {
+      transition: all .3s ease;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 20px;
+      color: rgb(255, 255, 255);
+      font-size: 1em;
+      background-color: rgb(0, 0, 0);
+      z-index: 1700;
+    }
+  </style>
+
+  <title>3D scene</title>
+</head>
+
+<body>
+  <noscript>
+    <div class="message error-message absolute-center">
+      Explore this interactive 3D walkthrough on desktop and mobile
+      devices or with a Virtual Reality headset. To start the virtual
+      tour just click the play button. You don't need to install any
+      application, but you need to enable JavaScript in your browser.
+    </div>
+  </noscript>
+
+  <div id="cover-image">
+  </div>
+
+  <!-- tabindex allows to give the canvas keyboard focus with a
+         focus() function -->
+  <canvas id="walk-canvas" tabindex="-1">
+  </canvas>
+
+  <div id="info-message" class="message info-message" style="display: none">
+  </div>
+
+  <div id="error-message" class="message error-message absolute-center" style="display: none">
+  </div>
+
+  <!-- Error messages in old IEs can not be shown from JS, because old
+       IEs fail to parse new JS constructs -->
+  <!--[if lte IE 9]>
+      <div class="message error-message absolute-center">
+        Old versions of the Internet Explorer browser do not support
+        <a href="https://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation"
+           target="_blank">
+          WebGL</a>.
+        <br/>
+        <a href="https://get.webgl.org/" target="_blank">
+          Find out how to get it.</a>
+      </div>
+  <![endif]-->
+
+  <div id="info-bar" class="ui-top ui-left">
+    <div id="info-bar-slide">
+      <a id="author-logo" class="info-item ui-panel" style="display: none" target="_blank">
+        <img>
+      </a><!-- NS = no spaces
+   -->
+      <div id="info-text" class="info-item ui-panel" style="display: none">
+        <div>
+          <div id="info-title"></div>
+        </div>
+        <div>
+          <a id="info-author" target="_blank"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="menu-bar" class="ui-bottom ui-right">
+    <div id="menu-bar-slide">
+      <div id="menu-bar-folder" class="menu-item ui-hoverable ui-panel" style="display: none">
+        <img src="2026-05-22-19-41-08/webwalk/img/fold-horizontal.svg">
+      </div><!-- NS
+   -->
+      <div id="menu-bar-content">
+        <div id="menu-buttons" style="display: none">
+          <div id="help-button" class="menu-button menu-item ui-hoverable ui-panel">
+            ?
+          </div><!-- NS
+       -->
+          <div id="minimap-button-toggle" class="menu-button menu-item ui-hoverable ui-panel" style="display:none">
+            <img src="2026-05-22-19-41-08/webwalk/img/map.svg">
+          </div><!-- NS
+       -->
+          <div id="tour-button" class="menu-button menu-item ui-hoverable ui-panel" style="display: none">
+            <img src="2026-05-22-19-41-08/webwalk/img/tour.svg">
+          </div><!-- NS
+       -->
+          <div id="vr-button" class="vr-specific menu-button menu-item ui-hoverable ui-panel" style="display: none">
+            VR
+          </div><!-- NS
+       -->
+          <div id="fullscreen-button" class="fullscreen-specific menu-button menu-item ui-hoverable
+                      ui-panel" style="display: none">
+            <img src="2026-05-22-19-41-08/webwalk/img/fullscreen.svg">
+          </div>
+        </div><!-- NS
+     --><a id="engine-logo" class="menu-item ui-panel" style="display: none" href="https://www.shapespark.com"
+          target="_blank">
+          <div id="engine-logo-text" style="display: none"></div><!-- NS
+       --><img src="2026-05-22-19-41-08/webwalk/img/shapespark-logo.svg">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div id="view-list" class="ui-top ui-right" style="display: none">
+    <div id="view-list-slide">
+      <div id="view-list-items" class="ui-scrollbar">
+        <div class="view ui-hoverable ui-panel"></div>
+      </div>
+      <div id="view-list-folder" class="ui-folder-vertical ui-hoverable ui-panel">
+        <img src="2026-05-22-19-41-08/webwalk/img/fold-vertical.svg">
+      </div>
+    </div>
+  </div>
+
+  <div id="minimap-container" class="minimap-container-default" style="display: none">
+    <div id="minimap-wrapper" class="minimap-wrapper-default">
+      <div id="minimap-button-close" class="minimap-button minimap-button-close">
+        <img src="2026-05-22-19-41-08/webwalk/img/close.svg">
+      </div>
+      <div id="minimap-button-minimize" class="minimap-button minimap-button-minimize">
+        <img src="2026-05-22-19-41-08/webwalk/img/minimize.svg">
+      </div>
+      <div id="minimap-button-maximize" class="minimap-button minimap-button-maximize">
+        <img src="2026-05-22-19-41-08/webwalk/img/maximize.svg">
+      </div>
+      <div id="minimap-content-wrapper" class="minimap-content-wrapper">
+        <div id="minimap-content" class="minimap-content"></div>
+      </div>
+      <div id="minimap-tabs" class="minimap-tabs-default" style="display: none"></div>
+    </div>
+  </div>
+
+  <div id="view-mode" class="ui-top ui-center" style="display: none">
+    <div id="view-mode-slide">
+      <div class="view-mode-container">
+        <div id="view-mode-top" class="menu-item view-mode-item ui-hoverable ui-panel">
+          <img src="2026-05-22-19-41-08/webwalk/img/view-mode-top.svg">
+        </div>
+        <div id="view-mode-front" class="menu-item view-mode-item ui-hoverable ui-panel">
+          <img src="2026-05-22-19-41-08/webwalk/img/view-mode-front.svg">
+        </div>
+        <div id="view-mode-left" class="menu-item view-mode-item ui-hoverable ui-panel">
+          <img src="2026-05-22-19-41-08/webwalk/img/view-mode-left.svg">
+        </div>
+        <div id="view-mode-fps" class="menu-item view-mode-item ui-hoverable ui-panel">
+          <img src="2026-05-22-19-41-08/webwalk/img/view-mode-fps.svg">
+        </div>
+      </div>
+      <div class="view-mode-container">
+        <div id="view-mode-persp" class="menu-item view-mode-item ui-hoverable ui-panel">
+          <img src="2026-05-22-19-41-08/webwalk/img/view-mode-persp.svg">
+        </div>
+        <div id="view-mode-ortho" class="menu-item view-mode-item ui-hoverable ui-panel">
+          <img src="2026-05-22-19-41-08/webwalk/img/view-mode-ortho.svg">
+        </div>
+      </div>
+      <div class="view-mode-container">
+        <div id="view-mode-color" class="menu-item view-mode-item ui-hoverable ui-panel">
+          <img src="2026-05-22-19-41-08/webwalk/img/view-mode-color.svg">
+        </div>
+        <div id="view-mode-wireframe-opaque" class="menu-item view-mode-item ui-hoverable ui-panel">
+          <img src="2026-05-22-19-41-08/webwalk/img/view-mode-wireframe-opaque.svg">
+        </div>
+        <div id="view-mode-wireframe-transparent" class="menu-item view-mode-item ui-hoverable ui-panel">
+          <img src="2026-05-22-19-41-08/webwalk/img/view-mode-wireframe-transparent.svg">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <img id="play-button" class="absolute-center" src="2026-05-22-19-41-08/webwalk/img/play.svg" style="display: none">
+
+  <div id='interaction-prompt' class="ui-all-center ui-panel" style="display: none">
+    <div class='interaction-prompt-icon'>
+      <img class='interaction-prompt-icon-idle interaction-prompt-desktop'
+        src="2026-05-22-19-41-08/webwalk/img/pointer.svg" />
+      <img class='interaction-prompt-icon-pressed interaction-prompt-desktop'
+        src="2026-05-22-19-41-08/webwalk/img/pointer-pressed.svg" />
+      <img class='interaction-prompt-icon-idle interaction-prompt-mobile'
+        src="2026-05-22-19-41-08/webwalk/img/hand.svg" />
+      <img class='interaction-prompt-icon-pressed interaction-prompt-mobile'
+        src="2026-05-22-19-41-08/webwalk/img/hand-pressed.svg" />
+    </div>
+    <div data-strings="help.interactiveDesktop" class='interaction-prompt-indicator-text interaction-prompt-desktop'>
+    </div>
+    <div data-strings="help.interactiveMobile" class='interaction-prompt-indicator-text interaction-prompt-mobile'>
+    </div>
+  </div>
+
+  <!-- When the help is to be shown automatically during load (#help
+       hash), it is displayed above the primary progress indicator.
+       help-and-primary-progress is a wrapper for these two elements that
+       helps to lay them out consistently. -->
+  <div id="help-and-primary-progress" class="absolute-center">
+
+    <div id="desktop-help" class="help ui-panel" style="display: none">
+      <img id="close-desktop-help-button" class="close-help-button ui-close-hoverable"
+        src="2026-05-22-19-41-08/webwalk/img/close.svg">
+      <div id="desktop-help-switch">
+        <div data-strings="help.basic" id="basic-desktop-help-option">
+        </div><!-- NS = no spaces
+     -->
+        <div data-strings="help.advanced" id="advanced-desktop-help-option">
+        </div>
+      </div>
+
+      <div id="desktop-help-content">
+
+        <div id="desktop-basic-help" class="help-columns" style="display: none">
+          <div class="help-column3">
+            <h1 data-strings="help.mouse"></h1>
+            <img src="2026-05-22-19-41-08/webwalk/img/mouse-controls.svg">
+          </div><!-- NS
+       -->
+          <div class="help-column3-sep"></div><!-- NS
+       -->
+          <div class="help-column3">
+            <h1 data-strings="help.keyboard"></h1>
+            <img src="2026-05-22-19-41-08/webwalk/img/keyboard-controls.svg">
+          </div><!-- NS
+       -->
+          <div class="help-column3-sep"></div><!-- NS
+       -->
+          <div class="help-column3">
+            <h1 data-strings="help.vrTeleport"></h1>
+            <img src="2026-05-22-19-41-08/webwalk/img/vr-controls.svg">
+          </div>
+        </div>
+
+        <div id="advanced-desktop-help" style="display: none">
+          <h1 data-strings="help.mouse"></h1>
+          <div>
+            <div class="help-how" data-strings="help.holdLeftButton">
+            </div><!-- NS
+         -->
+            <div data-strings="help.lookAround" class="help-what"></div>
+          </div>
+          <div>
+            <div class="help-how" data-strings="help.clickLeftButton">
+            </div><!-- NS
+         -->
+            <div data-strings="help.walkToClickedPlace" class="viewer-specific help-what">
+            </div><!-- NS
+         -->
+            <div data-strings="help.selectMaterialLightObject" class="editor-specific help-what" style="display: none">
+            </div>
+          </div>
+          <div>
+            <div class="help-how" data-strings="help.scroll"></div><!-- NS
+         -->
+            <div data-strings="help.walkStraight" class="help-what"></div>
+          </div>
+          <h1 data-strings="help.keyboard"></h1>
+          <div>
+            <div class="help-how">
+              <div>
+                <div class="help-key-placeholder"></div><!-- NS
+             -->
+                <div class="help-key">&#8593;</div><!-- NS
+             -->
+                <div class="help-key-placeholder"></div>
+              </div>
+              <div>
+                <div class="help-key">&#8592;</div><!-- NS
+             -->
+                <div class="help-key">&#8595;</div><!-- NS
+             -->
+                <div class="help-key">&#8594;</div>
+              </div>
+            </div><!-- NS
+         -->
+            <div data-strings="help.walkStraightAndLookAround" class="help-what">
+            </div>
+          </div>
+          <div>
+            <div class="help-how">
+              <div>
+                <div class="help-key-placeholder"></div><!-- NS
+             -->
+                <div class="help-key">W</div><!-- NS
+             -->
+                <div class="help-key-placeholder"></div>
+              </div>
+              <div>
+                <div class="help-key">A</div><!-- NS
+             -->
+                <div class="help-key">S</div><!-- NS
+             -->
+                <div class="help-key">D</div>
+              </div>
+            </div><!-- NS
+         -->
+            <div data-strings="help.walkStraightAndSideways" class="help-what"></div>
+          </div>
+          <div>
+            <div class="help-how">
+              <div class="help-key">PgUp</div>
+              <div class="help-key">PgDn</div><!-- NS
+           -->
+              <div class="help-key-sep"></div><!-- NS
+           -->
+              <div class="help-key">E</div>
+              <div class="help-key">Q</div>
+            </div><!-- NS
+         -->
+            <div data-strings="help.changeHeight" class="help-what"></div>
+          </div>
+          <div>
+            <div class="help-how">
+              <div class="help-key">1</div>
+              &#8211;
+              <div class="help-key">9</div><!-- NS
+           -->
+              <div class="help-key-sep"></div><!-- NS
+           -->
+              <div class="help-key">[</div>
+              <div class="help-key">]</div>
+            </div><!-- NS
+       -->
+            <div data-strings="help.switchView" class="help-what"></div>
+          </div>
+          <div class="help-how">
+            <div class="help-key">P</div>
+          </div><!-- NS
+       -->
+          <div data-strings="help.screenshot" class="help-what"></div>
+          <div class="editor-specific help-how" style="display: none">
+            <div class="help-key">I</div>
+          </div><!-- NS
+       -->
+          <div data-strings="help.illuminationPreview" class="editor-specific help-what" style="display: none"></div>
+          <div class="help-how">
+            <div class="help-key">M</div>
+          </div><!-- NS
+       -->
+          <div data-strings="help.hideShowMenu" class="help-what"></div>
+          <div class="help-how">
+            <div class="help-key">L</div>
+          </div><!-- NS
+       -->
+          <div data-strings="help.hideShowMousePointer" class="help-what"></div>
+
+          <h1 data-strings="help.vrMode"></h1>
+          <div>
+            <div class="help-how">
+              <div data-strings="help.gazeAtFixedPlace"></div>
+              <div data-strings="help.or"></div>
+              <div data-strings="help.clickControllerButton">
+              </div>
+            </div><!-- NS
+         -->
+            <div data-strings="help.teleport" class="help-what"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mobile-help" class="help ui-panel" style="display: none">
+      <img id="close-mobile-help-button" class="close-help-button ui-close-hoverable"
+        src="2026-05-22-19-41-08/webwalk/img/close.svg">
+      <div class="help-columns">
+        <div class="help-column2">
+          <h1 data-strings="help.touch"></h1>
+          <img src="2026-05-22-19-41-08/webwalk/img/touch-controls.svg">
+        </div><!-- NS
+     -->
+        <div class="help-column2-sep"></div><!-- NS
+     -->
+        <div class="navigation-help-column2">
+          <h1 data-strings="help.vrTeleport"></h1>
+          <img src="2026-05-22-19-41-08/webwalk/img/vr-controls.svg">
+        </div>
+      </div>
+    </div>
+
+    <svg id="primary-progress" viewBox="-58 -58 116 116" style="display: none">
+      <circle cx="0" cy="0" r="50" stroke-width="14">
+      </circle>
+      <circle id="primary-progress-done" cx="0" cy="0" r="50" stroke-width="8" stroke-dasharray="315.159"
+        stroke-dashoffset="314.159" transform="rotate(-90)">
+      </circle>
+    </svg>
+
+  </div>
+
+  <div id="secondary-progress" style="display: none">
+    <div id="secondary-progress-done"></div>
+  </div>
+
+  <div id="ext-html-label" class="ext-popup ui-top ui-left ext-html-label-animated" style="display: none">
+    <div id="ext-html-label-content" class="ext-popup-content"></div><!-- NS
+ -->
+    <div id="ext-html-label-close" class="ext-popup-close-button-panel ui-close-hoverable">
+      <div class="ext-popup-close-button"></div>
+    </div>
+  </div>
+
+  <div id="ext-meeting-status" class="ext-popup ui-top ui-left" style="display: none">
+    <div id="ext-meeting-status-content" class="ext-popup-content">
+      <ul id="ext-meeting-who-list" class="ui-scrollbar ext-meeting-who-list">
+      </ul>
+      <div>
+        <button id="ext-meeting-mic-toggle" class="ext-meeting-button ext-meeting-button-highlight">
+          <span class="fa-microphone" style="display: none"></span>
+          <span class="fa-microphone-slash"></span>
+        </button>
+        <button id="ext-meeting-camera-toggle" class="ext-meeting-button ext-meeting-button-highlight">
+          <span class="fa-video" style="display: none"></span>
+          <span class="fa-video-slash"></span>
+        </button>
+        <button id="ext-meeting-pointer" class="ext-meeting-button">
+          <span class="fa-hand-pointer"></span>
+        </button>
+      </div>
+      <div id="ext-meeting-notes-preview" style="display: none">
+        <strong>Notes:</strong>
+        <ul id="ext-meeting-note-list" class="ext-meeting-list">
+        </ul>
+        <button id="ext-meeting-add-note" class="ext-meeting-button">
+          Add note
+        </button>
+      </div>
+      <div id="ext-meeting-status-footer">
+        <span id=ext-meeting-quality-indicator-container>
+        </span>
+        <span>
+          <button id="ext-meeting-leave" class="ext-meeting-button ext-meeting-button-highlight"
+            data-strings="meetings.leaveMeeting">
+          </button>
+        </span>
+      </div>
+    </div>
+    <div id="ext-meeting-who-list-folder" class="ui-folder-vertical ui-hoverable ui-panel">
+      <img src="2026-05-22-19-41-08/webwalk/img/fold-vertical.svg">
+    </div>
+  </div>
+  <div id="ext-meeting-camera-preview" style="display: none"></div>
+
+
+
+
+
+  <script type="module">
+    WALK.ASSETS_URL = '2026-05-22-19-41-08/';
+  </script>
+
+
+  <script>
+    window.addEventListener('resize', viewResizing);
+
+    function viewResizing() {
+      const height = window.innerHeight;
+      const width = window.innerWidth;
+      const container = document.getElementById("container")
+      const map = document.getElementById("container-img")
+
+      container.style.border = "2px solid #3c66b0";
+
+      if (width <= 900) {
+        container.style.width = width + "px";
+      }
+      else {
+        container.style.width = 900 + "px";
+      }
+      if (height <= 839) {
+        container.style.height = height + "px";
+      }
+      else {
+        container.style.height = 839 + "px";
+      }
+    }
+
+    let onHide = false;
+    let uiElementHide;
+
+    window.addEventListener('load', function () {
+      uiElementHide = document.getElementById('scroll');
+      uiElementHide.addEventListener('click', function () {
+        var containerElements = document.getElementById('container');
+        var overlay = document.getElementById('container-overlay');
+
+        if (!onHide) {
+          containerElements.style.display = 'block';
+          // Small delay to allow display: block to take effect before transition
+          setTimeout(() => {
+            containerElements.style.top = `${50}%`;
+            overlay.classList.add('active');
+          }, 10);
+          onHide = true;
+        }
+        else {
+          containerElements.style.top = `${150}%`;
+          overlay.classList.remove('active');
+          // Wait for transition to finish before setting display: none
+          setTimeout(() => {
+            if (!onHide) containerElements.style.display = 'none';
+          }, 300);
+          onHide = false;
+        }
+      });
+
+      // Close on overlay click
+      document.getElementById('container-overlay').addEventListener('click', function () {
+        uiElementHide.click();
+      });
+
+      var bannerElement = document.getElementById('container-img');
+      bannerElement.src = 'seatmap_kor.svg'; // CHANGED TO seatmap_kor.svg
+      window.setInterval(mapBut, 150);
+      viewResizing();
+    });
+
+    var viewer = WALK.getViewer();
+
+    function mapBut() {
+      const scroll = document.getElementById("scroll");
+      const containers = document.getElementById("container")
+
+      let mapButTop = window.innerHeight - 20;
+
+      scroll.style.top = mapButTop + "px";
+    }
+
+    var buttonsWanted = 8;
+    var doc = document;
+    var docFrag = document.createDocumentFragment();
+
+    //무대 vec 3: -0.4, 13, -0.38
+    //가
+    const vec = new THREE.Vector3(-20, 15, 3);
+
+    var butTop = 175;
+    var butLeft = 125;
+    var curTop = butTop;
+
+    var seatX = -14.48;
+    var seatY = 4.8;
+    var seatZ = 0.07;
+
+    for (var i = 0; i < 10; ++i) {
+      if (i == 1) {
+        butTop = 147;
+        buttonsWanted = 9;
+      }
+      else if (i == 2) {
+        butTop = 126;
+        buttonsWanted = 10;
+      }
+      butTop += 4;
+      curTop = butTop;
+
+      for (var x = 0; x < buttonsWanted; x++) {
+        var button = doc.createElement('button');
+
+        const view = new WALK.View();
+
+        view.position.x = seatX;
+        view.position.y = seatY;
+        view.position.z = seatZ;
+
+        const m = new THREE.Matrix4();
+        m.lookAt(view.position, vec, new THREE.Vector3(0, 0, 1));
+        let ves = new THREE.Euler();
+        ves.setFromRotationMatrix(m, 'ZYX');
+
+        view.rotation.z = ves.z;
+        button.onclick = function () {
+          var containerElements = document.getElementById('container');
+          containerElements.style.top = `${150}%`;
+          onHide = false;
+          viewer.switchToView(view)
+          console.log(" test btn click id ={0} , {1}, {2}", view.id, view.name, view.position);
+        };
+        docFrag.appendChild(button);
+        setButton(button, curTop, butLeft);
+        curTop += 31;
+      }
+      seatX += 0.45;
+      butLeft += 18;
+    }
+
+    //나
+    butTop = 153;
+    butLeft = 325;
+    curTop = butTop;
+    buttonsWanted = 10;
+
+    seatX = -11.23;
+    seatY = 9.3;
+    seatZ = -0.11;
+
+    for (var i = 0; i < 14; ++i) {
+      if (i < 3) {
+        butTop += 4;
+        seatY = seatY - 0.08;
+      }
+      else if (i <= 6) {
+        butTop += 2;
+        seatY = seatY - 0.02;
+      }
+      else if (i > 7) {
+        butTop -= 2;
+        seatY = seatY + 0.04;
+      }
+
+      curTop = butTop;
+      let y = seatY;
+
+      for (var x = 0; x < buttonsWanted; x++) {
+        var button = doc.createElement('button');
+
+        const view = new WALK.View();
+
+        view.position.x = seatX;
+        view.position.y = y;
+        view.position.z = seatZ;
+
+        const m = new THREE.Matrix4();
+        m.lookAt(view.position, vec, new THREE.Vector3(0, 0, 1));
+        let ves = new THREE.Euler();
+        ves.setFromRotationMatrix(m, 'ZYX');
+
+        view.rotation.z = ves.z;
+
+        button.onclick = function () {
+          var containerElements = document.getElementById('container');
+          containerElements.style.top = `${150}%`;
+          onHide = false;
+          viewer.switchToView(view)
+          console.log(" test btn click id ={0} , {1}, {2}", view.id, view.name, view.position);
+        };
+
+        docFrag.appendChild(button);
+        setButton(button, curTop, butLeft);
+
+        if (x > 2) {
+          seatZ += 0.15;
+          y -= 1;
+          curTop += 31;
+        }
+        else {
+          y -= 0.8;
+          curTop += 30;
+        }
+      }
+      seatX += 0.47;
+      butLeft += 18;
+    }
+
+    //다
+    butTop = 175;
+    butLeft = 755;
+    buttonsWanted = 8;
+    curTop = butTop;
+
+    seatX = -11.86;
+    seatY = 20.86;
+    seatZ = -0.11;
+
+    for (var i = 0; i < 10; ++i) {
+      if (i == 1) {
+        butTop = 147;
+        buttonsWanted = 9;
+        seatY = 8.8;
+      }
+      else if (i == 2) {
+        butTop = 126;
+        buttonsWanted = 10;
+        seatY = 9.4;
+      }
+      else if (i > 2) {
+        seatY = (9.4) - ((i - 2) * 0.08);
+        butTop += 4;
+      }
+      seatZ = -1.5;
+
+      curTop = butTop;
+      for (var x = 0; x < buttonsWanted; x++) {
+        var button = doc.createElement('button');
+
+        const view = new WALK.View();
+
+        view.position.x = seatX;
+        view.position.y = seatY;
+        view.position.z = seatZ;
+
+        const m = new THREE.Matrix4();
+        m.lookAt(view.position, vec, new THREE.Vector3(0, 0, 1));
+        let ves = new THREE.Euler();
+        ves.setFromRotationMatrix(m, 'ZYX');
+
+        view.rotation.z = ves.z;
+
+        button.onclick = function () {
+          var containerElements = document.getElementById('container');
+          containerElements.style.top = `${150}%`;
+          onHide = false;
+          viewer.switchToView(view)
+          console.log(" test btn click id ={0} , {1}, {2}", view.id, view.name, view.position);
+        };
+
+        docFrag.appendChild(button);
+        setButton(button, curTop, butLeft);
+
+        if (i == 0) {
+          seatY -= 1;
+          seatZ += 0.15;
+        }
+        else if (i == 1) {
+          if (x < 1) {
+            seatY -= 0.8;
+          }
+          else {
+            seatZ += 0.15;
+            seatY -= 1;
+          }
+        }
+        else {
+          if (x < 2) {
+            seatY -= 0.8;
+          }
+          else {
+            seatZ += 0.15;
+            seatY -= 1;
+          }
+        }
+        curTop += 31;
+      }
+      seatX -= 0.47;
+      butLeft -= 18;
+    }
+
+    //장애인석
+    for (var x = 0; x < 6; x++) {
+      const view = new WALK.View();
+
+      if (x == 0) {
+        curTop = 685;
+        butLeft = 210;
+
+        view.position.x = -6.8;
+        view.position.y = -7.4;
+        view.position.z = 1.2;
+      }
+      else if (x == 1) {
+        curTop = 691;
+        butLeft = 242;
+        view.position.x = -6.1;
+        view.position.y = -7.5;
+        view.position.z = 1.2;
+      }
+      else if (x == 2) {
+        curTop = 695;
+        butLeft = 277;
+        view.position.x = -5.3;
+        view.position.y = -7.5;
+        view.position.z = 1.2;
+      }
+      else if (x == 3) {
+        curTop = 695;
+        butLeft = 605;
+        view.position.x = 5;
+        view.position.y = -7.5;
+        view.position.z = 1.2;
+      }
+      else if (x == 4) {
+        curTop = 691;
+        butLeft = 637;
+        view.position.x = 5.5;
+        view.position.y = -7.5;
+        view.position.z = 1.2;
+      }
+      else if (x == 5) {
+        curTop = 685;
+        butLeft = 670;
+        view.position.x = 6.2;
+        view.position.y = -7.4;
+        view.position.z = 1.2;
+      }
+
+      const m = new THREE.Matrix4();
+      m.lookAt(view.position, vec, new THREE.Vector3(0, 0, 1));
+      let ves = new THREE.Euler();
+      ves.setFromRotationMatrix(m, 'ZYX');
+
+      view.rotation.z = ves.z;
+
+      var button = doc.createElement('button');
+
+      button.onclick = function () {
+        var containerElements = document.getElementById('container');
+        containerElements.style.top = `${150}%`;
+        onHide = false;
+        viewer.switchToView(view)
+      };
+
+      docFrag.appendChild(button);
+      setButton(button, curTop, butLeft);
+    }
+
+    doc.getElementById('zoom-content').appendChild(docFrag);
+
+    // Zoom and Pan logic
+    let currentScale = 1;
+    let posX = 0;
+    let posY = 0;
+    let isDragging = false;
+    let startX, startY;
+
+    function applyZoomAndPan() {
+      const zoomContent = document.getElementById('zoom-content');
+      zoomContent.style.transform = `translate(${posX}px, ${posY}px) scale(${currentScale})`;
+    }
+
+    // Dragging events
+    const container = document.getElementById('container');
+    const zoomContent = document.getElementById('zoom-content');
+    const containerImg = document.getElementById('container-img');
+
+    // Prevent default browser dragging for the image
+    containerImg.setAttribute('draggable', 'false');
+    containerImg.style.userSelect = 'none';
+    containerImg.style.webkitUserDrag = 'none';
+
+    container.addEventListener('mousedown', (e) => {
+      // Only drag if it's the left mouse button
+      if (e.button !== 0) return;
+
+      // Prevent text selection and default drag behavior
+      e.preventDefault();
+
+      isDragging = true;
+      startX = e.clientX - posX;
+      startY = e.clientY - posY;
+
+      zoomContent.classList.add('dragging');
+      container.style.cursor = 'grabbing';
+      document.body.style.cursor = 'grabbing';
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+
+      posX = e.clientX - startX;
+      posY = e.clientY - startY;
+
+      applyZoomAndPan();
+    });
+
+    window.addEventListener('mouseup', () => {
+      if (!isDragging) return;
+
+      isDragging = false;
+      zoomContent.classList.remove('dragging');
+      container.style.cursor = 'grab';
+      document.body.style.cursor = 'default';
+    });
+
+    // Zoom button events
+    document.getElementById('zoom-in').addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (currentScale < 2.0) {
+        currentScale = Math.min(2.0, currentScale + 0.25);
+        applyZoomAndPan();
+      }
+    });
+
+    document.getElementById('zoom-out').addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (currentScale > 0.5) {
+        currentScale = Math.max(0.5, currentScale - 0.25);
+        applyZoomAndPan();
+      }
+    });
+
+    document.getElementById('zoom-reset').addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentScale = 1;
+      posX = 0;
+      posY = 0;
+      applyZoomAndPan();
+    });
+
+    function setButton(but, top, left) {
+      but.style.position = "absolute";
+      but.style.top = `${top}px`;
+      but.style.left = `${left}px`;
+      but.style.height = "18px"
+      but.style.width = "18px";
+      but.style.margin = '0px';
+      but.style.background = "rgba(255, 255, 255, 0.1)";
+      but.style.border = "2px solid rgba(255, 215, 0, 0.8)";
+      but.style.borderRadius = "4px";
+      but.style.cursor = "pointer";
+    }
+
+    function testBtn01() {
+      const uiElementHide = document.getElementById('scroll');
+      if (uiElementHide) {
+        uiElementHide.click();
+      }
+    }
+
+    function testBtn02() {
+      var viewer = WALK.getViewer();
+      var pos = viewer.getCameraPosition();
+      var rot = viewer.getCameraRotation();
+
+      var display = document.getElementById('coord_display');
+
+      const posText = `new THREE.Vector3(${pos.x.toFixed(2)}, ${pos.y.toFixed(2)}, ${pos.z.toFixed(2)})`;
+      let rotText = '';
+
+      if (rot.yaw !== undefined) {
+        rotText = `new THREE.Vector3(${rot.yaw.toFixed(2)}, ${rot.pitch.toFixed(2)}, ${rot.roll.toFixed(2)})`;
+      } else {
+        rotText = `new THREE.Vector3(${rot.x.toFixed(2)}, ${rot.y.toFixed(2)}, ${rot.z.toFixed(2)})`;
+      }
+
+      display.value = display.value + `\n"X": ${pos.x.toFixed(2)},"Y": ${pos.y.toFixed(2)},"Z": ${pos.z.toFixed(2)},\n`;
+
+      document.getElementById('input_x').value = pos.x.toFixed(2);
+      document.getElementById('input_y').value = pos.y.toFixed(2);
+      document.getElementById('input_z').value = pos.z.toFixed(2);
+
+      if (rot.yaw !== undefined) {
+        const yawRad = rot.yaw * Math.PI / 180;
+        const pitchRad = rot.pitch * Math.PI / 180;
+        const dist = 5;
+        const tx = pos.x + dist * Math.cos(pitchRad) * Math.sin(yawRad);
+        const ty = pos.y + dist * Math.cos(pitchRad) * Math.cos(yawRad);
+        const tz = pos.z + dist * Math.sin(pitchRad);
+
+        document.getElementById('target_x').value = tx.toFixed(2);
+        document.getElementById('target_y').value = ty.toFixed(2);
+        document.getElementById('target_z').value = tz.toFixed(2);
+      } else {
+        document.getElementById('target_x').value = rot.x.toFixed(2);
+        document.getElementById('target_y').value = rot.y.toFixed(2);
+        document.getElementById('target_z').value = rot.z.toFixed(2);
+      }
+    }
+
+    function testBtn03() {
+      const x = parseFloat(document.getElementById('input_x').value) || 0;
+      const y = parseFloat(document.getElementById('input_y').value) || 0;
+      const z = parseFloat(document.getElementById('input_z').value) || 0;
+
+      var viewer = WALK.getViewer();
+      var pos = viewer.getCameraPosition();
+      var rot = viewer.getCameraRotation();
+
+      var view = new WALK.View();
+      view.rotation.yawDeg = rot.yawDeg;
+      view.rotation.pitchDeg = rot.pitchDeg;
+
+      view.position.x = x;
+      view.position.y = y;
+      view.position.z = z;
+      viewer.switchToView(view);
+    }
+  </script>
+  <script src="2026-05-22-19-41-08/webwalk/walk.min.js" type="text/javascript"></script>
+
+  <style>
+    #test-btn {
+      transition: all .3s ease;
+      position: absolute;
+      top: 14%;
+      left: 4%;
+      width: 320px;
+      height: 558px;
+      font-size: 1em;
+      background-color: rgba(255, 255, 255, 0.5);
+      z-index: 2001;
+    }
+  </style>
+
+  <div id="container-overlay"></div>
+  <div id="container">
+    <div id="zoom-content">
+      <img id="container-img">
+    </div>
+    <div id="zoom-controls">
+      <button id="zoom-in" title="Zoom In">+</button>
+      <button id="zoom-out" title="Zoom Out">-</button>
+      <button id="zoom-reset" title="Reset">⟲</button>
+    </div>
+  </div>
+
+  <button id="scroll">=</button>
+
+  <div id="test-btn">
+    <button id="test_btn01" onclick="testBtn01()">== test ===</button>
+    <button id="test_btn02" onclick="testBtn02()">== TEST2 ===</button>
+    <button id="test_btn03" onclick="testBtn03()">== TEST3 ===</button>
+    <div id="coord_inputs">
+      <input id="input_x" type="number" step="0.01" placeholder="Pos X">
+      <input id="input_y" type="number" step="0.01" placeholder="Pos Y">
+      <input id="input_z" type="number" step="0.01" placeholder="Pos Z">
+    </div>
+    <div id="target_inputs">
+      <input id="target_x" type="number" step="0.01" placeholder="Look X">
+      <input id="target_y" type="number" step="0.01" placeholder="Look Y">
+      <input id="target_z" type="number" step="0.01" placeholder="Look Z">
+    </div>
+    <textarea id="coord_display" spellcheck="false">Position & Rotation values appear here</textarea>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SVG Seat ID Filler</title>
+</head>
+<body>
+<h1>SVG Seat ID Filler</h1>
+<p>This tool reads seatmap_kor.svg and gs_arts_center_seatmap.js, matches rects to View_IDs, and generates an updated SVG.</p>
+<button id="runBtn" onclick="run()">Run Processing</button>
+<pre id="output" style="white-space: pre-wrap; max-height: 600px; overflow-y: auto; background: #f0f0f0; padding: 10px;"></pre>
+<script src="gs_arts_center_seatmap.js"></script>
+<script>
+function log(msg) {
+    document.getElementById('output').textContent += msg + '\n';
+}
+
+async function run() {
+    document.getElementById('output').textContent = '';
+    log('Starting...');
+    
+    // 1. Get seat data from the JS global
+    const seatData = GS_ARTS_CENTER_SEAT_MAP_DATA;
+    log(`Loaded ${seatData.length} seats from JS data`);
+    
+    // 2. Load SVG file
+    const response = await fetch('seatmap_kor.svg');
+    let svgText = await response.text();
+    log(`Loaded SVG: ${svgText.length} chars`);
+    
+    // 3. Parse all <rect> elements with width=13, height=15 (seat rects)
+    // Match both: rects with id, rects without id, with or without transform
+    const rectRegex = /<rect\s+(id="([^"]*?)"\s+)?x="([^"]*?)"\s+y="([^"]*?)"\s+width="13"\s+height="15"(\s+transform="rotate\(([^)]*)\)")?\s+stroke="black"\s*\/>/g;
+    
+    let rects = [];
+    let match;
+    while ((match = rectRegex.exec(svgText)) !== null) {
+        rects.push({
+            fullMatch: match[0],
+            id: match[2] || null,
+            x: parseFloat(match[3]),
+            y: parseFloat(match[4]),
+            hasTransform: !!match[5],
+            rotation: match[6] ? parseFloat(match[6].split(' ')[0]) : 0,
+            position: match.index,
+            index: rects.length
+        });
+    }
+    log(`Found ${rects.length} seat rects in SVG`);
+    
+    // Count with/without IDs
+    const withId = rects.filter(r => r.id).length;
+    const withoutId = rects.filter(r => !r.id).length;
+    log(`  With ID: ${withId}, Without ID: ${withoutId}`);
+    
+    // 4. Group rects by their characteristics
+    // rotation 7 = A zone (left), rotation 0 = B zone (center), rotation -7 = C zone (right)
+    const rotGroups = {};
+    for (const r of rects) {
+        const key = r.rotation;
+        if (!rotGroups[key]) rotGroups[key] = [];
+        rotGroups[key].push(r);
+    }
+    
+    for (const [rot, items] of Object.entries(rotGroups).sort((a,b) => parseFloat(a[0]) - parseFloat(b[0]))) {
+        const wId = items.filter(r => r.id).length;
+        const woId = items.filter(r => !r.id).length;
+        const sampleIds = items.filter(r => r.id).map(r => r.id).slice(0, 3);
+        log(`  Rotation ${rot}: ${items.length} rects (${wId} with ID, ${woId} without) samples: ${sampleIds.join(', ')}`);
+    }
+    
+    // 5. Determine zone from existing IDs
+    const rotZones = {};
+    for (const [rot, items] of Object.entries(rotGroups)) {
+        const zones = new Set();
+        for (const r of items) {
+            if (r.id) {
+                const parts = r.id.split('_');
+                if (parts.length >= 3) {
+                    zones.add(parts[1] + '_' + parts[2]); // e.g., "1F_A"
+                }
+            }
+        }
+        rotZones[rot] = zones;
+    }
+    
+    log('\nRotation -> Zones:');
+    for (const [rot, zones] of Object.entries(rotZones).sort((a,b) => parseFloat(a[0]) - parseFloat(b[0]))) {
+        log(`  ${rot}: [${[...zones].sort().join(', ')}]`);
+    }
+    
+    // 6. Group JS data by Floor_Zone
+    const jsByZone = {};
+    for (const item of seatData) {
+        const key = item.Floor + '_' + item.Zone;
+        if (!jsByZone[key]) jsByZone[key] = [];
+        jsByZone[key].push(item);
+    }
+    
+    log('\nJS data zones:');
+    for (const [key, items] of Object.entries(jsByZone).sort()) {
+        log(`  ${key}: ${items.length} seats`);
+    }
+    
+    // 7. Now match rects to View_IDs
+    // For each rotation group, build the ordered View_ID list from JS data
+    let totalFills = 0;
+    let totalMismatches = 0;
+    
+    for (const [rot, items] of Object.entries(rotGroups).sort((a,b) => parseFloat(a[0]) - parseFloat(b[0]))) {
+        const zones = rotZones[rot];
+        if (!zones || zones.size === 0) {
+            log(`\nRotation ${rot}: No zones identified, skipping`);
+            continue;
+        }
+        
+        // Determine zone order from existing IDs
+        const zoneOrder = [];
+        const seenZones = new Set();
+        for (const r of items) {
+            if (r.id) {
+                const parts = r.id.split('_');
+                if (parts.length >= 3) {
+                    const fz = parts[1] + '_' + parts[2];
+                    if (!seenZones.has(fz)) {
+                        zoneOrder.push(fz);
+                        seenZones.add(fz);
+                    }
+                }
+            }
+        }
+        
+        // Build ordered View_ID list
+        const orderedIds = [];
+        for (const fz of zoneOrder) {
+            if (jsByZone[fz]) {
+                for (const item of jsByZone[fz]) {
+                    orderedIds.push(item.View_ID);
+                }
+            }
+        }
+        
+        log(`\nRotation ${rot}: zones=[${zoneOrder.join(', ')}], ${items.length} rects, ${orderedIds.length} View_IDs`);
+        
+        if (items.length !== orderedIds.length) {
+            log(`  WARNING: Count mismatch! rects=${items.length} vs ids=${orderedIds.length}`);
+            
+            // Try to debug
+            for (const fz of zoneOrder) {
+                const zoneRects = items.filter(r => r.id && r.id.startsWith('View_' + fz));
+                const zoneIds = jsByZone[fz] ? jsByZone[fz].length : 0;
+                log(`    Zone ${fz}: ${zoneRects.length} identified rects, ${zoneIds} JS seats`);
+            }
+            continue;
+        }
+        
+        // Match
+        let fills = 0;
+        let mismatches = 0;
+        for (let i = 0; i < items.length; i++) {
+            const rect = items[i];
+            const expectedId = orderedIds[i];
+            if (rect.id) {
+                if (rect.id !== expectedId) {
+                    mismatches++;
+                    if (mismatches <= 5) {
+                        log(`  MISMATCH [${i}]: SVG='${rect.id}' expected='${expectedId}'`);
+                    }
+                }
+            } else {
+                rect.newId = expectedId;
+                fills++;
+            }
+        }
+        totalFills += fills;
+        totalMismatches += mismatches;
+        log(`  Verified: ${mismatches} mismatches, ${fills} IDs to fill`);
+    }
+    
+    log(`\n${'='.repeat(60)}`);
+    log(`Total IDs to fill: ${totalFills}`);
+    log(`Total mismatches: ${totalMismatches}`);
+    
+    if (totalMismatches > 0) {
+        log('WARNING: There are mismatches! The order may not be correct.');
+    }
+    
+    if (totalFills === 0) {
+        log('No changes needed!');
+        return;
+    }
+    
+    // 8. Apply changes (work from end to start)
+    const changes = rects.filter(r => r.newId).sort((a, b) => b.position - a.position);
+    
+    log(`\nApplying ${changes.length} changes...`);
+    for (const rect of changes) {
+        const newText = rect.fullMatch.replace('<rect ', `<rect id="${rect.newId}" `);
+        svgText = svgText.substring(0, rect.position) + newText + svgText.substring(rect.position + rect.fullMatch.length);
+    }
+    
+    // 9. Download the result
+    const blob = new Blob([svgText], { type: 'image/svg+xml' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'seatmap_kor.svg';
+    a.textContent = 'Download Updated SVG';
+    a.style.cssText = 'display:block; margin:20px 0; font-size:20px; color: blue;';
+    document.getElementById('output').before(a);
+    
+    log('\nDone! Click the download link above to get the updated SVG.');
+    log(`Added ${changes.length} seat IDs.`);
+    
+    // Show first few changes
+    log('\nSample additions:');
+    for (const rect of changes.slice(-10)) {
+        log(`  + ${rect.newId} (at x=${rect.x}, y=${rect.y})`);
+    }
+}
+</script>
+</body>
+</html>

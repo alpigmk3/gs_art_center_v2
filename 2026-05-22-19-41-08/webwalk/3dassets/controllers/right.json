@@ -1,0 +1,46 @@
+{
+  "model": "right.obj",
+  "displayLookAtCamera": true,
+  "meshes": [
+    {
+      "geometryName": "body",
+      "group": "controller",
+      "materialName": "main"
+    },
+    {
+      "geometryName": "plate",
+      "group": "controller",
+      "materialName": "main"
+    },
+    {
+      "geometryName": "touchpad",
+      "group": "controller",
+      "materialName": "main"
+    },
+    {
+      "geometryName": "thumbstick",
+      "group": "controller",
+      "materialName": "main"
+    },
+    {
+      "geometryName": "trigger",
+      "group": "controller",
+      "materialName": "main"
+    },
+    {
+      "geometryName": "grip",
+      "group": "controller",
+      "materialName": "main"
+    }
+  ],
+  "materials": [
+    {
+      "name": "main",
+      "baseColor": [1, 1, 1],
+      "roughness": 1.0,
+      "metallic": 0.0,
+      "baseColorTexture": {"file": "color_map.webp"},
+      "metallicTexture": {"file": "metalness_map.webp"}
+    }
+  ]
+}

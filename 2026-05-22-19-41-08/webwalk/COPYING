@@ -1,0 +1,56 @@
+/**
+ * @preserve
+ *
+ *  Shapespark 3D visualization viewer
+ *
+ *  Copyright (C) 2014-present Shapespark
+ *
+ *  The viewer uses the following open source libraries:
+ *
+ *    Three.js: https://github.com/mrdoob/three.js,
+ *    Copyright 2010-2015 three.js authors, MIT License
+ *
+ *    PlayCanvas (GLSL shaders code): https://github.com/playcanvas/engine
+ *    Copyright (C) 2011-2015 PlayCanvas Ltd., MIT License
+ *
+ *    WebXR Polyfill: https://github.com/immersive-web/webxr-polyfill,
+ *    Copyright (C) 2017 Google Inc, Apache 2.0 License
+ *
+ *    Web Font Loader: https://github.com/typekit/webfontloader
+ *    Copyright (C) 2010-2017 Adobe Systems Incorporated, Google Incorporated, Apache 2.0 License
+ *
+ *    Basis Universal GPU Texture Codec: https://github.com/BinomialLLC/basis_universal
+ *    Copyright (C) 2019 Binomial LLC., Apache License
+ *
+ *    HTTP Live Streaming: https://github.com/video-dev/hls.js
+ *    Copyright (c) 2017 Dailymotion (http://www.dailymotion.com), Apache 2.0 License
+ *
+ *    node-qrcode: https://github.com/soldair/node-qrcode
+ *    Copyright (c) 2012 Ryan Day,  MIT License
+ *
+ *    Brotli: https://github.com/google/brotli
+ *    Copyright (c) 2009, 2010, 2013-2016 by the Brotli Authors,  MIT License
+ *
+ *    Bezier.js: https://github.com/Pomax/bezierjs
+ *    Copyright (c) Pomax, MIT License
+ *
+ *    stats.js: https://github.com/mrdoob/stats.js
+ *    Copyright (c) 2022 stats.js authors, MIT License
+ *
+ *    Hosek-Wilkie skylight model: https://cgg.mff.cuni.cz/projects/SkylightModelling/
+ *    Copyright (c) 2012 - 2013, Lukas Hosek and Alexander Wilkie, BSD License
+ *
+ *    Generic controllers models: https://github.com/immersive-web/webxr-input-profiles/tree/main/packages/assets
+ *    Copyright (c) 2019 Amazon, MIT License
+ *
+ *    Simplex 3D Noise: https://github.com/stegu/webgl-noise
+ *    Copyright (C) 2011 Ashima Arts, MIT License
+ *
+ *  and the following open fonts:
+ *
+ *    Open Sans: https://fonts.google.com/specimen/Open+Sans
+ *    Copyright (C) Google Inc., Apache 2.0 License
+ *
+ *    Font Awesome: https://fontawesome.com/
+ *    Copyright (C) 2017 Fonticons Inc, SIL Open Font License
+ */

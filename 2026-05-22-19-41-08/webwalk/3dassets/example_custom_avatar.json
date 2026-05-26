@@ -1,0 +1,74 @@
+{
+  "model": "example_custom_avatar.obj",
+  "displayLookAtCamera": true,
+  "meshes": [
+    {
+      "geometryName": "head_01",
+      "group": "head",
+      "materialName": "glass"
+    },
+    {
+      "geometryName": "head_02",
+      "group": "head",
+      "materialName": "mainMaterial"
+    },
+    {
+      "geometryName": "head_03",
+      "group": "head",
+      "materialName": "blackMat"
+    },
+    {
+      "geometryName": "head_04",
+      "group": "head",
+      "materialName": "blackReflective"
+    },
+    {
+      "geometryName": "torso",
+      "group": "torso",
+      "materialName": "white"
+    },
+    {
+      "geometryName": "screen_02",
+      "group": "displayPortrait",
+      "materialName": "displayMaterial"
+    },
+    {
+      "geometryName": "screen_01",
+      "group": "displayLandscape",
+      "materialName": "displayMaterial"
+    }
+  ],
+  "materials": [
+    {
+      "name": "mainMaterial",
+      "baseColor": [0, 0, 0],
+      "roughness": 0.1,
+      "metallic": 0.2
+    },
+    {
+      "name": "white",
+      "baseColor": [0.99, 0.99, 0.99],
+      "roughness": 0.1,
+      "metallic": 0.2
+    },
+    {
+      "name": "glass",
+      "baseColor": [0, 0, 0],
+      "roughness": 0.01,
+      "metallic": 0.6,
+      "opacity": 0.1
+    },
+    {
+      "name": "blackMat",
+      "baseColor": [0.05, 0.05, 0.05],
+      "roughness": 0.8,
+      "metallic": 0.1
+    },
+    {
+      "name": "blackReflective",
+      "baseColor": [0.05, 0.05, 0.05],
+      "roughness": 0.1,
+      "metallic": 0.5
+    }
+  ]
+}

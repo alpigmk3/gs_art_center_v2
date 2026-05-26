@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="description" content="Interactive 3D walkthrough">
+
+  <link rel="icon" href="2026-05-22-19-41-08/favicon.ico">
+
+  <meta property="og:image" content="2026-05-22-19-41-08/thumbnail.jpg" />
+
+  <link href="2026-05-22-19-41-08/webwalk/style.css" rel="stylesheet" type="text/css">
+  <script src="gs_arts_center_seatmap.js"></script>
+
+  <style>
+    @font-face {
+      font-family: 'Open Sans';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Open Sans'), local('OpenSans'),
+      url('2026-05-22-19-41-08/webwalk/font/open-sans-v28-vietnamese_latin-ext_latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+      url('2026-05-22-19-41-08/webwalk/font/open-sans-v28-vietnamese_latin-ext_latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+    }
+
+    /* Original font awesome font-family names have been replaced to not rely on
+       font-weight when determining actual symbol, as it didn't work well
+       when rendering using 2D canvas features, and also to avoid spaces in
+       the names. */
+
+    @font-face {
+      font-family: 'FontAwesomeBrands';
+      src: url("2026-05-22-19-41-08/webwalk/font/fa-brands-400.woff2") format("woff2"),
+           url("2026-05-22-19-41-08/webwalk/font/fa-brands-400.woff") format("woff"); }
+
+    @font-face {
+      font-family: 'FontAwesomeRegular';
+      src: url("2026-05-22-19-41-08/webwalk/font/fa-regular-400.woff2") format("woff2"),
+           url("2026-05-22-19-41-08/webwalk/font/fa-regular-400.woff") format("woff"); }
+
+    @font-face {
+      font-family: 'FontAwesomeSolid';
+      src: url("2026-05-22-19-41-08/webwalk/font/fa-solid-900.woff2") format("woff2"),
+           url("2026-05-22-19-41-08/webwalk/font/fa-solid-900.woff") format("woff"); }
+
+    #cover-image {
+      background-image: url("2026-05-22-19-41-08/cover.jpg");
+    }
+
+    .ext-popup-close-button {
+      background-image: url("2026-05-22-19-41-08/webwalk/img/close.svg");
+    }
+  </style>
+
+  <link rel="stylesheet" href="shapespark-ui-overrides.css">
+
+  <title>GS Art Center | 3D VR Seat Sightline Virtual Tour</title>
+</head>
+
+<body>
+  <noscript>
+    <div class="message error-message absolute-center">
+      Explore this interactive 3D walkthrough on desktop and mobile
+      devices or with a Virtual Reality headset. To start the virtual
+      tour just click the play button. You don't need to install any
+      application, but you need to enable JavaScript in your browser.
+    </div>
+  </noscript>
+
+  <div id="cover-image">
+  </div>
+
+  <!-- tabindex allows to give the canvas keyboard focus with a
+         focus() function -->
+  <canvas id="walk-canvas" tabindex="-1">
+  </canvas>
+
+  <!-- ==========================================
+       CUSTOM HUDS & LOADING SCREENS
+       ========================================== -->
+  
+  <!-- 1. Custom Initial Loading Screen -->
+  <div id="custom-loading-screen" class="hud-overlay-full">
+    <div class="loading-content">
+      <img src="img/GS_logo.png" class="loading-logo" alt="GS Art Center Logo">
+      <div class="loading-spinner-container">
+        <div class="loading-spinner"></div>
+      </div>
+      <div class="loading-bar-wrapper">
+        <div class="loading-bar-progress" id="custom-progress-bar"></div>
+      </div>
+      <div class="loading-text">Loading... <span id="custom-progress-text">0%</span></div>
+    </div>
+  </div>
+
+  <!-- 2. Controls Guide & Start Tour Screen -->
+  <div id="controls-guide-screen" class="hud-overlay-full" style="display: none;">
+    <div class="service-select-card custom-panel">
+      <h2>Controls Guide & Mode Selection</h2>
+      <div class="guide-columns">
+        <div class="guide-col">
+          <h3>Mouse Controls (PC)</h3>
+          <ul>
+            <li><span class="key-cap">Drag</span> Rotate View</li>
+            <li><span class="key-cap">Scroll</span> Move Forward/Backward</li>
+            <li><span class="key-cap">Double Click</span> Teleport</li>
+          </ul>
+        </div>
+        <div class="guide-col">
+          <h3>Keyboard Controls (PC)</h3>
+          <ul>
+            <li><span class="key-cap">W</span> / <span class="key-cap">▲</span> Move Forward</li>
+            <li><span class="key-cap">S</span> / <span class="key-cap">▼</span> Move Backward</li>
+            <li><span class="key-cap">A</span> / <span class="key-cap">D</span> Move Left/Right</li>
+          </ul>
+        </div>
+        <div class="guide-col">
+          <h3>Touch Controls (Mobile)</h3>
+          <ul>
+            <li><span class="key-cap">1-Finger Drag</span> Rotate View</li>
+            <li><span class="key-cap">2-Finger Drag</span> Move</li>
+            <li><span class="key-cap">2-Finger Pinch</span> Zoom In/Out</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="mode-select-section">
+        <h3>Select Viewing Mode</h3>
+        <div class="mode-buttons">
+          <button class="custom-btn primary-btn" id="start-seat-select-btn">
+            <span class="btn-icon">🪑</span> Select Seat
+          </button>
+          <button class="custom-btn primary-btn" id="start-auto-tour-btn">
+            <span class="btn-icon">🎥</span> Auto Tour
+          </button>
+          <button class="custom-btn secondary-btn" id="start-free-move-btn">
+            <span class="btn-icon">🚶</span> Free Move
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Walkthrough HUD Layer -->
+  <div id="walkthrough-hud" class="hud-layer" style="display: none;">
+    <!-- Top-Left Logo -->
+    <div class="brand-logo-container">
+      <img src="img/GS_logo.png" class="brand-logo" alt="GS Art Center Logo">
+    </div>
+    
+    <!-- Bottom-Left Buttons -->
+    <div class="main-controls-container">
+      <button class="hud-btn glass-btn" id="hud-seatmap-trigger">
+        <span class="btn-icon">🪑</span> Select Seat
+      </button>
+      <button class="hud-btn glass-btn" id="hud-stage-trigger">
+        <span class="btn-icon">🎭</span> Change Stage
+      </button>
+    </div>
+  </div>
+
+
+
+  <div id="info-message" class="message info-message" style="display: none">
+  </div>
+
+  <div id="error-message" class="message error-message absolute-center"
+       style="display: none">
+  </div>
+
+  <!-- 4. Interactive Seatmap Popup -->
+  <div id="seatmap-popup" class="seatmap-overlay" style="display: none;">
+    <div class="seatmap-popup-card custom-panel">
+      <div class="seatmap-header">
+        <h2>Seat Selection <span class="subtitle">| Choose a Seat</span></h2>
+        <div class="header-controls">
+          <button id="seatmap-lang-toggle" class="header-btn">KOR</button>
+          <button id="seatmap-close-btn" class="header-btn close-btn">✕</button>
+        </div>
+      </div>
+      <div class="seatmap-body">
+        <!-- Floor Selector (Left) -->
+        <div class="seatmap-floor-selector">
+          <div class="selector-title">FLOOR</div>
+          <button class="floor-btn active" data-floor="1F">1F</button>
+          <button class="floor-btn" data-floor="2F">2F</button>
+          <button class="floor-btn" data-floor="3F">3F</button>
+        </div>
+
+        <div class="seatmap-zoom-viewport">
+          <div id="seatmap-zoom-content">
+            <!-- SVG will be loaded here dynamically -->
+          </div>
+        </div>
+
+        <!-- Section Selector (Right) -->
+        <div class="seatmap-section-selector">
+          <button class="section-btn active" data-floor="1F" data-zone="A"><span>1F</span> Block A</button>
+          <button class="section-btn" data-floor="1F" data-zone="B"><span>1F</span> Block B</button>
+          <button class="section-btn" data-floor="1F" data-zone="C"><span>1F</span> Block C</button>
+          <button class="section-btn" data-floor="2F" data-zone="A"><span>2F</span> Block A</button>
+          <button class="section-btn" data-floor="2F" data-zone="B"><span>2F</span> Block B</button>
+          <button class="section-btn" data-floor="2F" data-zone="C"><span>2F</span> Block C</button>
+          <button class="section-btn" data-floor="3F" data-zone="A"><span>3F</span> Block A</button>
+          <button class="section-btn" data-floor="3F" data-zone="B"><span>3F</span> Block B</button>
+          <button class="section-btn" data-floor="3F" data-zone="C"><span>3F</span> Block C</button>
+        </div>
+
+        <!-- Zoom UI Buttons -->
+        <div class="zoom-controls">
+          <button id="zoom-in-btn" class="zoom-btn">+</button>
+          <button id="zoom-reset-btn" class="zoom-btn">RESET</button>
+          <button id="zoom-out-btn" class="zoom-btn">−</button>
+        </div>
+      </div>
+      <div class="seatmap-footer">
+        <p class="guide-text">🖱️ Drag to pan, scroll mouse wheel or click zoom buttons to zoom. Click any seat to view its sightline.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error messages in old IEs can not be shown from JS, because old
+       IEs fail to parse new JS constructs -->
+  <!--[if lte IE 9]>
+      <div class="message error-message absolute-center">
+        Old versions of the Internet Explorer browser do not support
+        <a href="https://khronos.org/webgl/wiki/Getting_a_WebGL_Implementation"
+           target="_blank">
+          WebGL</a>.
+        <br/>
+        <a href="https://get.webgl.org/" target="_blank">
+          Find out how to get it.</a>
+      </div>
+  <![endif]-->
+
+  <div id="info-bar" class="ui-top ui-left">
+    <div id="info-bar-slide">
+      <a id="author-logo" class="info-item ui-panel"
+         style="display: none"
+         target="_blank">
+        <img>
+      </a><!-- NS = no spaces
+   --><div id="info-text" class="info-item ui-panel" style="display: none">
+        <div>
+          <div id="info-title"></div>
+        </div>
+        <div>
+          <a id="info-author" target="_blank"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="menu-bar" class="ui-bottom ui-right">
+    <div id="menu-bar-slide">
+      <div id="menu-bar-folder" class="menu-item ui-hoverable ui-panel"
+           style="display: none">
+        <img src="2026-05-22-19-41-08/webwalk/img/fold-horizontal.svg">
+      </div><!-- NS
+   --><div id="menu-bar-content">
+        <div id="menu-buttons" style="display: none">
+          <div id="help-button"
+               class="menu-button menu-item ui-hoverable ui-panel">
+            ?
+          </div><!-- NS
+       --><div id="minimap-button-toggle"
+               class="menu-button menu-item ui-hoverable ui-panel"
+               style="display:none">
+            <img src="2026-05-22-19-41-08/webwalk/img/map.svg">
+          </div><!-- NS
+       --><div id="tour-button"
+               class="menu-button menu-item ui-hoverable ui-panel"
+               style="display: none">
+            <img src="2026-05-22-19-41-08/webwalk/img/tour.svg">
+          </div><!-- NS
+       --><div id="vr-button"
+               class="vr-specific menu-button menu-item ui-hoverable ui-panel"
+               style="display: none">
+            VR
+          </div><!-- NS
+       --><div id="fullscreen-button"
+               class="fullscreen-specific menu-button menu-item ui-hoverable
+                      ui-panel"
+               style="display: none">
+            <img src="2026-05-22-19-41-08/webwalk/img/fullscreen.svg">
+          </div>
+        </div><!-- NS
+     --><a id="engine-logo" class="menu-item ui-panel" style="display: none"
+           href="https://www.shapespark.com" target="_blank">
+          <div id="engine-logo-text" style="display: none"></div><!-- NS
+       --><img src="2026-05-22-19-41-08/webwalk/img/shapespark-logo.svg">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div id="view-list" class="ui-top ui-right" style="display: none">
+    <div id="view-list-slide">
+      <div id="view-list-items" class="ui-scrollbar">
+        <div class="view ui-hoverable ui-panel"></div>
+      </div>
+      <div id="view-list-folder" class="ui-folder-vertical ui-hoverable ui-panel">
+        <img src="2026-05-22-19-41-08/webwalk/img/fold-vertical.svg">
+      </div>
+    </div>
+  </div>
+
+  <div id="minimap-container" class="minimap-container-default" style="display: none">
+    <div id="minimap-wrapper" class="minimap-wrapper-default">
+      <div id="minimap-button-close" class="minimap-button minimap-button-close">
+        <img src="2026-05-22-19-41-08/webwalk/img/close.svg">
+      </div>
+      <div id="minimap-button-minimize" class="minimap-button minimap-button-minimize">
+        <img src="2026-05-22-19-41-08/webwalk/img/minimize.svg">
+      </div>
+      <div id="minimap-button-maximize" class="minimap-button minimap-button-maximize">
+        <img src="2026-05-22-19-41-08/webwalk/img/maximize.svg">
+      </div>
+      <div id="minimap-content-wrapper" class="minimap-content-wrapper">
+        <div id="minimap-content" class="minimap-content"></div>
+      </div>
+      <div id="minimap-tabs" class="minimap-tabs-default" style="display: none"></div>
+    </div>
+  </div>
+
+  <div id="view-mode" class="ui-top ui-center" style="display: none">
+    <div id="view-mode-slide">
+      <div class="view-mode-container">
+        <div id="view-mode-top"
+             class="menu-item view-mode-item ui-hoverable ui-panel">
+          <img src="2026-05-22-19-41-08/webwalk/img/view-mode-top.svg">
+        </div>
+        <div id="view-mode-front"
+             class="menu-item view-mode-item ui-hoverable ui-panel">
+          <img src="2026-05-22-19-41-08/webwalk/img/view-mode-front.svg">
+        </div>
+        <div id="view-mode-left"
+             class="menu-item view-mode-item ui-hoverable ui-panel">
+          <img src="2026-05-22-19-41-08/webwalk/img/view-mode-left.svg">
+        </div>
+        <div id="view-mode-fps"
+             class="menu-item view-mode-item ui-hoverable ui-panel">
+          <img src="2026-05-22-19-41-08/webwalk/img/view-mode-fps.svg">
+        </div>
+      </div>
+      <div class="view-mode-container">
+        <div id="view-mode-persp"
+             class="menu-item view-mode-item ui-hoverable ui-panel">
+          <img src="2026-05-22-19-41-08/webwalk/img/view-mode-persp.svg">
+        </div>
+        <div id="view-mode-ortho"
+             class="menu-item view-mode-item ui-hoverable ui-panel">
+          <img src="2026-05-22-19-41-08/webwalk/img/view-mode-ortho.svg">
+        </div>
+      </div>
+      <div class="view-mode-container">
+        <div id="view-mode-color"
+             class="menu-item view-mode-item ui-hoverable ui-panel">
+          <img src="2026-05-22-19-41-08/webwalk/img/view-mode-color.svg">
+        </div>
+        <div id="view-mode-wireframe-opaque"
+             class="menu-item view-mode-item ui-hoverable ui-panel">
+          <img src="2026-05-22-19-41-08/webwalk/img/view-mode-wireframe-opaque.svg">
+        </div>
+        <div id="view-mode-wireframe-transparent"
+             class="menu-item view-mode-item ui-hoverable ui-panel">
+          <img src="2026-05-22-19-41-08/webwalk/img/view-mode-wireframe-transparent.svg">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <img id="play-button" class="absolute-center" src="2026-05-22-19-41-08/webwalk/img/play.svg"
+       style="display: none">
+
+  <div id='interaction-prompt' class="ui-all-center ui-panel" style="display: none">
+    <div class='interaction-prompt-icon'>
+      <img class='interaction-prompt-icon-idle interaction-prompt-desktop' src="2026-05-22-19-41-08/webwalk/img/pointer.svg"/>
+      <img class='interaction-prompt-icon-pressed interaction-prompt-desktop' src="2026-05-22-19-41-08/webwalk/img/pointer-pressed.svg"/>
+      <img class='interaction-prompt-icon-idle interaction-prompt-mobile' src="2026-05-22-19-41-08/webwalk/img/hand.svg"/>
+      <img class='interaction-prompt-icon-pressed interaction-prompt-mobile' src="2026-05-22-19-41-08/webwalk/img/hand-pressed.svg"/>
+    </div>
+    <div data-strings="help.interactiveDesktop" class='interaction-prompt-indicator-text interaction-prompt-desktop'></div>
+    <div data-strings="help.interactiveMobile" class='interaction-prompt-indicator-text interaction-prompt-mobile'></div>
+  </div>
+
+  <!-- When the help is to be shown automatically during load (#help
+       hash), it is displayed above the primary progress indicator.
+       help-and-primary-progress is a wrapper for these two elements that
+       helps to lay them out consistently. -->
+  <div id="help-and-primary-progress" class="absolute-center">
+
+    <div id="desktop-help" class="help ui-panel" style="display: none">
+      <img id="close-desktop-help-button"
+           class="close-help-button ui-close-hoverable"
+           src="2026-05-22-19-41-08/webwalk/img/close.svg">
+      <div id="desktop-help-switch">
+        <div data-strings="help.basic" id="basic-desktop-help-option">
+        </div><!-- NS = no spaces
+     --><div data-strings="help.advanced" id="advanced-desktop-help-option">
+        </div>
+      </div>
+
+      <div id="desktop-help-content">
+
+        <div id="desktop-basic-help" class="help-columns" style="display: none">
+          <div class="help-column3">
+            <h1 data-strings="help.mouse"></h1>
+            <img src="2026-05-22-19-41-08/webwalk/img/mouse-controls.svg">
+          </div><!-- NS
+       --><div class="help-column3-sep"></div><!-- NS
+       --><div class="help-column3">
+            <h1 data-strings="help.keyboard"></h1>
+            <img src="2026-05-22-19-41-08/webwalk/img/keyboard-controls.svg">
+          </div><!-- NS
+       --><div class="help-column3-sep"></div><!-- NS
+       --><div class="help-column3">
+            <h1 data-strings="help.vrTeleport"></h1>
+            <img src="2026-05-22-19-41-08/webwalk/img/vr-controls.svg">
+          </div>
+        </div>
+
+        <div id="advanced-desktop-help" style="display: none">
+          <h1 data-strings="help.mouse"></h1>
+          <div>
+            <div class="help-how" data-strings="help.holdLeftButton">
+            </div><!-- NS
+          --><div data-strings="help.lookAround" class="help-what"></div>
+          </div>
+          <div>
+            <div class="help-how" data-strings="help.clickLeftButton">
+            </div><!-- NS
+          --><div data-strings="help.walkToClickedPlace" class="viewer-specific help-what">
+            </div><!-- NS
+          --><div data-strings="help.selectMaterialLightObject"
+               class="editor-specific help-what" style="display: none">
+            </div>
+          </div>
+          <div>
+            <div class="help-how" data-strings="help.scroll" ></div><!-- NS
+          --><div data-strings="help.walkStraight" class="help-what"></div>
+          </div>
+          <h1 data-strings="help.keyboard"></h1>
+          <div>
+            <div class="help-how">
+              <div>
+                <div class="help-key-placeholder"></div><!-- NS
+             --><div class="help-key">&#8593;</div><!-- NS
+             --><div class="help-key-placeholder"></div>
+              </div>
+              <div>
+                <div class="help-key">&#8592;</div><!-- NS
+             --><div class="help-key">&#8595;</div><!-- NS
+             --><div class="help-key">&#8594;</div>
+              </div>
+            </div><!-- NS
+          --><div data-strings="help.walkStraightAndLookAround" class="help-what">
+            </div>
+          </div>
+          <div>
+            <div class="help-how">
+              <div>
+                <div class="help-key-placeholder"></div><!-- NS
+             --><div class="help-key">W</div><!-- NS
+             --><div class="help-key-placeholder"></div>
+              </div>
+              <div>
+                <div class="help-key">A</div><!-- NS
+             --><div class="help-key">S</div><!-- NS
+             --><div class="help-key">D</div>
+              </div>
+            </div><!-- NS
+          --><div data-strings="help.walkStraightAndSideways" class="help-what"></div>
+          </div>
+          <div>
+            <div class="help-how">
+              <div class="help-key">PgUp</div><div class="help-key">PgDn</div><!-- NS
+            --><div class="help-key-sep"></div><!-- NS
+            --><div class="help-key">E</div><div class="help-key">Q</div>
+            </div><!-- NS
+          --><div data-strings="help.changeHeight" class="help-what"></div>
+          </div>
+          <div>
+            <div class="help-how">
+              <div class="help-key">1</div>
+              &#8211;
+              <div class="help-key">9</div><!-- NS
+            --><div class="help-key-sep"></div><!-- NS
+            --><div class="help-key">[</div>
+              <div class="help-key">]</div>
+            </div><!-- NS
+        --><div data-strings="help.switchView" class="help-what"></div>
+          </div>
+          <div class="help-how">
+            <div class="help-key">P</div>
+          </div><!-- NS
+        --><div data-strings="help.screenshot" class="help-what"></div>
+          <div class="editor-specific help-how" style="display: none">
+            <div class="help-key">I</div>
+          </div><!-- NS
+        --><div data-strings="help.illuminationPreview" class="editor-specific help-what"
+               style="display: none"></div>
+          <div class="help-how">
+            <div class="help-key">M</div>
+          </div><!-- NS
+        --><div data-strings="help.hideShowMenu" class="help-what"></div>
+          <div class="help-how">
+            <div class="help-key">L</div>
+          </div><!-- NS
+        --><div data-strings="help.hideShowMousePointer" class="help-what"></div>
+
+          <h1 data-strings="help.vrMode"></h1>
+          <div>
+            <div class="help-how">
+              <div data-strings="help.gazeAtFixedPlace"></div>
+              <div data-strings="help.or"></div>
+              <div data-strings="help.clickControllerButton">
+              </div>
+            </div><!-- NS
+          --><div data-strings="help.teleport" class="help-what"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="mobile-help" class="help ui-panel"
+         style="display: none">
+      <img id="close-mobile-help-button"
+           class="close-help-button ui-close-hoverable"
+           src="2026-05-22-19-41-08/webwalk/img/close.svg">
+      <div class="help-columns">
+        <div class="help-column2">
+          <h1 data-strings="help.touch"></h1>
+          <img src="2026-05-22-19-41-08/webwalk/img/touch-controls.svg">
+        </div><!-- NS
+     --><div class="help-column2-sep"></div><!-- NS
+     --><div class="navigation-help-column2">
+          <h1 data-strings="help.vrTeleport"></h1>
+          <img src="2026-05-22-19-41-08/webwalk/img/vr-controls.svg">
+        </div>
+      </div>
+    </div>
+
+    <svg id="primary-progress" viewBox="-58 -58 116 116"
+         style="display: none">
+      <circle cx="0" cy="0" r="50" stroke-width="14">
+      </circle>
+      <circle id="primary-progress-done" cx="0" cy="0" r="50"
+              stroke-width="8" stroke-dasharray="315.159"
+              stroke-dashoffset="314.159" transform="rotate(-90)">
+      </circle>
+    </svg>
+
+  </div>
+
+  <div id="secondary-progress" style="display: none">
+    <div id="secondary-progress-done"></div>
+  </div>
+
+  <div id="ext-html-label"
+       class="ext-popup ui-top ui-left ext-html-label-animated"
+       style="display: none">
+    <div id="ext-html-label-content" class="ext-popup-content"></div><!-- NS
+ --><div id="ext-html-label-close"
+         class="ext-popup-close-button-panel ui-close-hoverable">
+      <div class="ext-popup-close-button"></div>
+    </div>
+  </div>
+
+  <div id="ext-meeting-status" class="ext-popup ui-top ui-left"
+       style="display: none">
+    <div id="ext-meeting-status-content" class="ext-popup-content">
+      <ul id="ext-meeting-who-list" class="ui-scrollbar ext-meeting-who-list">
+      </ul>
+      <div>
+        <button id="ext-meeting-mic-toggle"
+                class="ext-meeting-button ext-meeting-button-highlight">
+          <span class="fa-microphone" style="display: none"></span>
+          <span class="fa-microphone-slash"></span>
+        </button>
+        <button id="ext-meeting-camera-toggle"
+                class="ext-meeting-button ext-meeting-button-highlight">
+          <span class="fa-video" style="display: none"></span>
+          <span class="fa-video-slash"></span>
+        </button>
+        <button id="ext-meeting-pointer" class="ext-meeting-button">
+          <span class="fa-hand-pointer"></span>
+        </button>
+      </div>
+      <div id="ext-meeting-notes-preview" style="display: none">
+        <strong>Notes:</strong>
+        <ul id="ext-meeting-note-list" class="ext-meeting-list">
+        </ul>
+        <button id="ext-meeting-add-note" class="ext-meeting-button">
+          Add note
+        </button>
+      </div>
+      <div id="ext-meeting-status-footer">
+        <span id = ext-meeting-quality-indicator-container>
+        </span>
+        <span>
+          <button id="ext-meeting-leave"
+                  class="ext-meeting-button ext-meeting-button-highlight"
+                  data-strings="meetings.leaveMeeting">
+          </button>
+        </span>
+      </div>
+    </div>
+    <div id="ext-meeting-who-list-folder" class="ui-folder-vertical ui-hoverable ui-panel">
+      <img src="2026-05-22-19-41-08/webwalk/img/fold-vertical.svg">
+    </div>
+  </div>
+  <div id="ext-meeting-camera-preview" style="display: none"></div>
+  
+  
+  
+  
+  
+  <script type="module">
+    WALK.ASSETS_URL = '2026-05-22-19-41-08/';
+  </script>
+  <script src="2026-05-22-19-41-08/webwalk/walk.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <!-- ==========================================
+       CUSTOM HUD & INTERACTIVE SEATMAP CONTROLLER
+       ========================================== -->
+  <script src="shapespark-hud-controller.js" type="text/javascript"></script>
+</body>
+</html>

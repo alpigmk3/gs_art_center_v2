@@ -1,0 +1,2130 @@
+
+      <div class="seatmap-content">
+        <!-- Left Floor Selection -->
+        <div class="seatmap-floor-selector">
+          <button class="floor-btn active" data-floor="1F">1층</button>
+          <button class="floor-btn" data-floor="2F">2층</button>
+          <button class="floor-btn" data-floor="3F">3층</button>
+        </div>
+
+        <!-- Center Map Image -->
+        <div class="seatmap-map-container" id="seatmap-map-container">
+          <!-- Zoom Controls -->
+          <div class="seatmap-zoom-controls">
+            <button id="seatmap-zoom-in" title="Zoom In">+</button>
+            <button id="seatmap-zoom-out" title="Zoom Out">-</button>
+            <button id="seatmap-zoom-reset" title="Reset">⟲</button>
+          </div>
+
+          <div id="seatmap-zoom-content"
+            style="width: 100%; height: 100%; justify-content: center; align-items: center;">
+            <!-- TODO: Add the actual seat map image here -->
+
+            <div class="seatmap-img-floor-section active" id="floor-section-1F">
+              <div class="seatmap-img-stage-box">STAGE</div>
+
+              <span class="seatmap-img-floor-title">1층</span>
+              <div class="seatmap-img-op-box">OP</div>
+              <div class="seatmap-img-theater-layout">
+                <div class="seatmap-img-zone-box seatmap-img-zone-A">
+                  <div class="seatmap-img-zone-label">A ZONE</div>
+                  <div class="seatmap-img-rows-wrap">
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">1열</div><button class="seatmap-img-seat-btn seatmap-img-none"
+                        id="View_1F_A_1_1" onclick="showViewId('View_1F_A_1_1')"></button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_1_2"
+                        onclick="showViewId('View_1F_A_1_2')">2</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_1_3" onclick="showViewId('View_1F_A_1_3')">3</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_1_4"
+                        onclick="showViewId('View_1F_A_1_4')">4</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_1_5" onclick="showViewId('View_1F_A_1_5')">5</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_1_6"
+                        onclick="showViewId('View_1F_A_1_6')">6</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_1_7" onclick="showViewId('View_1F_A_1_7')">7</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_1_8"
+                        onclick="showViewId('View_1F_A_1_8')">8</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_1_9" onclick="showViewId('View_1F_A_1_9')">9</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_1_10"
+                        onclick="showViewId('View_1F_A_1_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">2열</div><button class="seatmap-img-seat-btn" id="View_1F_A_2_1"
+                        onclick="showViewId('View_1F_A_2_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_2_2" onclick="showViewId('View_1F_A_2_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_2_3"
+                        onclick="showViewId('View_1F_A_2_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_2_4" onclick="showViewId('View_1F_A_2_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_2_5"
+                        onclick="showViewId('View_1F_A_2_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_2_6" onclick="showViewId('View_1F_A_2_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_2_7"
+                        onclick="showViewId('View_1F_A_2_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_2_8" onclick="showViewId('View_1F_A_2_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_2_9"
+                        onclick="showViewId('View_1F_A_2_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_2_10" onclick="showViewId('View_1F_A_2_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">3열</div><button class="seatmap-img-seat-btn" id="View_1F_A_3_1"
+                        onclick="showViewId('View_1F_A_3_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_3_2" onclick="showViewId('View_1F_A_3_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_3_3"
+                        onclick="showViewId('View_1F_A_3_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_3_4" onclick="showViewId('View_1F_A_3_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_3_5"
+                        onclick="showViewId('View_1F_A_3_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_3_6" onclick="showViewId('View_1F_A_3_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_3_7"
+                        onclick="showViewId('View_1F_A_3_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_3_8" onclick="showViewId('View_1F_A_3_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_3_9"
+                        onclick="showViewId('View_1F_A_3_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_3_10" onclick="showViewId('View_1F_A_3_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">4열</div><button class="seatmap-img-seat-btn" id="View_1F_A_4_1"
+                        onclick="showViewId('View_1F_A_4_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_4_2" onclick="showViewId('View_1F_A_4_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_4_3"
+                        onclick="showViewId('View_1F_A_4_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_4_4" onclick="showViewId('View_1F_A_4_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_4_5"
+                        onclick="showViewId('View_1F_A_4_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_4_6" onclick="showViewId('View_1F_A_4_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_4_7"
+                        onclick="showViewId('View_1F_A_4_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_4_8" onclick="showViewId('View_1F_A_4_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_4_9"
+                        onclick="showViewId('View_1F_A_4_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_4_10" onclick="showViewId('View_1F_A_4_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">5열</div><button class="seatmap-img-seat-btn" id="View_1F_A_5_1"
+                        onclick="showViewId('View_1F_A_5_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_5_2" onclick="showViewId('View_1F_A_5_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_5_3"
+                        onclick="showViewId('View_1F_A_5_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_5_4" onclick="showViewId('View_1F_A_5_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_5_5"
+                        onclick="showViewId('View_1F_A_5_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_5_6" onclick="showViewId('View_1F_A_5_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_5_7"
+                        onclick="showViewId('View_1F_A_5_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_5_8" onclick="showViewId('View_1F_A_5_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_5_9"
+                        onclick="showViewId('View_1F_A_5_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_5_10" onclick="showViewId('View_1F_A_5_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">6열</div><button class="seatmap-img-seat-btn" id="View_1F_A_6_1"
+                        onclick="showViewId('View_1F_A_6_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_6_2" onclick="showViewId('View_1F_A_6_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_6_3"
+                        onclick="showViewId('View_1F_A_6_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_6_4" onclick="showViewId('View_1F_A_6_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_6_5"
+                        onclick="showViewId('View_1F_A_6_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_6_6" onclick="showViewId('View_1F_A_6_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_6_7"
+                        onclick="showViewId('View_1F_A_6_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_6_8" onclick="showViewId('View_1F_A_6_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_6_9"
+                        onclick="showViewId('View_1F_A_6_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_6_10" onclick="showViewId('View_1F_A_6_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">7열</div><button class="seatmap-img-seat-btn" id="View_1F_A_7_1"
+                        onclick="showViewId('View_1F_A_7_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_7_2" onclick="showViewId('View_1F_A_7_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_7_3"
+                        onclick="showViewId('View_1F_A_7_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_7_4" onclick="showViewId('View_1F_A_7_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_7_5"
+                        onclick="showViewId('View_1F_A_7_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_7_6" onclick="showViewId('View_1F_A_7_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_7_7"
+                        onclick="showViewId('View_1F_A_7_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_7_8" onclick="showViewId('View_1F_A_7_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_7_9"
+                        onclick="showViewId('View_1F_A_7_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_7_10" onclick="showViewId('View_1F_A_7_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">8열</div><button class="seatmap-img-seat-btn" id="View_1F_A_8_1"
+                        onclick="showViewId('View_1F_A_8_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_8_2" onclick="showViewId('View_1F_A_8_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_8_3"
+                        onclick="showViewId('View_1F_A_8_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_8_4" onclick="showViewId('View_1F_A_8_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_8_5"
+                        onclick="showViewId('View_1F_A_8_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_8_6" onclick="showViewId('View_1F_A_8_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_8_7"
+                        onclick="showViewId('View_1F_A_8_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_8_8" onclick="showViewId('View_1F_A_8_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_8_9"
+                        onclick="showViewId('View_1F_A_8_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_8_10" onclick="showViewId('View_1F_A_8_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">9열</div><button class="seatmap-img-seat-btn" id="View_1F_A_9_1"
+                        onclick="showViewId('View_1F_A_9_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_9_2" onclick="showViewId('View_1F_A_9_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_9_3"
+                        onclick="showViewId('View_1F_A_9_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_9_4" onclick="showViewId('View_1F_A_9_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_9_5"
+                        onclick="showViewId('View_1F_A_9_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_9_6" onclick="showViewId('View_1F_A_9_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_9_7"
+                        onclick="showViewId('View_1F_A_9_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_9_8" onclick="showViewId('View_1F_A_9_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_9_9"
+                        onclick="showViewId('View_1F_A_9_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_9_10" onclick="showViewId('View_1F_A_9_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">10열</div><button class="seatmap-img-seat-btn" id="View_1F_A_10_1"
+                        onclick="showViewId('View_1F_A_10_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_10_2" onclick="showViewId('View_1F_A_10_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_10_3"
+                        onclick="showViewId('View_1F_A_10_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_10_4" onclick="showViewId('View_1F_A_10_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_10_5"
+                        onclick="showViewId('View_1F_A_10_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_10_6" onclick="showViewId('View_1F_A_10_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_10_7"
+                        onclick="showViewId('View_1F_A_10_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_10_8" onclick="showViewId('View_1F_A_10_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_10_9"
+                        onclick="showViewId('View_1F_A_10_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_10_10" onclick="showViewId('View_1F_A_10_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">11열</div><button class="seatmap-img-seat-btn" id="View_1F_A_11_1"
+                        onclick="showViewId('View_1F_A_11_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_11_2" onclick="showViewId('View_1F_A_11_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_11_3"
+                        onclick="showViewId('View_1F_A_11_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_11_4" onclick="showViewId('View_1F_A_11_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_11_5"
+                        onclick="showViewId('View_1F_A_11_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_11_6" onclick="showViewId('View_1F_A_11_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_11_7"
+                        onclick="showViewId('View_1F_A_11_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_11_8" onclick="showViewId('View_1F_A_11_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_11_9"
+                        onclick="showViewId('View_1F_A_11_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_11_10" onclick="showViewId('View_1F_A_11_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">12열</div><button class="seatmap-img-seat-btn" id="View_1F_A_12_1"
+                        onclick="showViewId('View_1F_A_12_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_12_2" onclick="showViewId('View_1F_A_12_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_12_3"
+                        onclick="showViewId('View_1F_A_12_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_12_4" onclick="showViewId('View_1F_A_12_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_12_5"
+                        onclick="showViewId('View_1F_A_12_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_12_6" onclick="showViewId('View_1F_A_12_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_12_7"
+                        onclick="showViewId('View_1F_A_12_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_12_8" onclick="showViewId('View_1F_A_12_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_12_9"
+                        onclick="showViewId('View_1F_A_12_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_12_10" onclick="showViewId('View_1F_A_12_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">13열</div><button class="seatmap-img-seat-btn" id="View_1F_A_13_1"
+                        onclick="showViewId('View_1F_A_13_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_13_2" onclick="showViewId('View_1F_A_13_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_13_3"
+                        onclick="showViewId('View_1F_A_13_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_13_4" onclick="showViewId('View_1F_A_13_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_13_5"
+                        onclick="showViewId('View_1F_A_13_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_13_6" onclick="showViewId('View_1F_A_13_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_13_7"
+                        onclick="showViewId('View_1F_A_13_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_13_8" onclick="showViewId('View_1F_A_13_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_13_9"
+                        onclick="showViewId('View_1F_A_13_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_13_10" onclick="showViewId('View_1F_A_13_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">14열</div><button class="seatmap-img-seat-btn" id="View_1F_A_14_1"
+                        onclick="showViewId('View_1F_A_14_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_14_2" onclick="showViewId('View_1F_A_14_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_14_3"
+                        onclick="showViewId('View_1F_A_14_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_14_4" onclick="showViewId('View_1F_A_14_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_14_5"
+                        onclick="showViewId('View_1F_A_14_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_14_6" onclick="showViewId('View_1F_A_14_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_14_7"
+                        onclick="showViewId('View_1F_A_14_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_14_8" onclick="showViewId('View_1F_A_14_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_14_9"
+                        onclick="showViewId('View_1F_A_14_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_14_10" onclick="showViewId('View_1F_A_14_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">15열</div><button class="seatmap-img-seat-btn" id="View_1F_A_15_1"
+                        onclick="showViewId('View_1F_A_15_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_15_2" onclick="showViewId('View_1F_A_15_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_15_3"
+                        onclick="showViewId('View_1F_A_15_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_15_4" onclick="showViewId('View_1F_A_15_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_15_5"
+                        onclick="showViewId('View_1F_A_15_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_15_6" onclick="showViewId('View_1F_A_15_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_15_7"
+                        onclick="showViewId('View_1F_A_15_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_15_8" onclick="showViewId('View_1F_A_15_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_15_9"
+                        onclick="showViewId('View_1F_A_15_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_15_10" onclick="showViewId('View_1F_A_15_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">16열</div><button class="seatmap-img-seat-btn" id="View_1F_A_16_1"
+                        onclick="showViewId('View_1F_A_16_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_16_2" onclick="showViewId('View_1F_A_16_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_16_3"
+                        onclick="showViewId('View_1F_A_16_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_16_4" onclick="showViewId('View_1F_A_16_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_16_5"
+                        onclick="showViewId('View_1F_A_16_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_16_6" onclick="showViewId('View_1F_A_16_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_16_7"
+                        onclick="showViewId('View_1F_A_16_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_16_8" onclick="showViewId('View_1F_A_16_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_16_9"
+                        onclick="showViewId('View_1F_A_16_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_16_10" onclick="showViewId('View_1F_A_16_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">17열</div><button class="seatmap-img-seat-btn" id="View_1F_A_17_1"
+                        onclick="showViewId('View_1F_A_17_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_17_2" onclick="showViewId('View_1F_A_17_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_17_3"
+                        onclick="showViewId('View_1F_A_17_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_17_4" onclick="showViewId('View_1F_A_17_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_17_5"
+                        onclick="showViewId('View_1F_A_17_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_17_6" onclick="showViewId('View_1F_A_17_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_17_7"
+                        onclick="showViewId('View_1F_A_17_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_17_8" onclick="showViewId('View_1F_A_17_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_17_9"
+                        onclick="showViewId('View_1F_A_17_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_17_10" onclick="showViewId('View_1F_A_17_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">18열</div><button class="seatmap-img-seat-btn" id="View_1F_A_18_1"
+                        onclick="showViewId('View_1F_A_18_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_18_2" onclick="showViewId('View_1F_A_18_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_18_3"
+                        onclick="showViewId('View_1F_A_18_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_18_4" onclick="showViewId('View_1F_A_18_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_18_5"
+                        onclick="showViewId('View_1F_A_18_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_18_6" onclick="showViewId('View_1F_A_18_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_18_7"
+                        onclick="showViewId('View_1F_A_18_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_18_8" onclick="showViewId('View_1F_A_18_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_18_9"
+                        onclick="showViewId('View_1F_A_18_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_18_10" onclick="showViewId('View_1F_A_18_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">19열</div><button class="seatmap-img-seat-btn" id="View_1F_A_19_1"
+                        onclick="showViewId('View_1F_A_19_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_19_2" onclick="showViewId('View_1F_A_19_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_19_3"
+                        onclick="showViewId('View_1F_A_19_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_19_4" onclick="showViewId('View_1F_A_19_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_19_5"
+                        onclick="showViewId('View_1F_A_19_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_19_6" onclick="showViewId('View_1F_A_19_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_19_7"
+                        onclick="showViewId('View_1F_A_19_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_19_8" onclick="showViewId('View_1F_A_19_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_19_9"
+                        onclick="showViewId('View_1F_A_19_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_19_10" onclick="showViewId('View_1F_A_19_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">20열</div><button class="seatmap-img-seat-btn" id="View_1F_A_20_1"
+                        onclick="showViewId('View_1F_A_20_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_A_20_2" onclick="showViewId('View_1F_A_20_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_A_20_3"
+                        onclick="showViewId('View_1F_A_20_3')">3</button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_A_20_4"
+                        onclick="showViewId('View_1F_A_20_4')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_A_20_5"
+                        onclick="showViewId('View_1F_A_20_5')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_A_20_6"
+                        onclick="showViewId('View_1F_A_20_6')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-disability" id="View_1F_A_20_7"
+                        onclick="showViewId('View_1F_A_20_7')">♿</button><button
+                        class="seatmap-img-seat-btn seatmap-img-disability" id="View_1F_A_20_8"
+                        onclick="showViewId('View_1F_A_20_8')">♿</button><button
+                        class="seatmap-img-seat-btn seatmap-img-disability" id="View_1F_A_20_9"
+                        onclick="showViewId('View_1F_A_20_9')">♿</button><button
+                        class="seatmap-img-seat-btn seatmap-img-disability" id="View_1F_A_20_10"
+                        onclick="showViewId('View_1F_A_20_10')">♿</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="seatmap-img-zone-box seatmap-img-zone-B">
+                  <div class="seatmap-img-zone-label">B ZONE</div>
+                  <div class="seatmap-img-rows-wrap">
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">1열</div><button class="seatmap-img-seat-btn" id="View_1F_B_1_1"
+                        onclick="showViewId('View_1F_B_1_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_1_2" onclick="showViewId('View_1F_B_1_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_1_3"
+                        onclick="showViewId('View_1F_B_1_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_1_4" onclick="showViewId('View_1F_B_1_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_1_5"
+                        onclick="showViewId('View_1F_B_1_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_1_6" onclick="showViewId('View_1F_B_1_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_1_7"
+                        onclick="showViewId('View_1F_B_1_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_1_8" onclick="showViewId('View_1F_B_1_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_1_9"
+                        onclick="showViewId('View_1F_B_1_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_1_10" onclick="showViewId('View_1F_B_1_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_1_11"
+                        onclick="showViewId('View_1F_B_1_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_1_12" onclick="showViewId('View_1F_B_1_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_1_13"
+                        onclick="showViewId('View_1F_B_1_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_1_14" onclick="showViewId('View_1F_B_1_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">2열</div><button class="seatmap-img-seat-btn" id="View_1F_B_2_1"
+                        onclick="showViewId('View_1F_B_2_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_2_2" onclick="showViewId('View_1F_B_2_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_2_3"
+                        onclick="showViewId('View_1F_B_2_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_2_4" onclick="showViewId('View_1F_B_2_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_2_5"
+                        onclick="showViewId('View_1F_B_2_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_2_6" onclick="showViewId('View_1F_B_2_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_2_7"
+                        onclick="showViewId('View_1F_B_2_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_2_8" onclick="showViewId('View_1F_B_2_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_2_9"
+                        onclick="showViewId('View_1F_B_2_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_2_10" onclick="showViewId('View_1F_B_2_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_2_11"
+                        onclick="showViewId('View_1F_B_2_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_2_12" onclick="showViewId('View_1F_B_2_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_2_13"
+                        onclick="showViewId('View_1F_B_2_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_2_14" onclick="showViewId('View_1F_B_2_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">3열</div><button class="seatmap-img-seat-btn" id="View_1F_B_3_1"
+                        onclick="showViewId('View_1F_B_3_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_3_2" onclick="showViewId('View_1F_B_3_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_3_3"
+                        onclick="showViewId('View_1F_B_3_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_3_4" onclick="showViewId('View_1F_B_3_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_3_5"
+                        onclick="showViewId('View_1F_B_3_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_3_6" onclick="showViewId('View_1F_B_3_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_3_7"
+                        onclick="showViewId('View_1F_B_3_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_3_8" onclick="showViewId('View_1F_B_3_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_3_9"
+                        onclick="showViewId('View_1F_B_3_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_3_10" onclick="showViewId('View_1F_B_3_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_3_11"
+                        onclick="showViewId('View_1F_B_3_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_3_12" onclick="showViewId('View_1F_B_3_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_3_13"
+                        onclick="showViewId('View_1F_B_3_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_3_14" onclick="showViewId('View_1F_B_3_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">4열</div><button class="seatmap-img-seat-btn" id="View_1F_B_4_1"
+                        onclick="showViewId('View_1F_B_4_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_4_2" onclick="showViewId('View_1F_B_4_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_4_3"
+                        onclick="showViewId('View_1F_B_4_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_4_4" onclick="showViewId('View_1F_B_4_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_4_5"
+                        onclick="showViewId('View_1F_B_4_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_4_6" onclick="showViewId('View_1F_B_4_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_4_7"
+                        onclick="showViewId('View_1F_B_4_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_4_8" onclick="showViewId('View_1F_B_4_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_4_9"
+                        onclick="showViewId('View_1F_B_4_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_4_10" onclick="showViewId('View_1F_B_4_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_4_11"
+                        onclick="showViewId('View_1F_B_4_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_4_12" onclick="showViewId('View_1F_B_4_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_4_13"
+                        onclick="showViewId('View_1F_B_4_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_4_14" onclick="showViewId('View_1F_B_4_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">5열</div><button class="seatmap-img-seat-btn" id="View_1F_B_5_1"
+                        onclick="showViewId('View_1F_B_5_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_5_2" onclick="showViewId('View_1F_B_5_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_5_3"
+                        onclick="showViewId('View_1F_B_5_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_5_4" onclick="showViewId('View_1F_B_5_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_5_5"
+                        onclick="showViewId('View_1F_B_5_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_5_6" onclick="showViewId('View_1F_B_5_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_5_7"
+                        onclick="showViewId('View_1F_B_5_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_5_8" onclick="showViewId('View_1F_B_5_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_5_9"
+                        onclick="showViewId('View_1F_B_5_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_5_10" onclick="showViewId('View_1F_B_5_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_5_11"
+                        onclick="showViewId('View_1F_B_5_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_5_12" onclick="showViewId('View_1F_B_5_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_5_13"
+                        onclick="showViewId('View_1F_B_5_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_5_14" onclick="showViewId('View_1F_B_5_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">6열</div><button class="seatmap-img-seat-btn" id="View_1F_B_6_1"
+                        onclick="showViewId('View_1F_B_6_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_6_2" onclick="showViewId('View_1F_B_6_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_6_3"
+                        onclick="showViewId('View_1F_B_6_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_6_4" onclick="showViewId('View_1F_B_6_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_6_5"
+                        onclick="showViewId('View_1F_B_6_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_6_6" onclick="showViewId('View_1F_B_6_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_6_7"
+                        onclick="showViewId('View_1F_B_6_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_6_8" onclick="showViewId('View_1F_B_6_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_6_9"
+                        onclick="showViewId('View_1F_B_6_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_6_10" onclick="showViewId('View_1F_B_6_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_6_11"
+                        onclick="showViewId('View_1F_B_6_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_6_12" onclick="showViewId('View_1F_B_6_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_6_13"
+                        onclick="showViewId('View_1F_B_6_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_6_14" onclick="showViewId('View_1F_B_6_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">7열</div><button class="seatmap-img-seat-btn" id="View_1F_B_7_1"
+                        onclick="showViewId('View_1F_B_7_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_7_2" onclick="showViewId('View_1F_B_7_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_7_3"
+                        onclick="showViewId('View_1F_B_7_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_7_4" onclick="showViewId('View_1F_B_7_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_7_5"
+                        onclick="showViewId('View_1F_B_7_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_7_6" onclick="showViewId('View_1F_B_7_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_7_7"
+                        onclick="showViewId('View_1F_B_7_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_7_8" onclick="showViewId('View_1F_B_7_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_7_9"
+                        onclick="showViewId('View_1F_B_7_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_7_10" onclick="showViewId('View_1F_B_7_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_7_11"
+                        onclick="showViewId('View_1F_B_7_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_7_12" onclick="showViewId('View_1F_B_7_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_7_13"
+                        onclick="showViewId('View_1F_B_7_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_7_14" onclick="showViewId('View_1F_B_7_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row seatmap-img-has-extra">
+                      <div class="seatmap-img-row-num">8열</div><button class="seatmap-img-seat-btn seatmap-img-extra-27"
+                        id="View_1F_B_8_1" onclick="showViewId('View_1F_B_8_1')">1</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_1F_B_8_2"
+                        onclick="showViewId('View_1F_B_8_2')">2</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_1F_B_8_3"
+                        onclick="showViewId('View_1F_B_8_3')">3</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_1F_B_8_4"
+                        onclick="showViewId('View_1F_B_8_4')">4</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_1F_B_8_5"
+                        onclick="showViewId('View_1F_B_8_5')">5</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_1F_B_8_6"
+                        onclick="showViewId('View_1F_B_8_6')">6</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_1F_B_8_7"
+                        onclick="showViewId('View_1F_B_8_7')">7</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_1F_B_8_8"
+                        onclick="showViewId('View_1F_B_8_8')">8</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_1F_B_8_9"
+                        onclick="showViewId('View_1F_B_8_9')">9</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_1F_B_8_10"
+                        onclick="showViewId('View_1F_B_8_10')">10</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_1F_B_8_11"
+                        onclick="showViewId('View_1F_B_8_11')">11</button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_B_8_12"
+                        onclick="showViewId('View_1F_B_8_12')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_B_8_13"
+                        onclick="showViewId('View_1F_B_8_13')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_B_8_14"
+                        onclick="showViewId('View_1F_B_8_14')"></button>
+                    </div>
+                    <div class="seatmap-img-seat-row seatmap-img-has-extra">
+                      <div class="seatmap-img-row-num">9열</div><button class="seatmap-img-seat-btn seatmap-img-extra-27"
+                        id="View_1F_B_9_1" onclick="showViewId('View_1F_B_9_1')">1</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_1F_B_9_2"
+                        onclick="showViewId('View_1F_B_9_2')">2</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_1F_B_9_3"
+                        onclick="showViewId('View_1F_B_9_3')">3</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_1F_B_9_4"
+                        onclick="showViewId('View_1F_B_9_4')">4</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_1F_B_9_5"
+                        onclick="showViewId('View_1F_B_9_5')">5</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_1F_B_9_6"
+                        onclick="showViewId('View_1F_B_9_6')">6</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_1F_B_9_7"
+                        onclick="showViewId('View_1F_B_9_7')">7</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_1F_B_9_8"
+                        onclick="showViewId('View_1F_B_9_8')">8</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_1F_B_9_9"
+                        onclick="showViewId('View_1F_B_9_9')">9</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_1F_B_9_10"
+                        onclick="showViewId('View_1F_B_9_10')">10</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_1F_B_9_11"
+                        onclick="showViewId('View_1F_B_9_11')">11</button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_B_9_12"
+                        onclick="showViewId('View_1F_B_9_12')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_B_9_13"
+                        onclick="showViewId('View_1F_B_9_13')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_B_9_14"
+                        onclick="showViewId('View_1F_B_9_14')"></button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">10열</div><button class="seatmap-img-seat-btn" id="View_1F_B_10_1"
+                        onclick="showViewId('View_1F_B_10_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_10_2" onclick="showViewId('View_1F_B_10_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_10_3"
+                        onclick="showViewId('View_1F_B_10_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_10_4" onclick="showViewId('View_1F_B_10_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_10_5"
+                        onclick="showViewId('View_1F_B_10_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_10_6" onclick="showViewId('View_1F_B_10_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_10_7"
+                        onclick="showViewId('View_1F_B_10_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_10_8" onclick="showViewId('View_1F_B_10_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_10_9"
+                        onclick="showViewId('View_1F_B_10_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_10_10" onclick="showViewId('View_1F_B_10_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_10_11"
+                        onclick="showViewId('View_1F_B_10_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_10_12" onclick="showViewId('View_1F_B_10_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_10_13"
+                        onclick="showViewId('View_1F_B_10_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_10_14" onclick="showViewId('View_1F_B_10_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">11열</div><button class="seatmap-img-seat-btn" id="View_1F_B_11_1"
+                        onclick="showViewId('View_1F_B_11_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_11_2" onclick="showViewId('View_1F_B_11_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_11_3"
+                        onclick="showViewId('View_1F_B_11_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_11_4" onclick="showViewId('View_1F_B_11_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_11_5"
+                        onclick="showViewId('View_1F_B_11_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_11_6" onclick="showViewId('View_1F_B_11_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_11_7"
+                        onclick="showViewId('View_1F_B_11_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_11_8" onclick="showViewId('View_1F_B_11_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_11_9"
+                        onclick="showViewId('View_1F_B_11_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_11_10" onclick="showViewId('View_1F_B_11_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_11_11"
+                        onclick="showViewId('View_1F_B_11_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_11_12" onclick="showViewId('View_1F_B_11_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_11_13"
+                        onclick="showViewId('View_1F_B_11_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_11_14" onclick="showViewId('View_1F_B_11_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">12열</div><button class="seatmap-img-seat-btn" id="View_1F_B_12_1"
+                        onclick="showViewId('View_1F_B_12_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_12_2" onclick="showViewId('View_1F_B_12_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_12_3"
+                        onclick="showViewId('View_1F_B_12_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_12_4" onclick="showViewId('View_1F_B_12_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_12_5"
+                        onclick="showViewId('View_1F_B_12_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_12_6" onclick="showViewId('View_1F_B_12_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_12_7"
+                        onclick="showViewId('View_1F_B_12_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_12_8" onclick="showViewId('View_1F_B_12_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_12_9"
+                        onclick="showViewId('View_1F_B_12_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_12_10" onclick="showViewId('View_1F_B_12_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_12_11"
+                        onclick="showViewId('View_1F_B_12_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_12_12" onclick="showViewId('View_1F_B_12_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_12_13"
+                        onclick="showViewId('View_1F_B_12_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_12_14" onclick="showViewId('View_1F_B_12_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">13열</div><button class="seatmap-img-seat-btn" id="View_1F_B_13_1"
+                        onclick="showViewId('View_1F_B_13_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_13_2" onclick="showViewId('View_1F_B_13_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_13_3"
+                        onclick="showViewId('View_1F_B_13_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_13_4" onclick="showViewId('View_1F_B_13_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_13_5"
+                        onclick="showViewId('View_1F_B_13_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_13_6" onclick="showViewId('View_1F_B_13_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_13_7"
+                        onclick="showViewId('View_1F_B_13_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_13_8" onclick="showViewId('View_1F_B_13_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_13_9"
+                        onclick="showViewId('View_1F_B_13_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_13_10" onclick="showViewId('View_1F_B_13_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_13_11"
+                        onclick="showViewId('View_1F_B_13_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_13_12" onclick="showViewId('View_1F_B_13_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_13_13"
+                        onclick="showViewId('View_1F_B_13_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_13_14" onclick="showViewId('View_1F_B_13_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">14열</div><button class="seatmap-img-seat-btn" id="View_1F_B_14_1"
+                        onclick="showViewId('View_1F_B_14_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_14_2" onclick="showViewId('View_1F_B_14_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_14_3"
+                        onclick="showViewId('View_1F_B_14_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_14_4" onclick="showViewId('View_1F_B_14_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_14_5"
+                        onclick="showViewId('View_1F_B_14_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_14_6" onclick="showViewId('View_1F_B_14_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_14_7"
+                        onclick="showViewId('View_1F_B_14_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_14_8" onclick="showViewId('View_1F_B_14_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_14_9"
+                        onclick="showViewId('View_1F_B_14_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_14_10" onclick="showViewId('View_1F_B_14_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_14_11"
+                        onclick="showViewId('View_1F_B_14_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_14_12" onclick="showViewId('View_1F_B_14_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_14_13"
+                        onclick="showViewId('View_1F_B_14_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_14_14" onclick="showViewId('View_1F_B_14_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">15열</div><button class="seatmap-img-seat-btn" id="View_1F_B_15_1"
+                        onclick="showViewId('View_1F_B_15_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_15_2" onclick="showViewId('View_1F_B_15_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_15_3"
+                        onclick="showViewId('View_1F_B_15_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_15_4" onclick="showViewId('View_1F_B_15_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_15_5"
+                        onclick="showViewId('View_1F_B_15_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_15_6" onclick="showViewId('View_1F_B_15_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_15_7"
+                        onclick="showViewId('View_1F_B_15_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_15_8" onclick="showViewId('View_1F_B_15_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_15_9"
+                        onclick="showViewId('View_1F_B_15_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_15_10" onclick="showViewId('View_1F_B_15_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_15_11"
+                        onclick="showViewId('View_1F_B_15_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_15_12" onclick="showViewId('View_1F_B_15_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_15_13"
+                        onclick="showViewId('View_1F_B_15_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_15_14" onclick="showViewId('View_1F_B_15_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">16열</div><button class="seatmap-img-seat-btn" id="View_1F_B_16_1"
+                        onclick="showViewId('View_1F_B_16_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_16_2" onclick="showViewId('View_1F_B_16_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_16_3"
+                        onclick="showViewId('View_1F_B_16_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_16_4" onclick="showViewId('View_1F_B_16_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_16_5"
+                        onclick="showViewId('View_1F_B_16_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_16_6" onclick="showViewId('View_1F_B_16_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_16_7"
+                        onclick="showViewId('View_1F_B_16_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_16_8" onclick="showViewId('View_1F_B_16_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_16_9"
+                        onclick="showViewId('View_1F_B_16_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_16_10" onclick="showViewId('View_1F_B_16_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_16_11"
+                        onclick="showViewId('View_1F_B_16_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_16_12" onclick="showViewId('View_1F_B_16_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_16_13"
+                        onclick="showViewId('View_1F_B_16_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_16_14" onclick="showViewId('View_1F_B_16_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">17열</div><button class="seatmap-img-seat-btn" id="View_1F_B_17_1"
+                        onclick="showViewId('View_1F_B_17_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_17_2" onclick="showViewId('View_1F_B_17_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_17_3"
+                        onclick="showViewId('View_1F_B_17_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_17_4" onclick="showViewId('View_1F_B_17_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_17_5"
+                        onclick="showViewId('View_1F_B_17_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_17_6" onclick="showViewId('View_1F_B_17_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_17_7"
+                        onclick="showViewId('View_1F_B_17_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_17_8" onclick="showViewId('View_1F_B_17_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_17_9"
+                        onclick="showViewId('View_1F_B_17_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_17_10" onclick="showViewId('View_1F_B_17_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_17_11"
+                        onclick="showViewId('View_1F_B_17_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_17_12" onclick="showViewId('View_1F_B_17_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_17_13"
+                        onclick="showViewId('View_1F_B_17_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_17_14" onclick="showViewId('View_1F_B_17_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">18열</div><button class="seatmap-img-seat-btn" id="View_1F_B_18_1"
+                        onclick="showViewId('View_1F_B_18_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_18_2" onclick="showViewId('View_1F_B_18_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_18_3"
+                        onclick="showViewId('View_1F_B_18_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_18_4" onclick="showViewId('View_1F_B_18_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_18_5"
+                        onclick="showViewId('View_1F_B_18_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_18_6" onclick="showViewId('View_1F_B_18_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_18_7"
+                        onclick="showViewId('View_1F_B_18_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_18_8" onclick="showViewId('View_1F_B_18_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_18_9"
+                        onclick="showViewId('View_1F_B_18_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_18_10" onclick="showViewId('View_1F_B_18_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_18_11"
+                        onclick="showViewId('View_1F_B_18_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_18_12" onclick="showViewId('View_1F_B_18_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_18_13"
+                        onclick="showViewId('View_1F_B_18_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_18_14" onclick="showViewId('View_1F_B_18_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">19열</div><button class="seatmap-img-seat-btn" id="View_1F_B_19_1"
+                        onclick="showViewId('View_1F_B_19_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_19_2" onclick="showViewId('View_1F_B_19_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_19_3"
+                        onclick="showViewId('View_1F_B_19_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_19_4" onclick="showViewId('View_1F_B_19_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_19_5"
+                        onclick="showViewId('View_1F_B_19_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_19_6" onclick="showViewId('View_1F_B_19_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_19_7"
+                        onclick="showViewId('View_1F_B_19_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_19_8" onclick="showViewId('View_1F_B_19_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_19_9"
+                        onclick="showViewId('View_1F_B_19_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_19_10" onclick="showViewId('View_1F_B_19_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_19_11"
+                        onclick="showViewId('View_1F_B_19_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_19_12" onclick="showViewId('View_1F_B_19_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_B_19_13"
+                        onclick="showViewId('View_1F_B_19_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_B_19_14" onclick="showViewId('View_1F_B_19_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">20열</div><button
+                        class="seatmap-img-seat-btn seatmap-img-disability" id="View_1F_B_20_1"
+                        onclick="showViewId('View_1F_B_20_1')">♿</button><button
+                        class="seatmap-img-seat-btn seatmap-img-disability" id="View_1F_B_20_2"
+                        onclick="showViewId('View_1F_B_20_2')">♿</button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_B_20_3"
+                        onclick="showViewId('View_1F_B_20_3')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_B_20_4"
+                        onclick="showViewId('View_1F_B_20_4')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_B_20_5"
+                        onclick="showViewId('View_1F_B_20_5')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_B_20_6"
+                        onclick="showViewId('View_1F_B_20_6')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_B_20_7"
+                        onclick="showViewId('View_1F_B_20_7')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_B_20_8"
+                        onclick="showViewId('View_1F_B_20_8')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_B_20_9"
+                        onclick="showViewId('View_1F_B_20_9')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_B_20_10"
+                        onclick="showViewId('View_1F_B_20_10')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_B_20_11"
+                        onclick="showViewId('View_1F_B_20_11')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_B_20_12"
+                        onclick="showViewId('View_1F_B_20_12')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-disability" id="View_1F_B_20_13"
+                        onclick="showViewId('View_1F_B_20_13')">♿</button><button
+                        class="seatmap-img-seat-btn seatmap-img-disability" id="View_1F_B_20_14"
+                        onclick="showViewId('View_1F_B_20_14')">♿</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="seatmap-img-zone-box seatmap-img-zone-C">
+                  <div class="seatmap-img-zone-label">C ZONE</div>
+                  <div class="seatmap-img-rows-wrap">
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">1열</div><button class="seatmap-img-seat-btn" id="View_1F_C_1_1"
+                        onclick="showViewId('View_1F_C_1_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_1_2" onclick="showViewId('View_1F_C_1_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_1_3"
+                        onclick="showViewId('View_1F_C_1_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_1_4" onclick="showViewId('View_1F_C_1_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_1_5"
+                        onclick="showViewId('View_1F_C_1_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_1_6" onclick="showViewId('View_1F_C_1_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_1_7"
+                        onclick="showViewId('View_1F_C_1_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_1_8" onclick="showViewId('View_1F_C_1_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_1_9"
+                        onclick="showViewId('View_1F_C_1_9')">9</button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_C_1_10"
+                        onclick="showViewId('View_1F_C_1_10')"></button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">2열</div><button class="seatmap-img-seat-btn" id="View_1F_C_2_1"
+                        onclick="showViewId('View_1F_C_2_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_2_2" onclick="showViewId('View_1F_C_2_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_2_3"
+                        onclick="showViewId('View_1F_C_2_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_2_4" onclick="showViewId('View_1F_C_2_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_2_5"
+                        onclick="showViewId('View_1F_C_2_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_2_6" onclick="showViewId('View_1F_C_2_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_2_7"
+                        onclick="showViewId('View_1F_C_2_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_2_8" onclick="showViewId('View_1F_C_2_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_2_9"
+                        onclick="showViewId('View_1F_C_2_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_2_10" onclick="showViewId('View_1F_C_2_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">3열</div><button class="seatmap-img-seat-btn" id="View_1F_C_3_1"
+                        onclick="showViewId('View_1F_C_3_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_3_2" onclick="showViewId('View_1F_C_3_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_3_3"
+                        onclick="showViewId('View_1F_C_3_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_3_4" onclick="showViewId('View_1F_C_3_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_3_5"
+                        onclick="showViewId('View_1F_C_3_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_3_6" onclick="showViewId('View_1F_C_3_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_3_7"
+                        onclick="showViewId('View_1F_C_3_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_3_8" onclick="showViewId('View_1F_C_3_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_3_9"
+                        onclick="showViewId('View_1F_C_3_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_3_10" onclick="showViewId('View_1F_C_3_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">4열</div><button class="seatmap-img-seat-btn" id="View_1F_C_4_1"
+                        onclick="showViewId('View_1F_C_4_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_4_2" onclick="showViewId('View_1F_C_4_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_4_3"
+                        onclick="showViewId('View_1F_C_4_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_4_4" onclick="showViewId('View_1F_C_4_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_4_5"
+                        onclick="showViewId('View_1F_C_4_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_4_6" onclick="showViewId('View_1F_C_4_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_4_7"
+                        onclick="showViewId('View_1F_C_4_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_4_8" onclick="showViewId('View_1F_C_4_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_4_9"
+                        onclick="showViewId('View_1F_C_4_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_4_10" onclick="showViewId('View_1F_C_4_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">5열</div><button class="seatmap-img-seat-btn" id="View_1F_C_5_1"
+                        onclick="showViewId('View_1F_C_5_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_5_2" onclick="showViewId('View_1F_C_5_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_5_3"
+                        onclick="showViewId('View_1F_C_5_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_5_4" onclick="showViewId('View_1F_C_5_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_5_5"
+                        onclick="showViewId('View_1F_C_5_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_5_6" onclick="showViewId('View_1F_C_5_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_5_7"
+                        onclick="showViewId('View_1F_C_5_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_5_8" onclick="showViewId('View_1F_C_5_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_5_9"
+                        onclick="showViewId('View_1F_C_5_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_5_10" onclick="showViewId('View_1F_C_5_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">6열</div><button class="seatmap-img-seat-btn" id="View_1F_C_6_1"
+                        onclick="showViewId('View_1F_C_6_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_6_2" onclick="showViewId('View_1F_C_6_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_6_3"
+                        onclick="showViewId('View_1F_C_6_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_6_4" onclick="showViewId('View_1F_C_6_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_6_5"
+                        onclick="showViewId('View_1F_C_6_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_6_6" onclick="showViewId('View_1F_C_6_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_6_7"
+                        onclick="showViewId('View_1F_C_6_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_6_8" onclick="showViewId('View_1F_C_6_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_6_9"
+                        onclick="showViewId('View_1F_C_6_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_6_10" onclick="showViewId('View_1F_C_6_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">7열</div><button class="seatmap-img-seat-btn" id="View_1F_C_7_1"
+                        onclick="showViewId('View_1F_C_7_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_7_2" onclick="showViewId('View_1F_C_7_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_7_3"
+                        onclick="showViewId('View_1F_C_7_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_7_4" onclick="showViewId('View_1F_C_7_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_7_5"
+                        onclick="showViewId('View_1F_C_7_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_7_6" onclick="showViewId('View_1F_C_7_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_7_7"
+                        onclick="showViewId('View_1F_C_7_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_7_8" onclick="showViewId('View_1F_C_7_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_7_9"
+                        onclick="showViewId('View_1F_C_7_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_7_10" onclick="showViewId('View_1F_C_7_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">8열</div><button class="seatmap-img-seat-btn" id="View_1F_C_8_1"
+                        onclick="showViewId('View_1F_C_8_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_8_2" onclick="showViewId('View_1F_C_8_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_8_3"
+                        onclick="showViewId('View_1F_C_8_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_8_4" onclick="showViewId('View_1F_C_8_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_8_5"
+                        onclick="showViewId('View_1F_C_8_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_8_6" onclick="showViewId('View_1F_C_8_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_8_7"
+                        onclick="showViewId('View_1F_C_8_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_8_8" onclick="showViewId('View_1F_C_8_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_8_9"
+                        onclick="showViewId('View_1F_C_8_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_8_10" onclick="showViewId('View_1F_C_8_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">9열</div><button class="seatmap-img-seat-btn" id="View_1F_C_9_1"
+                        onclick="showViewId('View_1F_C_9_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_9_2" onclick="showViewId('View_1F_C_9_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_9_3"
+                        onclick="showViewId('View_1F_C_9_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_9_4" onclick="showViewId('View_1F_C_9_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_9_5"
+                        onclick="showViewId('View_1F_C_9_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_9_6" onclick="showViewId('View_1F_C_9_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_9_7"
+                        onclick="showViewId('View_1F_C_9_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_9_8" onclick="showViewId('View_1F_C_9_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_9_9"
+                        onclick="showViewId('View_1F_C_9_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_9_10" onclick="showViewId('View_1F_C_9_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">10열</div><button class="seatmap-img-seat-btn" id="View_1F_C_10_1"
+                        onclick="showViewId('View_1F_C_10_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_10_2" onclick="showViewId('View_1F_C_10_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_10_3"
+                        onclick="showViewId('View_1F_C_10_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_10_4" onclick="showViewId('View_1F_C_10_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_10_5"
+                        onclick="showViewId('View_1F_C_10_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_10_6" onclick="showViewId('View_1F_C_10_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_10_7"
+                        onclick="showViewId('View_1F_C_10_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_10_8" onclick="showViewId('View_1F_C_10_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_10_9"
+                        onclick="showViewId('View_1F_C_10_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_10_10" onclick="showViewId('View_1F_C_10_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">11열</div><button class="seatmap-img-seat-btn" id="View_1F_C_11_1"
+                        onclick="showViewId('View_1F_C_11_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_11_2" onclick="showViewId('View_1F_C_11_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_11_3"
+                        onclick="showViewId('View_1F_C_11_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_11_4" onclick="showViewId('View_1F_C_11_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_11_5"
+                        onclick="showViewId('View_1F_C_11_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_11_6" onclick="showViewId('View_1F_C_11_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_11_7"
+                        onclick="showViewId('View_1F_C_11_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_11_8" onclick="showViewId('View_1F_C_11_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_11_9"
+                        onclick="showViewId('View_1F_C_11_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_11_10" onclick="showViewId('View_1F_C_11_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">12열</div><button class="seatmap-img-seat-btn" id="View_1F_C_12_1"
+                        onclick="showViewId('View_1F_C_12_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_12_2" onclick="showViewId('View_1F_C_12_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_12_3"
+                        onclick="showViewId('View_1F_C_12_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_12_4" onclick="showViewId('View_1F_C_12_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_12_5"
+                        onclick="showViewId('View_1F_C_12_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_12_6" onclick="showViewId('View_1F_C_12_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_12_7"
+                        onclick="showViewId('View_1F_C_12_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_12_8" onclick="showViewId('View_1F_C_12_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_12_9"
+                        onclick="showViewId('View_1F_C_12_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_12_10" onclick="showViewId('View_1F_C_12_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">13열</div><button class="seatmap-img-seat-btn" id="View_1F_C_13_1"
+                        onclick="showViewId('View_1F_C_13_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_13_2" onclick="showViewId('View_1F_C_13_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_13_3"
+                        onclick="showViewId('View_1F_C_13_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_13_4" onclick="showViewId('View_1F_C_13_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_13_5"
+                        onclick="showViewId('View_1F_C_13_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_13_6" onclick="showViewId('View_1F_C_13_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_13_7"
+                        onclick="showViewId('View_1F_C_13_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_13_8" onclick="showViewId('View_1F_C_13_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_13_9"
+                        onclick="showViewId('View_1F_C_13_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_13_10" onclick="showViewId('View_1F_C_13_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">14열</div><button class="seatmap-img-seat-btn" id="View_1F_C_14_1"
+                        onclick="showViewId('View_1F_C_14_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_14_2" onclick="showViewId('View_1F_C_14_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_14_3"
+                        onclick="showViewId('View_1F_C_14_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_14_4" onclick="showViewId('View_1F_C_14_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_14_5"
+                        onclick="showViewId('View_1F_C_14_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_14_6" onclick="showViewId('View_1F_C_14_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_14_7"
+                        onclick="showViewId('View_1F_C_14_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_14_8" onclick="showViewId('View_1F_C_14_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_14_9"
+                        onclick="showViewId('View_1F_C_14_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_14_10" onclick="showViewId('View_1F_C_14_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">15열</div><button class="seatmap-img-seat-btn" id="View_1F_C_15_1"
+                        onclick="showViewId('View_1F_C_15_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_15_2" onclick="showViewId('View_1F_C_15_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_15_3"
+                        onclick="showViewId('View_1F_C_15_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_15_4" onclick="showViewId('View_1F_C_15_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_15_5"
+                        onclick="showViewId('View_1F_C_15_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_15_6" onclick="showViewId('View_1F_C_15_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_15_7"
+                        onclick="showViewId('View_1F_C_15_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_15_8" onclick="showViewId('View_1F_C_15_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_15_9"
+                        onclick="showViewId('View_1F_C_15_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_15_10" onclick="showViewId('View_1F_C_15_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">16열</div><button class="seatmap-img-seat-btn" id="View_1F_C_16_1"
+                        onclick="showViewId('View_1F_C_16_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_16_2" onclick="showViewId('View_1F_C_16_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_16_3"
+                        onclick="showViewId('View_1F_C_16_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_16_4" onclick="showViewId('View_1F_C_16_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_16_5"
+                        onclick="showViewId('View_1F_C_16_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_16_6" onclick="showViewId('View_1F_C_16_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_16_7"
+                        onclick="showViewId('View_1F_C_16_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_16_8" onclick="showViewId('View_1F_C_16_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_16_9"
+                        onclick="showViewId('View_1F_C_16_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_16_10" onclick="showViewId('View_1F_C_16_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">17열</div><button class="seatmap-img-seat-btn" id="View_1F_C_17_1"
+                        onclick="showViewId('View_1F_C_17_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_17_2" onclick="showViewId('View_1F_C_17_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_17_3"
+                        onclick="showViewId('View_1F_C_17_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_17_4" onclick="showViewId('View_1F_C_17_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_17_5"
+                        onclick="showViewId('View_1F_C_17_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_17_6" onclick="showViewId('View_1F_C_17_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_17_7"
+                        onclick="showViewId('View_1F_C_17_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_17_8" onclick="showViewId('View_1F_C_17_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_17_9"
+                        onclick="showViewId('View_1F_C_17_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_17_10" onclick="showViewId('View_1F_C_17_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">18열</div><button class="seatmap-img-seat-btn" id="View_1F_C_18_1"
+                        onclick="showViewId('View_1F_C_18_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_18_2" onclick="showViewId('View_1F_C_18_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_18_3"
+                        onclick="showViewId('View_1F_C_18_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_18_4" onclick="showViewId('View_1F_C_18_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_18_5"
+                        onclick="showViewId('View_1F_C_18_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_18_6" onclick="showViewId('View_1F_C_18_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_18_7"
+                        onclick="showViewId('View_1F_C_18_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_18_8" onclick="showViewId('View_1F_C_18_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_18_9"
+                        onclick="showViewId('View_1F_C_18_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_18_10" onclick="showViewId('View_1F_C_18_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">19열</div><button class="seatmap-img-seat-btn" id="View_1F_C_19_1"
+                        onclick="showViewId('View_1F_C_19_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_19_2" onclick="showViewId('View_1F_C_19_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_19_3"
+                        onclick="showViewId('View_1F_C_19_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_19_4" onclick="showViewId('View_1F_C_19_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_19_5"
+                        onclick="showViewId('View_1F_C_19_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_19_6" onclick="showViewId('View_1F_C_19_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_19_7"
+                        onclick="showViewId('View_1F_C_19_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_19_8" onclick="showViewId('View_1F_C_19_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_19_9"
+                        onclick="showViewId('View_1F_C_19_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_19_10" onclick="showViewId('View_1F_C_19_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">20열</div><button
+                        class="seatmap-img-seat-btn seatmap-img-disability" id="View_1F_C_20_1"
+                        onclick="showViewId('View_1F_C_20_1')">♿</button><button
+                        class="seatmap-img-seat-btn seatmap-img-disability" id="View_1F_C_20_2"
+                        onclick="showViewId('View_1F_C_20_2')">♿</button><button
+                        class="seatmap-img-seat-btn seatmap-img-disability" id="View_1F_C_20_3"
+                        onclick="showViewId('View_1F_C_20_3')">♿</button><button
+                        class="seatmap-img-seat-btn seatmap-img-disability" id="View_1F_C_20_4"
+                        onclick="showViewId('View_1F_C_20_4')">♿</button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_C_20_5"
+                        onclick="showViewId('View_1F_C_20_5')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_C_20_6"
+                        onclick="showViewId('View_1F_C_20_6')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_1F_C_20_7"
+                        onclick="showViewId('View_1F_C_20_7')"></button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_20_8" onclick="showViewId('View_1F_C_20_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_1F_C_20_9"
+                        onclick="showViewId('View_1F_C_20_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_1F_C_20_10" onclick="showViewId('View_1F_C_20_10')">10</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="seatmap-img-floor-section" id="floor-section-2F"><span class="seatmap-img-floor-title">2층</span>
+              <div class="seatmap-img-theater-layout">
+                <div class="seatmap-img-zone-box seatmap-img-zone-A">
+                  <div class="seatmap-img-zone-label">A ZONE</div>
+                  <div class="seatmap-img-rows-wrap">
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">1열</div><button class="seatmap-img-seat-btn seatmap-img-none"
+                        id="View_2F_A_1_1" onclick="showViewId('View_2F_A_1_1')"></button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_1_2"
+                        onclick="showViewId('View_2F_A_1_2')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_1_3" onclick="showViewId('View_2F_A_1_3')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_1_4"
+                        onclick="showViewId('View_2F_A_1_4')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_1_5" onclick="showViewId('View_2F_A_1_5')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_1_6"
+                        onclick="showViewId('View_2F_A_1_6')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_1_7" onclick="showViewId('View_2F_A_1_7')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_1_8"
+                        onclick="showViewId('View_2F_A_1_8')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_1_9" onclick="showViewId('View_2F_A_1_9')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_1_10"
+                        onclick="showViewId('View_2F_A_1_10')">9</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">2열</div><button class="seatmap-img-seat-btn" id="View_2F_A_2_1"
+                        onclick="showViewId('View_2F_A_2_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_2_2" onclick="showViewId('View_2F_A_2_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_2_3"
+                        onclick="showViewId('View_2F_A_2_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_2_4" onclick="showViewId('View_2F_A_2_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_2_5"
+                        onclick="showViewId('View_2F_A_2_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_2_6" onclick="showViewId('View_2F_A_2_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_2_7"
+                        onclick="showViewId('View_2F_A_2_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_2_8" onclick="showViewId('View_2F_A_2_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_2_9"
+                        onclick="showViewId('View_2F_A_2_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_2_10" onclick="showViewId('View_2F_A_2_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">3열</div><button class="seatmap-img-seat-btn" id="View_2F_A_3_1"
+                        onclick="showViewId('View_2F_A_3_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_3_2" onclick="showViewId('View_2F_A_3_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_3_3"
+                        onclick="showViewId('View_2F_A_3_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_3_4" onclick="showViewId('View_2F_A_3_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_3_5"
+                        onclick="showViewId('View_2F_A_3_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_3_6" onclick="showViewId('View_2F_A_3_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_3_7"
+                        onclick="showViewId('View_2F_A_3_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_3_8" onclick="showViewId('View_2F_A_3_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_3_9"
+                        onclick="showViewId('View_2F_A_3_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_3_10" onclick="showViewId('View_2F_A_3_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">4열</div><button class="seatmap-img-seat-btn" id="View_2F_A_4_1"
+                        onclick="showViewId('View_2F_A_4_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_4_2" onclick="showViewId('View_2F_A_4_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_4_3"
+                        onclick="showViewId('View_2F_A_4_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_4_4" onclick="showViewId('View_2F_A_4_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_4_5"
+                        onclick="showViewId('View_2F_A_4_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_4_6" onclick="showViewId('View_2F_A_4_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_4_7"
+                        onclick="showViewId('View_2F_A_4_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_4_8" onclick="showViewId('View_2F_A_4_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_4_9"
+                        onclick="showViewId('View_2F_A_4_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_4_10" onclick="showViewId('View_2F_A_4_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">5열</div><button class="seatmap-img-seat-btn" id="View_2F_A_5_1"
+                        onclick="showViewId('View_2F_A_5_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_5_2" onclick="showViewId('View_2F_A_5_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_5_3"
+                        onclick="showViewId('View_2F_A_5_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_5_4" onclick="showViewId('View_2F_A_5_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_5_5"
+                        onclick="showViewId('View_2F_A_5_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_5_6" onclick="showViewId('View_2F_A_5_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_5_7"
+                        onclick="showViewId('View_2F_A_5_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_5_8" onclick="showViewId('View_2F_A_5_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_5_9"
+                        onclick="showViewId('View_2F_A_5_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_5_10" onclick="showViewId('View_2F_A_5_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">6열</div><button class="seatmap-img-seat-btn" id="View_2F_A_6_1"
+                        onclick="showViewId('View_2F_A_6_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_6_2" onclick="showViewId('View_2F_A_6_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_6_3"
+                        onclick="showViewId('View_2F_A_6_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_6_4" onclick="showViewId('View_2F_A_6_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_6_5"
+                        onclick="showViewId('View_2F_A_6_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_6_6" onclick="showViewId('View_2F_A_6_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_6_7"
+                        onclick="showViewId('View_2F_A_6_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_6_8" onclick="showViewId('View_2F_A_6_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_6_9"
+                        onclick="showViewId('View_2F_A_6_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_6_10" onclick="showViewId('View_2F_A_6_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">7열</div><button class="seatmap-img-seat-btn" id="View_2F_A_7_1"
+                        onclick="showViewId('View_2F_A_7_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_7_2" onclick="showViewId('View_2F_A_7_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_7_3"
+                        onclick="showViewId('View_2F_A_7_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_7_4" onclick="showViewId('View_2F_A_7_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_7_5"
+                        onclick="showViewId('View_2F_A_7_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_7_6" onclick="showViewId('View_2F_A_7_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_7_7"
+                        onclick="showViewId('View_2F_A_7_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_7_8" onclick="showViewId('View_2F_A_7_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_7_9"
+                        onclick="showViewId('View_2F_A_7_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_7_10" onclick="showViewId('View_2F_A_7_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">8열</div><button class="seatmap-img-seat-btn" id="View_2F_A_8_1"
+                        onclick="showViewId('View_2F_A_8_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_8_2" onclick="showViewId('View_2F_A_8_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_8_3"
+                        onclick="showViewId('View_2F_A_8_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_8_4" onclick="showViewId('View_2F_A_8_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_8_5"
+                        onclick="showViewId('View_2F_A_8_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_8_6" onclick="showViewId('View_2F_A_8_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_8_7"
+                        onclick="showViewId('View_2F_A_8_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_8_8" onclick="showViewId('View_2F_A_8_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_8_9"
+                        onclick="showViewId('View_2F_A_8_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_8_10" onclick="showViewId('View_2F_A_8_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">9열</div><button class="seatmap-img-seat-btn" id="View_2F_A_9_1"
+                        onclick="showViewId('View_2F_A_9_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_9_2" onclick="showViewId('View_2F_A_9_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_9_3"
+                        onclick="showViewId('View_2F_A_9_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_9_4" onclick="showViewId('View_2F_A_9_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_9_5"
+                        onclick="showViewId('View_2F_A_9_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_9_6" onclick="showViewId('View_2F_A_9_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_9_7"
+                        onclick="showViewId('View_2F_A_9_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_9_8" onclick="showViewId('View_2F_A_9_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_A_9_9"
+                        onclick="showViewId('View_2F_A_9_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_A_9_10" onclick="showViewId('View_2F_A_9_10')">10</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="seatmap-img-zone-box seatmap-img-zone-B">
+                  <div class="seatmap-img-zone-label">B ZONE</div>
+                  <div class="seatmap-img-rows-wrap">
+                    <div class="seatmap-img-seat-row seatmap-img-has-extra">
+                      <div class="seatmap-img-row-num">1열</div><button class="seatmap-img-seat-btn seatmap-img-extra-27"
+                        id="View_2F_B_1_1" onclick="showViewId('View_2F_B_1_1')">1</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_2F_B_1_2"
+                        onclick="showViewId('View_2F_B_1_2')">2</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_2F_B_1_3"
+                        onclick="showViewId('View_2F_B_1_3')">3</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_2F_B_1_4"
+                        onclick="showViewId('View_2F_B_1_4')">4</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_2F_B_1_5"
+                        onclick="showViewId('View_2F_B_1_5')">5</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_2F_B_1_6"
+                        onclick="showViewId('View_2F_B_1_6')">6</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_2F_B_1_7"
+                        onclick="showViewId('View_2F_B_1_7')">7</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_2F_B_1_8"
+                        onclick="showViewId('View_2F_B_1_8')">8</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_2F_B_1_9"
+                        onclick="showViewId('View_2F_B_1_9')">9</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_2F_B_1_10"
+                        onclick="showViewId('View_2F_B_1_10')">10</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-27" id="View_2F_B_1_11"
+                        onclick="showViewId('View_2F_B_1_11')">11</button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_2F_B_1_12"
+                        onclick="showViewId('View_2F_B_1_12')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_2F_B_1_13"
+                        onclick="showViewId('View_2F_B_1_13')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_2F_B_1_14"
+                        onclick="showViewId('View_2F_B_1_14')"></button>
+                    </div>
+                    <div class="seatmap-img-seat-row seatmap-img-has-extra">
+                      <div class="seatmap-img-row-num">2열</div><button class="seatmap-img-seat-btn seatmap-img-extra-17"
+                        id="View_2F_B_2_1" onclick="showViewId('View_2F_B_2_1')">1</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-17" id="View_2F_B_2_2"
+                        onclick="showViewId('View_2F_B_2_2')">2</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-17" id="View_2F_B_2_3"
+                        onclick="showViewId('View_2F_B_2_3')">3</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-17" id="View_2F_B_2_4"
+                        onclick="showViewId('View_2F_B_2_4')">4</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-17" id="View_2F_B_2_5"
+                        onclick="showViewId('View_2F_B_2_5')">5</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-17" id="View_2F_B_2_6"
+                        onclick="showViewId('View_2F_B_2_6')">6</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-17" id="View_2F_B_2_7"
+                        onclick="showViewId('View_2F_B_2_7')">7</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-17" id="View_2F_B_2_8"
+                        onclick="showViewId('View_2F_B_2_8')">8</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-17" id="View_2F_B_2_9"
+                        onclick="showViewId('View_2F_B_2_9')">9</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-17" id="View_2F_B_2_10"
+                        onclick="showViewId('View_2F_B_2_10')">10</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-17" id="View_2F_B_2_11"
+                        onclick="showViewId('View_2F_B_2_11')">11</button><button
+                        class="seatmap-img-seat-btn seatmap-img-extra-17" id="View_2F_B_2_12"
+                        onclick="showViewId('View_2F_B_2_12')">12</button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_2F_B_2_13"
+                        onclick="showViewId('View_2F_B_2_13')"></button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_2F_B_2_14"
+                        onclick="showViewId('View_2F_B_2_14')"></button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">3열</div><button class="seatmap-img-seat-btn" id="View_2F_B_3_1"
+                        onclick="showViewId('View_2F_B_3_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_3_2" onclick="showViewId('View_2F_B_3_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_3_3"
+                        onclick="showViewId('View_2F_B_3_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_3_4" onclick="showViewId('View_2F_B_3_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_3_5"
+                        onclick="showViewId('View_2F_B_3_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_3_6" onclick="showViewId('View_2F_B_3_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_3_7"
+                        onclick="showViewId('View_2F_B_3_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_3_8" onclick="showViewId('View_2F_B_3_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_3_9"
+                        onclick="showViewId('View_2F_B_3_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_3_10" onclick="showViewId('View_2F_B_3_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_3_11"
+                        onclick="showViewId('View_2F_B_3_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_3_12" onclick="showViewId('View_2F_B_3_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_3_13"
+                        onclick="showViewId('View_2F_B_3_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_3_14" onclick="showViewId('View_2F_B_3_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">4열</div><button class="seatmap-img-seat-btn" id="View_2F_B_4_1"
+                        onclick="showViewId('View_2F_B_4_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_4_2" onclick="showViewId('View_2F_B_4_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_4_3"
+                        onclick="showViewId('View_2F_B_4_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_4_4" onclick="showViewId('View_2F_B_4_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_4_5"
+                        onclick="showViewId('View_2F_B_4_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_4_6" onclick="showViewId('View_2F_B_4_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_4_7"
+                        onclick="showViewId('View_2F_B_4_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_4_8" onclick="showViewId('View_2F_B_4_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_4_9"
+                        onclick="showViewId('View_2F_B_4_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_4_10" onclick="showViewId('View_2F_B_4_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_4_11"
+                        onclick="showViewId('View_2F_B_4_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_4_12" onclick="showViewId('View_2F_B_4_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_4_13"
+                        onclick="showViewId('View_2F_B_4_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_4_14" onclick="showViewId('View_2F_B_4_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">5열</div><button class="seatmap-img-seat-btn" id="View_2F_B_5_1"
+                        onclick="showViewId('View_2F_B_5_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_5_2" onclick="showViewId('View_2F_B_5_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_5_3"
+                        onclick="showViewId('View_2F_B_5_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_5_4" onclick="showViewId('View_2F_B_5_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_5_5"
+                        onclick="showViewId('View_2F_B_5_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_5_6" onclick="showViewId('View_2F_B_5_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_5_7"
+                        onclick="showViewId('View_2F_B_5_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_5_8" onclick="showViewId('View_2F_B_5_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_5_9"
+                        onclick="showViewId('View_2F_B_5_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_5_10" onclick="showViewId('View_2F_B_5_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_5_11"
+                        onclick="showViewId('View_2F_B_5_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_5_12" onclick="showViewId('View_2F_B_5_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_5_13"
+                        onclick="showViewId('View_2F_B_5_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_5_14" onclick="showViewId('View_2F_B_5_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">6열</div><button class="seatmap-img-seat-btn" id="View_2F_B_6_1"
+                        onclick="showViewId('View_2F_B_6_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_6_2" onclick="showViewId('View_2F_B_6_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_6_3"
+                        onclick="showViewId('View_2F_B_6_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_6_4" onclick="showViewId('View_2F_B_6_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_6_5"
+                        onclick="showViewId('View_2F_B_6_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_6_6" onclick="showViewId('View_2F_B_6_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_6_7"
+                        onclick="showViewId('View_2F_B_6_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_6_8" onclick="showViewId('View_2F_B_6_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_6_9"
+                        onclick="showViewId('View_2F_B_6_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_6_10" onclick="showViewId('View_2F_B_6_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_6_11"
+                        onclick="showViewId('View_2F_B_6_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_6_12" onclick="showViewId('View_2F_B_6_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_6_13"
+                        onclick="showViewId('View_2F_B_6_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_6_14" onclick="showViewId('View_2F_B_6_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">7열</div><button class="seatmap-img-seat-btn" id="View_2F_B_7_1"
+                        onclick="showViewId('View_2F_B_7_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_7_2" onclick="showViewId('View_2F_B_7_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_7_3"
+                        onclick="showViewId('View_2F_B_7_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_7_4" onclick="showViewId('View_2F_B_7_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_7_5"
+                        onclick="showViewId('View_2F_B_7_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_7_6" onclick="showViewId('View_2F_B_7_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_7_7"
+                        onclick="showViewId('View_2F_B_7_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_7_8" onclick="showViewId('View_2F_B_7_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_7_9"
+                        onclick="showViewId('View_2F_B_7_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_7_10" onclick="showViewId('View_2F_B_7_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_7_11"
+                        onclick="showViewId('View_2F_B_7_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_7_12" onclick="showViewId('View_2F_B_7_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_7_13"
+                        onclick="showViewId('View_2F_B_7_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_7_14" onclick="showViewId('View_2F_B_7_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">8열</div><button class="seatmap-img-seat-btn" id="View_2F_B_8_1"
+                        onclick="showViewId('View_2F_B_8_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_8_2" onclick="showViewId('View_2F_B_8_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_8_3"
+                        onclick="showViewId('View_2F_B_8_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_8_4" onclick="showViewId('View_2F_B_8_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_8_5"
+                        onclick="showViewId('View_2F_B_8_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_8_6" onclick="showViewId('View_2F_B_8_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_8_7"
+                        onclick="showViewId('View_2F_B_8_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_8_8" onclick="showViewId('View_2F_B_8_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_8_9"
+                        onclick="showViewId('View_2F_B_8_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_8_10" onclick="showViewId('View_2F_B_8_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_8_11"
+                        onclick="showViewId('View_2F_B_8_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_8_12" onclick="showViewId('View_2F_B_8_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_B_8_13"
+                        onclick="showViewId('View_2F_B_8_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_B_8_14" onclick="showViewId('View_2F_B_8_14')">14</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="seatmap-img-zone-box seatmap-img-zone-C">
+                  <div class="seatmap-img-zone-label">C ZONE</div>
+                  <div class="seatmap-img-rows-wrap">
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">1열</div><button class="seatmap-img-seat-btn" id="View_2F_C_1_1"
+                        onclick="showViewId('View_2F_C_1_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_1_2" onclick="showViewId('View_2F_C_1_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_1_3"
+                        onclick="showViewId('View_2F_C_1_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_1_4" onclick="showViewId('View_2F_C_1_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_1_5"
+                        onclick="showViewId('View_2F_C_1_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_1_6" onclick="showViewId('View_2F_C_1_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_1_7"
+                        onclick="showViewId('View_2F_C_1_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_1_8" onclick="showViewId('View_2F_C_1_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_1_9"
+                        onclick="showViewId('View_2F_C_1_9')">9</button><button
+                        class="seatmap-img-seat-btn seatmap-img-none" id="View_2F_C_1_10"
+                        onclick="showViewId('View_2F_C_1_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">2열</div><button class="seatmap-img-seat-btn" id="View_2F_C_2_1"
+                        onclick="showViewId('View_2F_C_2_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_2_2" onclick="showViewId('View_2F_C_2_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_2_3"
+                        onclick="showViewId('View_2F_C_2_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_2_4" onclick="showViewId('View_2F_C_2_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_2_5"
+                        onclick="showViewId('View_2F_C_2_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_2_6" onclick="showViewId('View_2F_C_2_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_2_7"
+                        onclick="showViewId('View_2F_C_2_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_2_8" onclick="showViewId('View_2F_C_2_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_2_9"
+                        onclick="showViewId('View_2F_C_2_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_2_10" onclick="showViewId('View_2F_C_2_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">3열</div><button class="seatmap-img-seat-btn" id="View_2F_C_3_1"
+                        onclick="showViewId('View_2F_C_3_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_3_2" onclick="showViewId('View_2F_C_3_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_3_3"
+                        onclick="showViewId('View_2F_C_3_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_3_4" onclick="showViewId('View_2F_C_3_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_3_5"
+                        onclick="showViewId('View_2F_C_3_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_3_6" onclick="showViewId('View_2F_C_3_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_3_7"
+                        onclick="showViewId('View_2F_C_3_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_3_8" onclick="showViewId('View_2F_C_3_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_3_9"
+                        onclick="showViewId('View_2F_C_3_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_3_10" onclick="showViewId('View_2F_C_3_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">4열</div><button class="seatmap-img-seat-btn" id="View_2F_C_4_1"
+                        onclick="showViewId('View_2F_C_4_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_4_2" onclick="showViewId('View_2F_C_4_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_4_3"
+                        onclick="showViewId('View_2F_C_4_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_4_4" onclick="showViewId('View_2F_C_4_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_4_5"
+                        onclick="showViewId('View_2F_C_4_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_4_6" onclick="showViewId('View_2F_C_4_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_4_7"
+                        onclick="showViewId('View_2F_C_4_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_4_8" onclick="showViewId('View_2F_C_4_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_4_9"
+                        onclick="showViewId('View_2F_C_4_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_4_10" onclick="showViewId('View_2F_C_4_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">5열</div><button class="seatmap-img-seat-btn" id="View_2F_C_5_1"
+                        onclick="showViewId('View_2F_C_5_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_5_2" onclick="showViewId('View_2F_C_5_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_5_3"
+                        onclick="showViewId('View_2F_C_5_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_5_4" onclick="showViewId('View_2F_C_5_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_5_5"
+                        onclick="showViewId('View_2F_C_5_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_5_6" onclick="showViewId('View_2F_C_5_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_5_7"
+                        onclick="showViewId('View_2F_C_5_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_5_8" onclick="showViewId('View_2F_C_5_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_5_9"
+                        onclick="showViewId('View_2F_C_5_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_5_10" onclick="showViewId('View_2F_C_5_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">6열</div><button class="seatmap-img-seat-btn" id="View_2F_C_6_1"
+                        onclick="showViewId('View_2F_C_6_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_6_2" onclick="showViewId('View_2F_C_6_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_6_3"
+                        onclick="showViewId('View_2F_C_6_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_6_4" onclick="showViewId('View_2F_C_6_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_6_5"
+                        onclick="showViewId('View_2F_C_6_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_6_6" onclick="showViewId('View_2F_C_6_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_6_7"
+                        onclick="showViewId('View_2F_C_6_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_6_8" onclick="showViewId('View_2F_C_6_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_6_9"
+                        onclick="showViewId('View_2F_C_6_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_6_10" onclick="showViewId('View_2F_C_6_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">7열</div><button class="seatmap-img-seat-btn" id="View_2F_C_7_1"
+                        onclick="showViewId('View_2F_C_7_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_7_2" onclick="showViewId('View_2F_C_7_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_7_3"
+                        onclick="showViewId('View_2F_C_7_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_7_4" onclick="showViewId('View_2F_C_7_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_7_5"
+                        onclick="showViewId('View_2F_C_7_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_7_6" onclick="showViewId('View_2F_C_7_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_7_7"
+                        onclick="showViewId('View_2F_C_7_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_7_8" onclick="showViewId('View_2F_C_7_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_7_9"
+                        onclick="showViewId('View_2F_C_7_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_7_10" onclick="showViewId('View_2F_C_7_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">8열</div><button class="seatmap-img-seat-btn" id="View_2F_C_8_1"
+                        onclick="showViewId('View_2F_C_8_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_8_2" onclick="showViewId('View_2F_C_8_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_8_3"
+                        onclick="showViewId('View_2F_C_8_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_8_4" onclick="showViewId('View_2F_C_8_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_8_5"
+                        onclick="showViewId('View_2F_C_8_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_8_6" onclick="showViewId('View_2F_C_8_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_8_7"
+                        onclick="showViewId('View_2F_C_8_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_8_8" onclick="showViewId('View_2F_C_8_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_8_9"
+                        onclick="showViewId('View_2F_C_8_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_8_10" onclick="showViewId('View_2F_C_8_10')">10</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">9열</div><button class="seatmap-img-seat-btn" id="View_2F_C_9_1"
+                        onclick="showViewId('View_2F_C_9_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_9_2" onclick="showViewId('View_2F_C_9_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_9_3"
+                        onclick="showViewId('View_2F_C_9_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_9_4" onclick="showViewId('View_2F_C_9_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_9_5"
+                        onclick="showViewId('View_2F_C_9_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_9_6" onclick="showViewId('View_2F_C_9_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_9_7"
+                        onclick="showViewId('View_2F_C_9_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_9_8" onclick="showViewId('View_2F_C_9_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_2F_C_9_9"
+                        onclick="showViewId('View_2F_C_9_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_2F_C_9_10" onclick="showViewId('View_2F_C_9_10')">10</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="seatmap-img-floor-section" id="floor-section-3F"><span class="seatmap-img-floor-title">3층</span>
+              <div class="seatmap-img-theater-layout">
+                <div class="seatmap-img-zone-box seatmap-img-zone-A">
+                  <div class="seatmap-img-zone-label">A ZONE</div>
+                  <div class="seatmap-img-rows-wrap">
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">1열</div><button class="seatmap-img-seat-btn" id="View_3F_A_1_1"
+                        onclick="showViewId('View_3F_A_1_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_1_2" onclick="showViewId('View_3F_A_1_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_A_1_3"
+                        onclick="showViewId('View_3F_A_1_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_1_4" onclick="showViewId('View_3F_A_1_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_A_1_5"
+                        onclick="showViewId('View_3F_A_1_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_1_6" onclick="showViewId('View_3F_A_1_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_A_1_7"
+                        onclick="showViewId('View_3F_A_1_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_1_8" onclick="showViewId('View_3F_A_1_8')">8</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">2열</div><button class="seatmap-img-seat-btn" id="View_3F_A_2_1"
+                        onclick="showViewId('View_3F_A_2_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_2_2" onclick="showViewId('View_3F_A_2_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_A_2_3"
+                        onclick="showViewId('View_3F_A_2_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_2_4" onclick="showViewId('View_3F_A_2_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_A_2_5"
+                        onclick="showViewId('View_3F_A_2_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_2_6" onclick="showViewId('View_3F_A_2_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_A_2_7"
+                        onclick="showViewId('View_3F_A_2_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_2_8" onclick="showViewId('View_3F_A_2_8')">8</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">3열</div><button class="seatmap-img-seat-btn" id="View_3F_A_3_1"
+                        onclick="showViewId('View_3F_A_3_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_3_2" onclick="showViewId('View_3F_A_3_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_A_3_3"
+                        onclick="showViewId('View_3F_A_3_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_3_4" onclick="showViewId('View_3F_A_3_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_A_3_5"
+                        onclick="showViewId('View_3F_A_3_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_3_6" onclick="showViewId('View_3F_A_3_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_A_3_7"
+                        onclick="showViewId('View_3F_A_3_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_3_8" onclick="showViewId('View_3F_A_3_8')">8</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">4열</div><button class="seatmap-img-seat-btn" id="View_3F_A_4_1"
+                        onclick="showViewId('View_3F_A_4_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_4_2" onclick="showViewId('View_3F_A_4_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_A_4_3"
+                        onclick="showViewId('View_3F_A_4_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_4_4" onclick="showViewId('View_3F_A_4_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_A_4_5"
+                        onclick="showViewId('View_3F_A_4_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_4_6" onclick="showViewId('View_3F_A_4_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_A_4_7"
+                        onclick="showViewId('View_3F_A_4_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_4_8" onclick="showViewId('View_3F_A_4_8')">8</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">5열</div><button class="seatmap-img-seat-btn" id="View_3F_A_5_1"
+                        onclick="showViewId('View_3F_A_5_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_5_2" onclick="showViewId('View_3F_A_5_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_A_5_3"
+                        onclick="showViewId('View_3F_A_5_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_5_4" onclick="showViewId('View_3F_A_5_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_A_5_5"
+                        onclick="showViewId('View_3F_A_5_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_5_6" onclick="showViewId('View_3F_A_5_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_A_5_7"
+                        onclick="showViewId('View_3F_A_5_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_5_8" onclick="showViewId('View_3F_A_5_8')">8</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">6열</div><button class="seatmap-img-seat-btn" id="View_3F_A_6_1"
+                        onclick="showViewId('View_3F_A_6_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_6_2" onclick="showViewId('View_3F_A_6_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_A_6_3"
+                        onclick="showViewId('View_3F_A_6_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_6_4" onclick="showViewId('View_3F_A_6_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_A_6_5"
+                        onclick="showViewId('View_3F_A_6_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_6_6" onclick="showViewId('View_3F_A_6_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_A_6_7"
+                        onclick="showViewId('View_3F_A_6_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_A_6_8" onclick="showViewId('View_3F_A_6_8')">8</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="seatmap-img-zone-box seatmap-img-zone-B">
+                  <div class="seatmap-img-zone-label">B ZONE</div>
+                  <div class="seatmap-img-rows-wrap">
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">1열</div><button class="seatmap-img-seat-btn" id="View_3F_B_1_1"
+                        onclick="showViewId('View_3F_B_1_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_1_2" onclick="showViewId('View_3F_B_1_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_1_3"
+                        onclick="showViewId('View_3F_B_1_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_1_4" onclick="showViewId('View_3F_B_1_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_1_5"
+                        onclick="showViewId('View_3F_B_1_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_1_6" onclick="showViewId('View_3F_B_1_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_1_7"
+                        onclick="showViewId('View_3F_B_1_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_1_8" onclick="showViewId('View_3F_B_1_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_1_9"
+                        onclick="showViewId('View_3F_B_1_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_1_10" onclick="showViewId('View_3F_B_1_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_1_11"
+                        onclick="showViewId('View_3F_B_1_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_1_12" onclick="showViewId('View_3F_B_1_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_1_13"
+                        onclick="showViewId('View_3F_B_1_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_1_14" onclick="showViewId('View_3F_B_1_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">2열</div><button class="seatmap-img-seat-btn" id="View_3F_B_2_1"
+                        onclick="showViewId('View_3F_B_2_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_2_2" onclick="showViewId('View_3F_B_2_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_2_3"
+                        onclick="showViewId('View_3F_B_2_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_2_4" onclick="showViewId('View_3F_B_2_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_2_5"
+                        onclick="showViewId('View_3F_B_2_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_2_6" onclick="showViewId('View_3F_B_2_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_2_7"
+                        onclick="showViewId('View_3F_B_2_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_2_8" onclick="showViewId('View_3F_B_2_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_2_9"
+                        onclick="showViewId('View_3F_B_2_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_2_10" onclick="showViewId('View_3F_B_2_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_2_11"
+                        onclick="showViewId('View_3F_B_2_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_2_12" onclick="showViewId('View_3F_B_2_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_2_13"
+                        onclick="showViewId('View_3F_B_2_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_2_14" onclick="showViewId('View_3F_B_2_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">3열</div><button class="seatmap-img-seat-btn" id="View_3F_B_3_1"
+                        onclick="showViewId('View_3F_B_3_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_3_2" onclick="showViewId('View_3F_B_3_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_3_3"
+                        onclick="showViewId('View_3F_B_3_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_3_4" onclick="showViewId('View_3F_B_3_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_3_5"
+                        onclick="showViewId('View_3F_B_3_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_3_6" onclick="showViewId('View_3F_B_3_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_3_7"
+                        onclick="showViewId('View_3F_B_3_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_3_8" onclick="showViewId('View_3F_B_3_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_3_9"
+                        onclick="showViewId('View_3F_B_3_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_3_10" onclick="showViewId('View_3F_B_3_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_3_11"
+                        onclick="showViewId('View_3F_B_3_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_3_12" onclick="showViewId('View_3F_B_3_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_3_13"
+                        onclick="showViewId('View_3F_B_3_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_3_14" onclick="showViewId('View_3F_B_3_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">4열</div><button class="seatmap-img-seat-btn" id="View_3F_B_4_1"
+                        onclick="showViewId('View_3F_B_4_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_4_2" onclick="showViewId('View_3F_B_4_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_4_3"
+                        onclick="showViewId('View_3F_B_4_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_4_4" onclick="showViewId('View_3F_B_4_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_4_5"
+                        onclick="showViewId('View_3F_B_4_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_4_6" onclick="showViewId('View_3F_B_4_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_4_7"
+                        onclick="showViewId('View_3F_B_4_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_4_8" onclick="showViewId('View_3F_B_4_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_4_9"
+                        onclick="showViewId('View_3F_B_4_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_4_10" onclick="showViewId('View_3F_B_4_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_4_11"
+                        onclick="showViewId('View_3F_B_4_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_4_12" onclick="showViewId('View_3F_B_4_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_4_13"
+                        onclick="showViewId('View_3F_B_4_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_4_14" onclick="showViewId('View_3F_B_4_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">5열</div><button class="seatmap-img-seat-btn" id="View_3F_B_5_1"
+                        onclick="showViewId('View_3F_B_5_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_5_2" onclick="showViewId('View_3F_B_5_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_5_3"
+                        onclick="showViewId('View_3F_B_5_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_5_4" onclick="showViewId('View_3F_B_5_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_5_5"
+                        onclick="showViewId('View_3F_B_5_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_5_6" onclick="showViewId('View_3F_B_5_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_5_7"
+                        onclick="showViewId('View_3F_B_5_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_5_8" onclick="showViewId('View_3F_B_5_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_5_9"
+                        onclick="showViewId('View_3F_B_5_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_5_10" onclick="showViewId('View_3F_B_5_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_5_11"
+                        onclick="showViewId('View_3F_B_5_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_5_12" onclick="showViewId('View_3F_B_5_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_5_13"
+                        onclick="showViewId('View_3F_B_5_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_5_14" onclick="showViewId('View_3F_B_5_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">6열</div><button class="seatmap-img-seat-btn" id="View_3F_B_6_1"
+                        onclick="showViewId('View_3F_B_6_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_6_2" onclick="showViewId('View_3F_B_6_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_6_3"
+                        onclick="showViewId('View_3F_B_6_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_6_4" onclick="showViewId('View_3F_B_6_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_6_5"
+                        onclick="showViewId('View_3F_B_6_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_6_6" onclick="showViewId('View_3F_B_6_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_6_7"
+                        onclick="showViewId('View_3F_B_6_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_6_8" onclick="showViewId('View_3F_B_6_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_6_9"
+                        onclick="showViewId('View_3F_B_6_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_6_10" onclick="showViewId('View_3F_B_6_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_6_11"
+                        onclick="showViewId('View_3F_B_6_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_6_12" onclick="showViewId('View_3F_B_6_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_6_13"
+                        onclick="showViewId('View_3F_B_6_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_6_14" onclick="showViewId('View_3F_B_6_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">7열</div><button class="seatmap-img-seat-btn" id="View_3F_B_7_1"
+                        onclick="showViewId('View_3F_B_7_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_7_2" onclick="showViewId('View_3F_B_7_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_7_3"
+                        onclick="showViewId('View_3F_B_7_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_7_4" onclick="showViewId('View_3F_B_7_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_7_5"
+                        onclick="showViewId('View_3F_B_7_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_7_6" onclick="showViewId('View_3F_B_7_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_7_7"
+                        onclick="showViewId('View_3F_B_7_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_7_8" onclick="showViewId('View_3F_B_7_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_7_9"
+                        onclick="showViewId('View_3F_B_7_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_7_10" onclick="showViewId('View_3F_B_7_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_7_11"
+                        onclick="showViewId('View_3F_B_7_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_7_12" onclick="showViewId('View_3F_B_7_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_7_13"
+                        onclick="showViewId('View_3F_B_7_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_7_14" onclick="showViewId('View_3F_B_7_14')">14</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">8열</div><button class="seatmap-img-seat-btn" id="View_3F_B_8_1"
+                        onclick="showViewId('View_3F_B_8_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_8_2" onclick="showViewId('View_3F_B_8_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_8_3"
+                        onclick="showViewId('View_3F_B_8_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_8_4" onclick="showViewId('View_3F_B_8_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_8_5"
+                        onclick="showViewId('View_3F_B_8_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_8_6" onclick="showViewId('View_3F_B_8_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_8_7"
+                        onclick="showViewId('View_3F_B_8_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_8_8" onclick="showViewId('View_3F_B_8_8')">8</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_8_9"
+                        onclick="showViewId('View_3F_B_8_9')">9</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_8_10" onclick="showViewId('View_3F_B_8_10')">10</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_8_11"
+                        onclick="showViewId('View_3F_B_8_11')">11</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_8_12" onclick="showViewId('View_3F_B_8_12')">12</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_B_8_13"
+                        onclick="showViewId('View_3F_B_8_13')">13</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_B_8_14" onclick="showViewId('View_3F_B_8_14')">14</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="seatmap-img-zone-box seatmap-img-zone-C">
+                  <div class="seatmap-img-zone-label">C ZONE</div>
+                  <div class="seatmap-img-rows-wrap">
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">1열</div><button class="seatmap-img-seat-btn" id="View_3F_C_1_1"
+                        onclick="showViewId('View_3F_C_1_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_1_2" onclick="showViewId('View_3F_C_1_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_C_1_3"
+                        onclick="showViewId('View_3F_C_1_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_1_4" onclick="showViewId('View_3F_C_1_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_C_1_5"
+                        onclick="showViewId('View_3F_C_1_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_1_6" onclick="showViewId('View_3F_C_1_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_C_1_7"
+                        onclick="showViewId('View_3F_C_1_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_1_8" onclick="showViewId('View_3F_C_1_8')">8</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">2열</div><button class="seatmap-img-seat-btn" id="View_3F_C_2_1"
+                        onclick="showViewId('View_3F_C_2_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_2_2" onclick="showViewId('View_3F_C_2_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_C_2_3"
+                        onclick="showViewId('View_3F_C_2_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_2_4" onclick="showViewId('View_3F_C_2_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_C_2_5"
+                        onclick="showViewId('View_3F_C_2_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_2_6" onclick="showViewId('View_3F_C_2_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_C_2_7"
+                        onclick="showViewId('View_3F_C_2_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_2_8" onclick="showViewId('View_3F_C_2_8')">8</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">3열</div><button class="seatmap-img-seat-btn" id="View_3F_C_3_1"
+                        onclick="showViewId('View_3F_C_3_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_3_2" onclick="showViewId('View_3F_C_3_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_C_3_3"
+                        onclick="showViewId('View_3F_C_3_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_3_4" onclick="showViewId('View_3F_C_3_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_C_3_5"
+                        onclick="showViewId('View_3F_C_3_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_3_6" onclick="showViewId('View_3F_C_3_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_C_3_7"
+                        onclick="showViewId('View_3F_C_3_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_3_8" onclick="showViewId('View_3F_C_3_8')">8</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">4열</div><button class="seatmap-img-seat-btn" id="View_3F_C_4_1"
+                        onclick="showViewId('View_3F_C_4_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_4_2" onclick="showViewId('View_3F_C_4_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_C_4_3"
+                        onclick="showViewId('View_3F_C_4_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_4_4" onclick="showViewId('View_3F_C_4_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_C_4_5"
+                        onclick="showViewId('View_3F_C_4_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_4_6" onclick="showViewId('View_3F_C_4_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_C_4_7"
+                        onclick="showViewId('View_3F_C_4_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_4_8" onclick="showViewId('View_3F_C_4_8')">8</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">5열</div><button class="seatmap-img-seat-btn" id="View_3F_C_5_1"
+                        onclick="showViewId('View_3F_C_5_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_5_2" onclick="showViewId('View_3F_C_5_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_C_5_3"
+                        onclick="showViewId('View_3F_C_5_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_5_4" onclick="showViewId('View_3F_C_5_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_C_5_5"
+                        onclick="showViewId('View_3F_C_5_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_5_6" onclick="showViewId('View_3F_C_5_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_C_5_7"
+                        onclick="showViewId('View_3F_C_5_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_5_8" onclick="showViewId('View_3F_C_5_8')">8</button>
+                    </div>
+                    <div class="seatmap-img-seat-row">
+                      <div class="seatmap-img-row-num">6열</div><button class="seatmap-img-seat-btn" id="View_3F_C_6_1"
+                        onclick="showViewId('View_3F_C_6_1')">1</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_6_2" onclick="showViewId('View_3F_C_6_2')">2</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_C_6_3"
+                        onclick="showViewId('View_3F_C_6_3')">3</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_6_4" onclick="showViewId('View_3F_C_6_4')">4</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_C_6_5"
+                        onclick="showViewId('View_3F_C_6_5')">5</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_6_6" onclick="showViewId('View_3F_C_6_6')">6</button><button
+                        class="seatmap-img-seat-btn" id="View_3F_C_6_7"
+                        onclick="showViewId('View_3F_C_6_7')">7</button><button class="seatmap-img-seat-btn"
+                        id="View_3F_C_6_8" onclick="showViewId('View_3F_C_6_8')">8</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right Section Selection -->
+        <div class="seatmap-section-selector">
+          <button class="section-btn active" data-floor="1F" data-zone="A"><span>1층</span> A블록</button>
+          <button class="section-btn" data-floor="1F" data-zone="B"><span>1층</span> B블록</button>
+          <button class="section-btn" data-floor="1F" data-zone="C"><span>1층</span> C블록</button>
+          <button class="section-btn" data-floor="2F" data-zone="A"><span>2층</span> A블록</button>
+          <button class="section-btn" data-floor="2F" data-zone="B"><span>2층</span> B블록</button>
+          <button class="section-btn" data-floor="2F" data-zone="C"><span>2층</span> C블록</button>
+          <button class="section-btn" data-floor="3F" data-zone="A"><span>3층</span> A블록</button>
+          <button class="section-btn" data-floor="3F" data-zone="B"><span>3층</span> B블록</button>
+          <button class="section-btn" data-floor="3F" data-zone="C"><span>3층</span> C블록</button>
+        </div>
+      </div>

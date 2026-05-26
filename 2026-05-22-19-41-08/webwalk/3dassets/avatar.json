@@ -1,0 +1,26 @@
+{
+  "model": "avatar.obj",
+  "meshes": [
+    {
+      "group": "head",
+      "geometryName": "head",
+      "materialName": "mainMaterial"
+    },
+    {
+      "group": "torso",
+      "geometryName": "torso",
+      "materialName": "mainMaterial"
+    },
+    {
+      "group": "displayPortrait",
+      "geometryName": "displayPortrait",
+      "materialName": "displayMaterial"
+    },
+    {
+      "group": "displayLandscape",
+      "geometryName": "displayLandscape",
+      "materialName": "displayMaterial"
+    }
+  ],
+  "materials": []
+}
