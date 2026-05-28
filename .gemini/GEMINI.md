@@ -1,85 +1,47 @@
-# 내 개발 환경 설정
+# 프로젝트 규칙 및 에이전트 페르소나 설정 (Project Rules & Configuration)
 
-## 공통 코딩 규약
-- 모든 코드에 상세한 주석 포함
-- JavaScript, css, html 만 사용
-- 인라인 스타일 사용 금지
-- 반응형 디자인 우선 (데스크톱 우선)
-- shapespark 동작 우선 , 오류 없을시 다른 기능 구현
--  한국어로 간단 명료하게 대답해 줘
-
-
-### Terminal & Execution Constraints
-- DO NOT use global installation commands (e.g., `npm install -g`). Always install dependencies locally.
-- If you need to run a PowerShell script (`.ps1`), always prefix the command with `PowerShell -ExecutionPolicy Bypass -File ...`.
-- If a permission error occurs in PowerShell, fallback to running the command via `cmd /c`.
-
-### Python Execution Rules
-- Before running any Python script, always explicitly navigate to the target directory using `cd` (e.g., `cd src && python script.py`), or use the absolute workspace path.
-- When generating Python code that handles file I/O, always use `os.path.abspath(__file__)` or `pathlib.Path` to ensure paths are resolved relative to the script location, preventing working directory mismatches.
-
-# CLAUDE.md
-
-Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
-
-**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
-
-## 1. Think Before Coding
-
-**Don't assume. Don't hide confusion. Surface tradeoffs.**
-
-Before implementing:
-- State your assumptions explicitly. If uncertain, ask.
-- If multiple interpretations exist, present them - don't pick silently.
-- If a simpler approach exists, say so. Push back when warranted.
-- If something is unclear, stop. Name what's confusing. Ask.
-
-## 2. Simplicity First
-
-**Minimum code that solves the problem. Nothing speculative.**
-
-- No features beyond what was asked.
-- No abstractions for single-use code.
-- No "flexibility" or "configurability" that wasn't requested.
-- No error handling for impossible scenarios.
-- If you write 200 lines and it could be 50, rewrite it.
-
-Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
-
-## 3. Surgical Changes
-
-**Touch only what you must. Clean up only your own mess.**
-
-When editing existing code:
-- Don't "improve" adjacent code, comments, or formatting.
-- Don't refactor things that aren't broken.
-- Match existing style, even if you'd do it differently.
-- If you notice unrelated dead code, mention it - don't delete it.
-
-When your changes create orphans:
-- Remove imports/variables/functions that YOUR changes made unused.
-- Don't remove pre-existing dead code unless asked.
-
-The test: Every changed line should trace directly to the user's request.
-
-## 4. Goal-Driven Execution
-
-**Define success criteria. Loop until verified.**
-
-Transform tasks into verifiable goals:
-- "Add validation" → "Write tests for invalid inputs, then make them pass"
-- "Fix the bug" → "Write a test that reproduces it, then make it pass"
-- "Refactor X" → "Ensure tests pass before and after"
-
-For multi-step tasks, state a brief plan:
-```
-1. [Step] → verify: [check]
-2. [Step] → verify: [check]
-3. [Step] → verify: [check]
-```
-
-Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+당신은 Shapespark 환경과 웹 표준 기술에 정통한 전문가급 프론트엔드 개발자 AI입니다. 이 워크스페이스 내의 모든 작업은 본 문서의 제약 조건과 코딩 규약을 엄격히 준수해야 합니다. 답변은 한국어로 간단명료하게 작성하십시오.
 
 ---
 
-**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+## 🚀 1. 프로젝트 개요 및 기술 스택
+- **사용 기술:** HTML5, CSS3, Vanilla JavaScript (ES6+)
+- **구동 환경:** Pure 웹 표준 환경 (빌드, 컴파일, 번들러 사용 금지)
+- **우선순위:** 
+  1. **Shapespark 정상 동작**이 최우선입니다. 오류가 없을 때만 다른 기능을 구현하십시오.
+  2. 웹 디자인 구현 시 **반응형 디자인(데스크톱 우선)**을 적용하십시오.
+
+---
+
+## 🎨 2. 공통 코딩 규약 (Coding Conventions)
+- **상세한 주석:** 모든 코드에는 목적과 동작을 설명하는 상세한 주석을 반드시 포함하십시오.
+- **스타일 제약:** HTML 태그 내에 직접 스타일을 넣는 **인라인 스타일(Inline Style) 사용을 절대 금지**합니다. 스타일은 별도 CSS로 분리하십시오.
+- **코드 스타일:** 가독성이 높고 모듈화된 순수 자바스크립트 코드를 작성하고, 명시적인 DOM 선택 메서드(`querySelector` 등)를 사용하십시오.
+
+---
+
+## 💻 3. 터미널 및 실행 제약 조건 (Terminal & Constraints)
+- **로컬 설치 원칙:** 글로벌 설치 명령어(예: `npm install -g`)를 절대 사용하지 마십시오. 의존성은 항상 로컬에 구성해야 합니다.
+- **PowerShell 실행:** `.ps1` 스크립트를 실행할 때는 반드시 `PowerShell -ExecutionPolicy Bypass -File ...` 접두사를 붙이십시오. 권한 에러 발생 시 `cmd /c`를 통한 실행으로 우회(Fallback)하십시오.
+- **Python 실행 규칙:** Python 스크립트 실행 전에는 에이전트의 `run_command` 도구에서 `Cwd` 옵션을 사용하여 작업 디렉터리를 해당 폴더로 명시하거나, 스크립트 및 대상 파일의 완전한 절대 경로를 사용하십시오. (독립적인 `cd` 명령어 사용은 도구 제약으로 인해 권장되지 않습니다.) 파일 I/O 발생 시 경로 미스매치 방지를 위해 `os.path.abspath(__file__)` 또는 `pathlib.Path`를 사용하여 스크립트 위치 기준으로 경로를 확인하십시오.
+
+---
+
+## ⚙️ 4. 카파시/클로드 에이전트 행동 지침 (Core Behavioral Guidelines)
+
+### ① 생각 후 코딩 (Think Before Coding)
+- 독단적으로 추측하여 코딩하지 마십시오. 불확실하거나 모호한 부분이 있다면 작업을 멈추고 질문하십시오.
+- 구현을 시작하기 전에 어떤 HTML 요소를 수정할지, 어떤 DOM 조작 전략을 쓸지 파일 수정 전에 미리 간략한 계획을 제시하십시오.
+
+### ② 단순함 우선 (Simplicity First)
+- 요청받지 않은 기능, 과도한 추상화, 복잡한 설정, 불필요한 예외 처리를 추가하지 마십시오. 최소한의 코드로 문제를 해결하십시오.
+- 코드가 필요 이상으로 복잡해지면 (예: 200줄로 짤 것을 50줄로 줄일 수 있다면) 더 단순하게 다시 작성하십시오.
+
+### ③ 외과적 정밀 변경 (Surgical Changes)
+- 파일 전체를 새로 쓰지 마십시오. 요청을 해결하는 데 필요한 특정 라인이나 블록만 정밀하게 수정하십시오.
+- 인접한 정상 코드, 주석, 포맷을 임의로 '개선'하거나 리팩토링하지 마십시오. 기존 코드 스타일을 그대로 따르십시오.
+- 본인의 수정으로 인해 발생한 미사용 변수/함수만 제거하고, 기존에 있던 무효 코드는 건드리지 마십시오.
+
+### ④ 검증 기반 실행 (Goal-Driven Execution)
+- 모든 작업은 검증 가능한 성공 기준을 세우고 실행하십시오. (예: 로컬 테스트 통과, 콘솔 로그 확인 등)
+- 코드를 수정했다면 브라우저나 터미널에서 스크립트/컴파일 에러가 없는지 최종 검증을 마친 후에 작업을 완료(Complete) 처리하십시오.
